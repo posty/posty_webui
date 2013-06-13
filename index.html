@@ -1,0 +1,60 @@
+<!doctype html>
+<html ng-app="postySoft" ng-controller="MainCtrl" ng-init="init()">  
+	<head>
+		<meta charset="utf-8">  
+		<title>postySoft - {{ Page.title() }}</title>  
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>	
+		<link rel="stylesheet" href="css/app.css"/>  
+	</head>  
+	<body class="body">		
+		<div ng-include="'partials/partial_request_messages.html'"></div>
+		<div ng-include="'partials/partial_process.html'"></div>
+		<div class="modalalt">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">					 
+					  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </a>					 
+					  <a href="#/view_dashboard" title=""><img class="brand" src="img/posty_logo.png" alt="logo" /></a>					  
+					  <ul class="nav pull-right">
+						<li class="divider-vertical"></li>
+						<li>
+							<br/>					
+							<p class="titlefont"><img src="img/widget/{{ Page.title() | lowercase }}_min.png" alt="stat" /> {{ Page.title() }}</p>							
+						</li>			
+					  </ul>								 
+					</div>
+				</div>
+			</div>		
+			
+			<div ng-view></div>
+		
+			<div class="modal-footer">
+				<div class="pull-right">
+					<img src="img/pimpmypostfix.png" alt="logo"/>
+				</div>
+				<div class="pull-left">
+					<!--<a href="index.html" class="btn btn-danger"><i class="icon-off icon-white"></i> Logout</a>-->
+				</div>
+			</div>		
+			
+		</div>
+		<!-- Libs-->
+    	<script src="lib/angular/angular.js"></script>
+    	<script src="lib/angular/angular-resource.js"></script>
+		<script src="lib/restangular/restangular.js"></script>		    	
+    	<script src="lib/angularui/underscore-min.js"></script>
+    	<script src="lib/angularui/ui-bootstrap-0.3.0.js"></script>
+    	<!-- JavaScript-Dependencies-->	
+    	<script src="conf.js"></script>			
+		<script src="js/app.js"></script>	
+		<script src="js/directives.js"></script>		
+		<script src="js/models.js"></script>
+		<script src="js/services.js"></script>
+		<script src="js/controllers.js"></script>
+	</body>
+</html>

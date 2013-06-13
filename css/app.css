@@ -1,0 +1,140 @@
+.buttonone {
+	padding-left:320px;
+}
+
+.h5new {
+	color: #5BB75B;
+}
+
+.buttonright{
+	text-align:right;
+}
+
+.h5edit {
+	color: #FAA732;
+}
+
+.h5del {
+	color: #C63E37;
+}
+
+.h5show {
+	color: #000000;
+}
+
+.divColor{
+	background-color:#C6C6C6;
+}
+
+.body {
+	margin: 0px; 
+	padding: 0px; 
+	background-image:url(../img/background01.jpg); 
+	background-repeat:repeat;
+}
+
+.bodyalt {
+	margin: 0px; 
+	padding: 0px; 
+	background-image:url(../img/background01.jpg); 
+	background-repeat:repeat;
+}
+
+.alertsize {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	/*z-index: 1050;*/
+	width: 400px;
+	margin-left: -260px;
+}
+
+.processsize {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 400px;
+  margin-left: -260px;    
+  z-index: 99;
+  text-align: center;
+}
+
+.titlefont{
+	font-weight:normal;
+	font-size:28px;
+}
+
+.modalalt {
+  position: absolute;
+  top: 9%;
+  left: 50%;
+  /*z-index: 1050;*/
+  width: 900px;
+  margin-left: -470px;
+  background-color: #ffffff;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  *border: 1px solid #999;
+  /* IE6-7 */
+  
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  outline: none;  
+}
+
+.modalpop {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  z-index: 1050;
+  width: 950px;
+  margin-left: -510px;
+  background-color: #ffffff;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  *border: 1px solid #999;
+  /* IE6-7 */
+
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  outline: none;
+}
+
+
+a.tooltipnew:hover {text-decoration:none;} 
+a.tooltipnew span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:80px; margin-left:-160px;
+    width:200px; line-height:16px;
+}
+a.tooltipnew:hover span{
+    display:inline; position:absolute; 
+    border:1px solid #FFF;  color:#FFF;
+    background:#000 url(../img/css-tooltipnew-gradient-bg.png) repeat-x 0 0;
+}
+.callout {z-index:20;position:absolute;border:0;top:-14px;left:110px;}
+    
+/*CSS3 extras*/
+a.tooltipnew span
+{
+    border-radius:1px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;        
+    -moz-box-shadow: 0px 0px 4px 4px #666;
+    -webkit-box-shadow: 0px 0px 8px 4px #666;
+    box-shadow: 0px 0px 8px 4px #666;   
+}
