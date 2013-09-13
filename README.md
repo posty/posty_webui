@@ -52,6 +52,10 @@ If you discover any bugs, feel free to create an issue on GitHub. Please add as 
 
 LGPL v3 license. See LICENSE for details.
 
+### Third-Party Software Components
+
+[Crystal Project](http://www.everaldo.com/crystal) Icons Copyright © Everaldo.com [GNU Lesser GPL].
+
 ### Copyright
 
 All rights are at (C) [http://www.posty-soft.org](http://www.posty-soft.org) 2013
