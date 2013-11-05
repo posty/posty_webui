@@ -12,11 +12,6 @@
             </div>
          </div>
          <div class="accordion-group">
-            <div class="accordion-heading">
-               <a class="accordion-toggle" href="">
-                  <h5 class="h5show"><img src="img/widget/list_ico.png" alt="ico"/> List</h5>
-               </a>
-            </div>
             <div id="collapseTwo" class="accordion-body collapse in">
                <div class="accordion-inner">
                   <table class="table table-bordered table-striped table-hover">
@@ -26,7 +21,7 @@
                            <th></th>
                         </tr>
                      </thead>
-                     <tbody>
+                     <tbody>   
                         <tr ng-repeat="domain in DomainService.getDomainListFiltered()">
                            <td>{{ domain.name }}</td>
                            <td style="width:100px">
@@ -67,26 +62,83 @@
    </div>
    <!-- end create -->
    <!-- edit -->
-   <div modal="editIsVisible" close="closeEdit()" options="opts">
-      <form name='form'>
-         <div class="modal-header">
-            <button type="button" class="close" ng-click="closeEdit()">&times;</button>
-            <h3>Edit Domain</h3>
-         </div>
-         <div class="modal-body">
-            <div class="control-group">
+   <div modal="editIsVisible" close="closeEdit()" options="opts">       
+      <div class="modal-header">
+         <button type="button" class="close" ng-click="closeEdit()">&times;</button>
+         <!-- Tab Navigation -->
+         <ul id="myTab" class="nav nav-tabs">
+            <li ng-class="tabClass(tabIsVisible[0])" style="cursor:pointer;">
+               <a ng-click="editTabClick(0)"><img src="img/widget/domain_ico.png" alt="ico"/> general</a>
+            </li>
+            <li ng-class="tabClass(tabIsVisible[1])" style="cursor:pointer;">
+               <a ng-click="editTabClick(1)"><img src="img/widget/domain_alias_ico.png" alt="ico"/> alias</a>
+            </li>
+         </ul>
+         <!-- end tab navigation -->
+      </div>
+      <div class="modal-body">
+         <!-- tab general -->
+         <div ng-show="tabIsVisible[0]" class="control-group">
+            <form name='form'>
                <div class="controls">
                   <label class="control-label" for="domain"> Domain: <img src="img/widget/domain_ico.png" alt="ico"/>            
                   <input type="text" required name="domain" id="domain" ng-model="editDomain.name" focus="{{editIsVisible}}" value="{{editDomain.oldName}}">
                   </label>                   
                </div>
+               <div class="modal-footer">            
+                  <button class="btn btn-success" ng-click="edit(editDomain)" ng-disabled='!form.$valid'>Save <i class="icon-ok icon-white"></i></button>
+                  <button class="btn" ng-click="closeEdit()">Cancel</button>         
+               </div>
+            </form>
+         </div>
+         <!-- end tab general -->
+         <!-- tab alias -->         
+         <div ng-show="tabIsVisible[1]" class="control-group">
+            <div class="controls">
+               <div class="accordion-group">
+                  <div class="accordion-heading">
+                     <div class="input-append">
+                        <div class="accordion-inner">
+                           <form name='form'>
+                              <input class="span4" id="appendedInputButtons" type="text" placeholder="alias" ng-model="editDomain.newAlias">
+                              <button class="btn btn-success" ng-click="editCreateAlias(editDomain)" ng-disabled='editDomain.newAlias==""' type="button"><i class="icon-plus icon-white"></i></button>
+                           </form>                           
+                        </div>
+                     </div>
+                  </div>                
+
+                  <div id="collapseTwo" class="accordion-body collapse in">
+                     <div class="accordion-inner">
+                        <div ng-show="ProcessService.isLoading()"> <img src="img/loading.gif" /> Loading...</div>
+                        <alert ng-repeat="alert in AlertService.alerts()" type="alert.type" close="AlertService.closeAlert($index)">{{alert.msg}}</alert>
+                        <table ng-show="!ProcessService.isLoading()" class="table table-bordered table-striped table-hover">
+                           <thead>
+                              <tr>
+                                 <th>Domain Alias</th>
+                                 <th></th>
+                              </tr>
+                           </thead>                   
+                           <tbody>                
+                              <tr ng-repeat="aliasse in DomainAliasService.getDomainAliasList() ">                              
+                                 <form name='form'>
+                                    <td>{{ aliasse.name }}</td>
+                                    <td style="width:50px">                                                   
+                                       <button class="btn btn-danger" ng-click="editRemoveAlias(editDomain, aliasse.name)" role="button" data-toggle="modal"><i class="icon-trash icon-white"></i></button>
+                                 </form>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">               
+               <button class="btn" ng-click="closeEdit()">Exit</button>         
             </div>
          </div>
-         <div class="modal-footer">            
-            <button class="btn btn-success" ng-click="edit(editDomain)" ng-disabled='!form.$valid'>Save <i class="icon-ok icon-white"></i></button>
-            <button class="btn" ng-click="closeEdit()">Cancel</button>         
-         </div>
-      </form>
+         <!-- end tab alias -->
+      </div>
    </div>
    <!-- end edit -->   
    <!-- remove -->   
@@ -104,7 +156,6 @@
       </div>
    </div>
    <!-- end remove -->
-
    <!-- CSS-Hack Background -->
-   <div ng-show="createIsVisible || editIsVisible || removeIsVisible" class="modal-backdrop"></div>   
+   <div ng-show="createIsVisible || editIsVisible || removeIsVisible" class="modal-backdrop"></div>
 </div>

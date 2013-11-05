@@ -37,3 +37,34 @@ app.directive('focus', function () {
   }
 });
 
+
+app.directive('bars', function ($parse) {
+      return {
+         restrict: 'E',
+         replace: true,
+         template: '<div id="chart"></div>',
+         link: function (scope, element, attrs) {
+           var data = attrs.data.split(','),
+           chart = d3.select('#chart')
+             .append("div").attr("class", "chart")
+             .selectAll('div')
+             .data(data).enter()
+             .append("div")
+             .transition().ease("elastic")
+             .style("width", function(d) { 
+               var val = d.split(':')[1];
+               val = parseInt(val);
+               var tmp = 5;
+               val = val + tmp;
+               
+              if(val >= 100) {
+                val = 98; 
+              }
+               console.log("VAL: "+val);           
+                return val + "%"; })           
+             .text(function(d) {               
+               return d; 
+             });
+         } 
+      };
+   });

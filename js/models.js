@@ -2,11 +2,11 @@
 
 var app = angular.module('postySoft.models', []);
 
+
 /**
 * filters the error-messages of the response and returns the concated messages
 *
-* @method DomainService
-' @return {String} Returns the error-message
+* @method  @return {String} Returns the error-message
 */
 var errorMsg = function(response) {
 	for(var prop in response) {
@@ -18,12 +18,13 @@ var errorMsg = function(response) {
 	return result.substr(2, result.length)+".";		
 };
 
+
 /**
 * central domain-model. Here you do all the CRUD-operations with the REST-API
 *
-* @class DomainService
+* @class AccountService
 */
-app.factory('DomainService', function(Restangular, ProcessService, AlertService){
+app.factory('DomainService', function(Restangular, ProcessService, AlertService) {		
 	var ALL_DOMAINS = "all Domains"; // const for the all-domain-selection
 
 	var currentDomain = ALL_DOMAINS; // current Domain you have selected 	
@@ -38,6 +39,7 @@ app.factory('DomainService', function(Restangular, ProcessService, AlertService)
 			Restangular.all('domains').getList().then(function(list) {	
 				if (allDomainsSelected()) {
 				 	for (var i = 0; i < list.length; i++) {
+				 		console.log(list[i]);
 				 		domainList.push(list[i].virtual_domain);
 				 		domainListFiltered.push(list[i].virtual_domain);		 		
 				 	}						
@@ -198,7 +200,7 @@ app.factory('DomainService', function(Restangular, ProcessService, AlertService)
 		* @method getDomainListFiltered		
 		* @return {Array} Returns the domainListFiltered-member
 		*/
-		getDomainListFiltered: function() {
+		getDomainListFiltered: function() {			
 			return domainListFiltered;	
 		},		
 
@@ -243,10 +245,10 @@ app.factory('AccountService', function(Restangular, DomainService, ProcessServic
 		* @param accountName {String} the name of the account
 		* @param accountPassword {String} the password of the account
 		*/		
-		createAccount: function(accountName, accountPassword) {
+		createAccount: function(accountName, accountPassword, accountQuota) {
 			ProcessService.register();		
 			var dao = Restangular.one('domains',DomainService.currentDomain()).all('users');
-			var newData = {name: accountName, password: accountPassword}; 		
+			var newData = {name: accountName, password: accountPassword, quota: accountQuota}; 		
 			dao.post(newData).then(function(response) {	
 				var msg = "New account created: "+accountName;
 				AlertService.addAlert("success",msg);
@@ -269,12 +271,13 @@ app.factory('AccountService', function(Restangular, DomainService, ProcessServic
 		* @param accountNameNew {String} the new name of the account
 		* @param accountPasswordNew {String} the new password of the account
 		*/
-		editAccount: function(accountNameOld, accountNameNew, accountPasswordNew) {		
+		editAccount: function(accountNameOld, accountNameNew, accountPasswordNew, accountQuotaNew) {		
 			ProcessService.register();					
 			var dao = Restangular.one('domains',DomainService.currentDomain()).one('users',accountNameOld);	
 			dao.name = accountNameNew;
+			dao.quota = accountQuotaNew;
 			if (accountPasswordNew != "")
-				dao.password = accountPasswordNew;					
+				dao.password = accountPasswordNew;								
 			dao.put().then(function(response) {							
 				var msg = "Account "+accountNameNew+" updated!";
 				AlertService.addAlert("success",msg);
@@ -343,96 +346,96 @@ app.factory('AccountService', function(Restangular, DomainService, ProcessServic
 	};
 });
 
+
 /**
-* central alias-model. Here you do all the CRUD-operations with the REST-API
+* central DomainAlias-model. Here you do all the CRUD-operations with the REST-API
 *
-* @class AliasService
+* @class DomainAliasService
 */
-app.factory('AliasService', function(Restangular, DomainService, ProcessService, AlertService) {		
-	var aliasList = [];	// list of all aliases
+app.factory('DomainAliasService', function(Restangular, ProcessService, AlertService) {		
+	var aliasList = [];	// list of all aliases	
 	
-	var refreshAliasList = function() {
-			aliasList = [];					
-			ProcessService.register();
-			Restangular.one('domains',DomainService.currentDomain()).all('aliases').getList().then(function(list) {										 	
-			 	for (var i = 0; i < list.length; i++) {						 		
-			 		aliasList.push(list[i].virtual_alias);				 				 		
+	var refreshDomainAliasList = function(domainName) {
+			aliasList = [];				
+			Restangular.one('domains',domainName).all('aliases').getList().then(function(list) {										 	
+			 	for (var i = 0; i < list.length; i++) {				 					 		
+			 		aliasList.push(list[i].virtual_domain_alias);			 						 				 		
 			 	}					 													
 				ProcessService.unregister();			
-			});
-	};	 
-  
+			});			
+	};	
+
 	return {
 		/**
-		* creates an new alias
+		* creates an new DomainAlias
 		*
-		* @method createAlias		
+		* @method createDomainAlias		
 		* @param aliasSource {String} the source of the alias
 		* @param aliasDestination {String} the destination of the alias
 		*/			
-		createAlias: function(aliasSource, aliasDestination) {
+		createDomainAlias: function(domainName, aliasName) {
 			ProcessService.register();		
-			var dao = Restangular.one('domains',DomainService.currentDomain()).all('aliases');
-			var newData = {source: aliasSource, destination: aliasDestination}; 					
+			var dao = Restangular.one('domains',domainName).all('aliases');
+			var newData = {name: aliasName}; 					
 			dao.post(newData).then(function(response) {	
-				var msg = "New alias created: "+aliasSource;
+				var msg = "New domain alias created: "+aliasName;
 				AlertService.addAlert("success",msg);
 				console.log(msg);				
-				refreshAliasList();	
+				refreshDomainAliasList(domainName);	
 				ProcessService.unregister();					
 			}, function(response) {	
-				var msg = "There was an error saving the alias "+aliasSource+": \n"+errorMsg(response.data.error);
-				AlertService.addAlert("error",msg);
+				var msg = "There was an error saving the domain alias "+aliasName+": \n"+errorMsg(response.data.error);
+				AlertService.addAlert("error",msg); 	
 				console.log(msg);						
 				ProcessService.unregister();
 			});							
 		},
 
+
 		/**
 		* edit an existing alias		
 		*
-		* @method editAlias		
-		* @param aliasOldSource {String} the old source of the alias
-		* @param aliasNewSource {String} the new source of the alias
-		* @param aliasDestination {String} the new destination of the alias
+		* @method editDomainAlias		
+		* @param domainName {String} the domain name
+		* @param oldAliasName {String} the old alias name
+		* @param newAliasName {String} the new alias name
 		*/
-		editAlias: function(aliasOldSource, aliasNewSource, aliasDestination) {	
+		editDomainAlias: function(domainName, oldAliasName, newAliasName) {	
 			ProcessService.register();		
-			var dao = Restangular.one('domains',DomainService.currentDomain()).one('aliases',aliasOldSource);	
-			dao.source = aliasNewSource;
-			if (aliasDestination != "")
-				dao.destination = aliasDestination;					
+			var dao = Restangular.one('domains',domainName).one('aliases',oldAliasName);	
+			dao.name = newAliasName;				
 			dao.put().then(function(response) {							
-				var msg = "Alias "+aliasNewSource+" updated!";
+				var msg = "Domain alias "+newAliasName+" updated!";
 				AlertService.addAlert("success",msg);
 				console.log(msg);	
-				refreshAliasList();				
+				refreshDomainAliasList(domainName);				
 				ProcessService.unregister();
 			}, function(response) {		
-				var msg = "There was an error updating the alias "+aliasNewSource+": \n"+errorMsg(response.data.error);
+				var msg = "There was an error updating the domain alias "+newAliasName+": \n"+errorMsg(response.data.error);
 				AlertService.addAlert("error",msg);
 				console.log(msg);					
 				ProcessService.unregister();
 			});	
-		},
+		},	
 
 		/**
 		* remove an existing alias by name
 		*
-		* @method removeAlias		
-		* @param accountName {String} the name of the alias
+		* @method removeDomainAlias		
+		* @param domainName {String} the domain name
+		* @param aliasName {String} the alias to remove
 		*/
-		removeAlias: function(aliasSource) {						
+		removeDomainAlias: function(domainName, aliasName) {						
 			ProcessService.register();			
-			var dao = Restangular.one('domains',DomainService.currentDomain()).one('aliases',aliasSource);	
+			var dao = Restangular.one('domains',domainName).one('aliases', aliasName);
 			dao.remove().then(function(response) {							
-				var msg = "Alias "+aliasSource+" deleted!";
+				var msg = "Domain alias "+aliasName+" deleted!";
 				AlertService.addAlert("success",msg);
 				console.log(msg);
-				refreshAliasList();	
+				refreshDomainAliasList(domainName);	
 				ProcessService.unregister();			
 			}, function(response) {				
-				var msg = "There was an error deleting the alias "+aliasSource+": \n"+errorMsg(response.data.error);
+				var msg = "There was an error deleting the domain alias "+aliasName+": \n"+errorMsg(response.data.error);
 				AlertService.addAlert("error",msg);
 				console.log(msg);				
 				ProcessService.unregister();
@@ -442,21 +445,191 @@ app.factory('AliasService', function(Restangular, DomainService, ProcessService,
 		/**
 		* get the list of all aliases		
 		*
-		* @method getAliasList		
+		* @method getDomainAliasList		
 		* @return {Array} Returns the aliasList-member
 		*/
-		getAliasList: function() {
+		getDomainAliasList: function() {			
 			return aliasList;	
 		},
 
 		/**
 		* refreshes the internal member aliasList with the data from the posty API
 		*
-		* @method refreshAliasList
+		* @method refreshDomainAliasList
 		*/				
-		refreshAliasList: function() {
-			refreshAliasList();
+		refreshDomainAliasList: function(domainName) {			
+			refreshDomainAliasList(domainName);
 		}
+	};
 
+});
+
+
+/**
+* central AccountAlias-model. Here you do all the CRUD-operations with the REST-API
+*
+* @class AccountAliasService
+*/
+app.factory('AccountAliasService', function(Restangular, ProcessService, AlertService) {		
+	var aliasList = [];	// list of all aliases	
+	
+	var refreshAccountAliasList = function(domainName, accountName) {
+			aliasList = [];				
+			Restangular.one('domains',domainName).one('users',accountName).all('aliases').getList().then(function(list) {										 	
+			 	for (var i = 0; i < list.length; i++) {				 					 		
+			 		aliasList.push(list[i].virtual_user_alias);			 						 				 		
+			 	}					 													
+				ProcessService.unregister();			
+			});			
+	};	
+
+	return {
+		/**
+		* creates an new AccountAlias
+		*
+		* @method createAccountAlias		
+		* @param aliasSource {String} the source of the alias
+		* @param aliasDestination {String} the destination of the alias
+		*/			
+		createAccountAlias: function(domainName, accountName, aliasName) {
+			ProcessService.register();		
+			var dao = Restangular.one('domains',domainName).one('users',accountName).all('aliases');
+			var newData = {name: aliasName}; 					
+			dao.post(newData).then(function(response) {	
+				var msg = "New account alias created: "+aliasName;
+				AlertService.addAlert("success",msg);
+				console.log(msg);				
+				refreshAccountAliasList(domainName, accountName);	
+				ProcessService.unregister();					
+			}, function(response) {	
+				var msg = "There was an error saving the account alias "+aliasName+": \n"+errorMsg(response.data.error);
+				AlertService.addAlert("error",msg); 	
+				console.log(msg);						
+				ProcessService.unregister();
+			});							
+		},
+
+
+		/**
+		* edit an existing alias		
+		*
+		* @method editAccountAlias		
+		* @param domainName {String} the domain name
+		* @param oldAliasName {String} the old alias name
+		* @param newAliasName {String} the new alias name
+		*/
+		editAccountAlias: function(domainName, accoutName, oldAliasName, newAliasName) {	
+			ProcessService.register();		
+			var dao = Restangular.one('domains',domainName).one('users',accountName).one('aliases',oldAliasName);	
+			dao.name = newAliasName;				
+			dao.put().then(function(response) {							
+				var msg = "Account alias "+newAliasName+" updated!";
+				AlertService.addAlert("success",msg);
+				console.log(msg);	
+				refreshAccountAliasList(domainName, accountName);				
+				ProcessService.unregister();
+			}, function(response) {		
+				var msg = "There was an error updating the account alias "+newAliasName+": \n"+errorMsg(response.data.error);
+				AlertService.addAlert("error",msg);
+				console.log(msg);					
+				ProcessService.unregister();
+			});	
+		},	
+
+		/**
+		* remove an existing alias by name
+		*
+		* @method removeAccountAlias		
+		* @param domainName {String} the domain name
+		* @param aliasName {String} the alias to remove
+		*/
+		removeAccountAlias: function(domainName, accountName, aliasName) {						
+			ProcessService.register();			
+			var dao = Restangular.one('domains',domainName).one('users',accountName).one('aliases', aliasName);
+			dao.remove().then(function(response) {							
+				var msg = "Account alias "+aliasName+" deleted!";
+				AlertService.addAlert("success",msg);
+				console.log(msg);
+				refreshAccountAliasList(domainName, accountName);	
+				ProcessService.unregister();			
+			}, function(response) {				
+				var msg = "There was an error deleting the account alias "+aliasName+": \n"+errorMsg(response.data.error);
+				AlertService.addAlert("error",msg);
+				console.log(msg);				
+				ProcessService.unregister();
+			});		
+		},
+
+		/**
+		* get the list of all aliases		
+		*
+		* @method getAccountAliasList		
+		* @return {Array} Returns the aliasList-member
+		*/
+		getAccountAliasList: function() {			
+			return aliasList;	
+		},
+
+		/**
+		* refreshes the internal member aliasList with the data from the posty API
+		*
+		* @method refreshDomainAliasList
+		*/				
+		refreshAccountAliasList: function(domainName, accountName) {			
+			refreshAccountAliasList(domainName, accountName);
+		}
+	};
+});
+
+app.factory('SummaryService', function(Restangular, ProcessService, AlertService, $http) {
+
+	var summaryList = [];
+
+	var refreshSummaryList = function(onRefreshSuccess) {
+	
+		ProcessService.register();
+		    $http({method: 'GET', url: serverUrl+"/"+"summary"}).
+		    success(function(data, status, headers, config) {
+		     	console.log(data);
+		    	ProcessService.unregister();
+		    }).
+		    error(function(data, status, headers, config) {
+		    	ProcessService.unregister();
+    		});
+
+	/*
+		Restangular.all('summary').getList().then(function(list) {	
+
+		 	
+		 	for (var i = 0; i < list.length; i++) {		 		
+		 		summaryList.push(list[i].route);			 						 				 		
+		 		console.log(list[i]);
+		 	}
+		 	onRefreshSuccess();
+			
+			
+			ProcessService.unregister();									
+
+		});		
+		
+		Restangular.all('summary').getList().then(function(list) {							
+		 	for (var i = 0; i < list.length; i++) {		 		
+		 		summaryList.push(list[i].route);			 						 				 		
+		 		console.log(list[i]);
+		 	}
+		 	onRefreshSuccess();
+			ProcessService.unregister();									
+		});
+*/
+	};		
+
+	return {
+		refreshSummaryList: function(onRefreshSuccess) {								
+			refreshSummaryList(onRefreshSuccess);
+		},
+
+		getSummaryList: function() {
+			return summaryList;	
+		}
 	};
 });

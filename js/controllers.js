@@ -7,8 +7,7 @@ var app = angular.module('postySoft.controllers', []);
 *
 * @class ProcessCtrl
 */
-function ProcessCtrl($scope, ProcessService) {
-	$scope.ProcessService = ProcessService;	
+function ProcessCtrl($scope, ProcessService) {		
 }
 
 /**
@@ -16,8 +15,7 @@ function ProcessCtrl($scope, ProcessService) {
 *
 * @class AlertCtrl
 */
-function AlertCtrl($scope, AlertService) {
-	$scope.AlertService = AlertService;	
+function AlertCtrl($scope, AlertService) {	
 }
 
 /**
@@ -25,7 +23,7 @@ function AlertCtrl($scope, AlertService) {
 *
 * @class MainCtrl
 */
-function MainCtrl($rootScope, $scope, Page, DomainService) {
+function MainCtrl($rootScope, $scope, Page, DomainService, ProcessService, AlertService) {
 
 	/**
 	* initialises the controller-data
@@ -37,6 +35,8 @@ function MainCtrl($rootScope, $scope, Page, DomainService) {
 		$scope = $rootScope;
 		$scope.Page = Page;	
 		$scope.DomainService = DomainService;	
+		$scope.ProcessService = ProcessService;
+		$scope.AlertService = AlertService;	
 	};		
 }
 
@@ -54,7 +54,7 @@ function DashboardCtrl($scope, Page, DomainService) {
 *
 * @class AccountCtrl
 */
-function AccountCtrl($scope, Page, DomainService, AccountService) {	
+function AccountCtrl($scope, Page, DomainService, AccountService, AccountAliasService) {	
 
 	/**
 	* initialises the controller-data
@@ -62,10 +62,11 @@ function AccountCtrl($scope, Page, DomainService, AccountService) {
 	* @method init	
 	*/	
 	$scope.init = function() {		
-		Page.setTitle('Account');
+		Page.setTitle('Account');		
 		DomainService.setOnCurrentDomainChange(onCurrentDomainChange);
 		onCurrentDomainChange();
 		$scope.AccountService = AccountService;			
+		$scope.AccountAliasService = AccountAliasService;	
 	};		
 
 	/**
@@ -86,7 +87,9 @@ function AccountCtrl($scope, Page, DomainService, AccountService) {
 	* @param account {Object} account-object
 	*/	
 	$scope.create = function(account) {	
-		AccountService.createAccount(account.name, account.password);
+		// The API expects only Byte for the quota
+		account.quota = account.quota * 1024 * 1024;
+		AccountService.createAccount(account.name, account.password, account.quota);
 		$scope.createIsVisible = false;	
 	};
 
@@ -97,7 +100,10 @@ function AccountCtrl($scope, Page, DomainService, AccountService) {
 	* @param account {Object} account-object
 	*/	
 	$scope.edit = function(account) {	
-		AccountService.editAccount(account.oldName, account.name, account.newPassword);		
+		console.log("edit "+$scope.editAccount.quota);
+		// The API expects only Byte for the quota
+		account.quota = account.quota * 1024 * 1024;
+		AccountService.editAccount(account.oldName, account.name, account.newPassword, account.quota);		
 		$scope.editIsVisible = false;	
 	};	
 
@@ -123,6 +129,7 @@ function AccountCtrl($scope, Page, DomainService, AccountService) {
 			$scope.createAccount.name = "";
 			$scope.createAccount.password = "";
 			$scope.createAccount.confirmPassword = "";			
+			$scope.createAccount.quota = "";			
 		}			
 		$scope.createIsVisible = true;	
 	};		
@@ -142,17 +149,52 @@ function AccountCtrl($scope, Page, DomainService, AccountService) {
 	* @method initEdit
 	* @param account {Object} account-object		
 	*/		
-	$scope.initEdit = function(account) {				
+	$scope.initEdit = function(account) {					
 		$scope.editAccount = angular.copy(account);			
-		$scope.editAccount.domain = DomainService.currentDomain();
-		//$scope.editAccount.name = AccountService.eMailToAccountName(account.email);
+		$scope.editAccount.domain = DomainService.currentDomain();		
 		$scope.editAccount.oldName = $scope.editAccount.name;	
 		$scope.editAccount.checkOldPassword = $scope.editAccount.password;
 		$scope.editAccount.oldPassword = "";
 		$scope.editAccount.newPassword = "";
 		$scope.editAccount.confirmNewPassword = "";
+		$scope.editAccount.quota = $scope.editAccount.quota / 1024 / 1024;	
+		$scope.editAccount.newAlias = "";
+		$scope.editAccount.tabIsVisible = new Array();
+		$scope.editAccount.tabIsVisible[0] = true;
+		$scope.editAccount.tabIsVisible[1] = false;	
 		$scope.editIsVisible = true;
+		AccountAliasService.refreshAccountAliasList($scope.editAccount.domain, $scope.editAccount.name);
+	};			
+
+	$scope.newPasswordKeyPress = function() {	
+		console.log("pressed");			
+		$scope.editAccount.passwordChanged = ($scope.editAccount.newPassword != '');
+	};	
+
+	$scope.editTabClick = function(index) {		
+		$scope.editAccount.tabIsVisible[index] = true;
+		for (var i = 0; i < $scope.editAccount.tabIsVisible.length; i++) {
+			if (i != index)
+				$scope.editAccount.tabIsVisible[i] = false;
+		};	
 	};		
+
+	$scope.editCreateAlias = function(account) {	
+		AccountAliasService.createAccountAlias(account.domain, account.name, account.newAlias);
+		account.newAlias = "";
+	};	
+	
+	$scope.editRemoveAlias = function(account, aliasName) {						
+		AccountAliasService.removeAccountAlias(account.domain, account.name, aliasName);		
+	};	
+
+	$scope.tabClass = function(tab) {
+		if (tab) {
+		  return "active";
+		} else {
+		  return "";
+		}
+	}	
 	
 	/**
 	* closes the edit-view
@@ -195,152 +237,7 @@ function AccountCtrl($scope, Page, DomainService, AccountService) {
 	};	
 }
 
-/**
-* view-controller for the aliases
-*
-* @class AliasCtrl
-*/
-function AliasCtrl($scope, Page, DomainService, AccountService, AliasService) {	
-
-	/**
-	* initialises the controller-data
-	*
-	* @method init	
-	*/	
-	$scope.init = function() {			
-		Page.setTitle('Alias');	
-		DomainService.setOnCurrentDomainChange(onCurrentDomainChange);
-		onCurrentDomainChange();	
-		$scope.AccountService = AccountService;	
-		$scope.AliasService = AliasService;			
-	};		
-
-	/**
-	* event which will be caused by switching the current domain
-	*
-	* @method onCurrentDomainChange	
-	*/
-	var onCurrentDomainChange = function() {
-		$scope.selectDomainIsVisible = DomainService.allDomainsSelected();		
-		if (!DomainService.allDomainsSelected()) {
-			AccountService.refreshAccountList();		
-			AliasService.refreshAliasList();		
-		}	
-	}	
-
-	/**
-	* create an new alias
-	*
-	* @method create	
-	* @param alias {Object} alias-object
-	*/	
-	$scope.create = function(alias) {			
-		var source = alias.source;			
-		AliasService.createAlias(source, alias.destination);
-		$scope.createIsVisible = false;	
-	};
-	
-	/**
-	* edit an existing alias
-	*
-	* @method edit	
-	* @param alias {Object} alias-object
-	*/		
-	$scope.edit = function(alias) {	
-		AliasService.editAlias(alias.oldSource, alias.source, alias.destination);		
-		$scope.editIsVisible = false;	
-	};	
-
-	/**
-	* remove an existing alias
-	*
-	* @method remove	
-	* @param alias {Object} alias-object
-	*/	
-	$scope.remove = function(alias) {
-		var source = AccountService.eMailToAccountName(alias.source);								
-		AliasService.removeAlias(source);				
-		$scope.removeIsVisible = false;			
-	};		
-	
-	/**
-	* initialises the create-view
-	*
-	* @method initCreate		
-	*/		
-	$scope.initCreate = function() {					
-		if ($scope.createAlias != null) {
-			$scope.createAlias.source = "";
-			$scope.createAlias.destination = "";
-		}			
-		$scope.createIsVisible = true;	
-	};		
-
-	/**
-	* closes the create-view
-	*
-	* @method closeCreate		
-	*/
-	$scope.closeCreate = function() {					
-		$scope.createIsVisible = false;	
-	};		
-	
-	/**
-	* initialises the edit-view
-	*
-	* @method initEdit	
-	* @param alias {Object} alias-object
-	*/		
-	$scope.initEdit = function(alias) {		
-		$scope.editAlias = angular.copy(alias);			
-		$scope.editAlias.domain = DomainService.currentDomain();
-		//$scope.editAlias.source = AccountService.eMailToAccountName(alias.source);
-		$scope.editAlias.oldSource = $scope.editAlias.source;				
-		$scope.editIsVisible = true;
-	};		
-	
-	/**
-	* closes the edit-view
-	*
-	* @method closeEdit		
-	*/	
-	$scope.closeEdit = function() {					
-		$scope.editIsVisible = false;	
-	};		
-	
-	/**
-	* initialises the remove-view
-	* @param alias {Object} alias-object
-	*
-	* @method initRemove		
-	*/	
-	$scope.initRemove = function(alias) {					
-		$scope.removeAlias = angular.copy(alias);		
-		$scope.removeIsVisible = true;		
-	};	
-	
-	/**
-	* closes the remove-view
-	*
-	* @method closeRemove		
-	*/	
-	$scope.closeRemove = function () {    
-		$scope.removeIsVisible = false;
-	};	
-
-	/**
-	* sets the selected domain in the domain-service and closes the select-domain-view
-	*
-	* @method closeRemove
-	* @param domain {Object} domain-object
-	*/
-	$scope.selectDomain_ = function(domain) {				
-		DomainService.setCurrenDomain(domain.name);		
-		$scope.selectDomainIsVisible = false;
-	};			
-}
-
-function DomainCtrl($scope, Page, DomainService) {
+function DomainCtrl($scope, Page, DomainService, DomainAliasService) {
 
 	/**
 	* initialises the controller-data
@@ -349,6 +246,7 @@ function DomainCtrl($scope, Page, DomainService) {
 	*/	
 	$scope.init = function() {		
 		Page.setTitle('Domain');	
+		$scope.DomainAliasService = DomainAliasService;
 	};			
 	
 	/**
@@ -414,7 +312,38 @@ function DomainCtrl($scope, Page, DomainService) {
 		$scope.editIsVisible = true;		
 		$scope.editDomain = angular.copy(domain);		
 		$scope.editDomain.oldName = domain.name;
+		$scope.editDomain.newAlias = "";
+		$scope.tabIsVisible = new Array();
+		$scope.tabIsVisible[0] = true;
+		$scope.tabIsVisible[1] = false;		
+		DomainAliasService.refreshDomainAliasList(domain.name);		
 	};		
+
+
+	$scope.editTabClick = function(index) {		
+		$scope.tabIsVisible[index] = true;
+		for (var i = 0; i < $scope.tabIsVisible.length; i++) {
+				if (i != index)
+					$scope.tabIsVisible[i] = false;
+			};	
+	};		
+
+	$scope.editCreateAlias = function(domain) {						
+		DomainAliasService.createDomainAlias(domain.name, domain.newAlias);
+		domain.newAlias = "";
+	};	
+	
+	$scope.editRemoveAlias = function(domain, aliasName) {						
+		DomainAliasService.removeDomainAlias(domain.name, aliasName);		
+	};	
+
+	$scope.tabClass = function(tab) {
+		if (tab) {
+		  return "active";
+		} else {
+		  return "";
+		}
+	}
 	
 	/**
 	* closes the edit-view
@@ -422,7 +351,7 @@ function DomainCtrl($scope, Page, DomainService) {
 	* @method closeEdit		
 	*/	
 	$scope.closeEdit = function() {					
-		$scope.editIsVisible = false;	
+		$scope.editIsVisible = false;			
 	};		
 	
 	/**
@@ -444,4 +373,27 @@ function DomainCtrl($scope, Page, DomainService) {
 	$scope.closeRemove = function () {    
 		$scope.removeIsVisible = false;
 	};	
+}
+
+function SummaryCtrl($scope, Page, SummaryService) {	
+
+	$scope.onRefreshSuccess = function() {	
+		var list = SummaryService.getSummaryList();			
+		$scope.summmaryList = "";
+		for (var i = 0; i < list.length; i++) {
+			$scope.summmaryList = $scope.summmaryList.concat(list[i]).concat(", ");
+		}		
+		console.log("summary: "+$scope.summmaryList);		
+	};		
+
+	/**
+	* initialises the controller-data
+	*
+	* @method init	
+	*/	
+	$scope.init = function() {		
+		Page.setTitle('Summary');
+		SummaryService.refreshSummaryList($scope.onRefreshSuccess);
+	};		
+
 }
