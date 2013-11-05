@@ -1,4 +1,4 @@
-<div class="well well-large" ng-controller="AccountCtrl" ng-cloak ng-init="init()">
+<div class="well well-large" ng-controller="AccountCtrl" ng-cloak  ng-init="init()">
    <div ng-include="'partials/partial_navbar.html'"></div>
    <p></p>   
    <!-- list -->
@@ -12,6 +12,11 @@
             </div>
          </div>
          <div class="accordion-group">
+            <div class="accordion-heading">
+               <a class="accordion-toggle" href="">
+                  <h5 class="h5show"><img src="img/widget/list_ico.png" alt="ico"/> List</h5>
+               </a>
+            </div>
             <div id="collapseTwo" class="accordion-body collapse in">
                <div class="accordion-inner">                                    
                   <table class="table table-bordered table-striped table-hover">
@@ -58,7 +63,7 @@
             <div class="control-group">
                <label class="control-label" for="eMail">Account: <img src="img/widget/account_ico.png" alt="ico"/></label>
                <div class="controls">               
-                  <input type="text" ng-required="true" name="account" id="account" ng-model="createAccount.name" focus="{{createIsVisible}}" placeholder="account">                  
+                  <input type="text" required name="account" id="account" ng-model="createAccount.name" focus="{{createIsVisible}}" placeholder="account">                  
                </div>
             </div>
             <!-- end Account -->
@@ -66,7 +71,7 @@
             <div class="control-group">
                <label class="control-label" for="password">Password: <img src="img/widget/pw_ico.png" alt="ico"/></label>
                <div class="controls">
-                  <input type="password" ng-required="true" name='password' id="password"  ng-model="createAccount.password" placeholder="password">                 
+                  <input type="password" required name='password' id="password"  ng-model="createAccount.password" placeholder="password">                 
                   <span class='help-inline' ng-show='form.password.$valid'>
                   <i class='icon-ok'></i>
                   </span>
@@ -75,21 +80,13 @@
             <div class="control-group">
                <label class="control-label" for="confirmPassword">Confirm Password: <img src="img/widget/rpw_ico.png" alt="ico"/></label>
                <div class="controls">
-                  <input type="password" ng-required="true" name="confirmPassword" id="confirmPassword" password-validator="password" ng-model="createAccount.confirmPassword" placeholder="confirm password">
+                  <input type="password" required name="confirmPassword" id="confirmPassword" password-validator="password" ng-model="createAccount.confirmPassword" placeholder="confirm password">
                   <span class='help-inline' ng-show='form.confirmPassword.$valid'>
                   <i class='icon-ok'></i>
                   </span>
                </div>
             </div>
             <!-- end Password -->   
-            <!-- Quota -->  
-            <div class="control-group">
-               <label class="control-label" for="eMail">Quota (MB): <img src="img/widget/account_ico.png" alt="ico"/></label>
-               <div class="controls">               
-                  <input type="text" ng-required="true" name="quota" id="quota" ng-model="createAccount.quota" placeholder="quota (MB)">                  
-               </div>
-            </div>
-            <!-- end Quota -->  
          </div>
          <div class="modal-footer">            
             <button class="btn btn-success" ng-click="create(createAccount)" ng-disabled='!form.$valid'>Save <i class="icon-ok icon-white"></i></button>
@@ -99,128 +96,67 @@
    </div>
    <!-- end create -->
    <!-- edit -->
-   <div modal="editIsVisible" close="closeEdit()" options="opts">       
-      <div class="modal-header">
-         <button type="button" class="close" ng-click="closeEdit()">&times;</button>
-         <!-- Tab Navigation -->
-         <ul id="myTab" class="nav nav-tabs">
-            <li ng-class="tabClass(editAccount.tabIsVisible[0])" style="cursor:pointer;">
-               <a ng-click="editTabClick(0)"><img src="img/widget/account_ico.png" alt="ico"/> general</a>
-            </li>
-            <li ng-class="tabClass(editAccount.tabIsVisible[1])" style="cursor:pointer;">
-               <a ng-click="editTabClick(1)"><img src="img/widget/alias_ico.png" alt="ico"/> alias</a>
-            </li>
-         </ul>
-         <!-- end tab navigation -->
-      </div>
-      <div class="modal-body">
-         <!-- tab general -->
-         <div ng-show="editAccount.tabIsVisible[0]" class="control-group">
-            <form name='form'>
-               <!-- Account -->
-               <div class="control-group">
-                  <label class="control-label" for="eMail">Account: <img src="img/widget/account_ico.png" alt="ico"/></label>
-                  <div class="controls">               
-                     <input type="text" ng-required="true" name="account" id="account" ng-model="editAccount.name" focus="{{editIsVisible}}" placeholder="account">                  
-                  </div>
-               </div>
-               <!-- end Account -->
-               <!-- Password -->
-               <input type="password" ng-required="editAccount.passwordChanged" name="oldcheckpassword" id="password" ng-model="editAccount.checkOldPassword" ng-show="false" placeholder="password" value="{{editAccount.checkOldPassword}}">                 
-               <div class="control-group">
-                  <label class="control-label" for="oldpassword">Old Password: <img src="img/widget/pw_ico.png" alt="ico"/></label>
-                  <div class="controls">
-                     <input type="password" ng-required="editAccount.passwordChanged" name='oldpassword' id="oldpassword" password-validator="oldcheckpassword" ng-model="editAccount.oldPassword" placeholder="password">                 
-                     <span class='help-inline' ng-show='form.oldpassword.$valid && editAccount.passwordChanged'>
-                     <i class='icon-ok'></i>
-                     </span>
-                  </div>
-               </div>
-               <div class="control-group">
-                  <label class="control-label" for="password">New Password: <img src="img/widget/pw_ico.png" alt="ico"/></label>
-                  <div class="controls">
-                     <input type="password" ng-required="editAccount.passwordChanged" name='password' id="password" ng-model="editAccount.newPassword"  ng-keypress="newPasswordKeyPress()" placeholder="password">                 
-                     <span class='help-inline' ng-show='form.password.$valid && editAccount.passwordChanged'>
-                     <i class='icon-ok'></i>
-                     </span>
-                  </div>
-               </div>
-               <div class="control-group">
-                  <label class="control-label" for="confirmPassword">Confirm new Password: <img src="img/widget/rpw_ico.png" alt="ico"/></label>
-                  <div class="controls">
-                     <input type="password" ng-required="editAccount.passwordChanged" name="confirmPassword" id="confirmPassword" password-validator="password" ng-model="editAccount.confirmNewPassword" placeholder="confirm password">
-                     <span class='help-inline' ng-show='form.confirmPassword.$valid && editAccount.passwordChanged'>
-                     <i class='icon-ok'></i>
-                     </span>
-                  </div>
-               </div>
-               <!-- end Password -->   
-
-               <!-- Quota -->  
-               <div class="control-group">
-                  <label class="control-label" for="eMail">Quota (MB): <img src="img/widget/quota_ico.png" alt="ico"/></label>
-                  <div class="controls">               
-                     <input type="text" ng-required="true" name="quota" id="quota" ng-model="editAccount.quota" placeholder="quota (MB)">                  
-                  </div>
-               </div>
-               <!-- end Quota -->    
-               <div class="modal-footer">            
-                  <button class="btn btn-success" ng-click="edit(editAccount)" ng-disabled='!form.$valid'>Save <i class="icon-ok icon-white"></i></button>
-                  <button class="btn" ng-click="closeEdit()">Cancel</button>         
-               </div>
-            </form>
+   <div modal="editIsVisible" close="closeEdit()" options="opts">
+      <form name='form' autocomplete='off'>
+         <div class="modal-header">
+            <button type="button" class="close" ng-click="closeEdit()">&times;</button>
+            <h3>Edit Account</h3>
          </div>
-         <!-- end tab general -->
-         <!-- tab alias -->         
-         <div ng-show="editAccount.tabIsVisible[1]" class="control-group">
-            <div class="controls">
-               <div class="accordion-group">
-                  <div class="accordion-heading">
-                     <div class="input-append">
-                        <div class="accordion-inner">
-                           <form name='form2'>
-                              <input class="span4" id="appendedInputButtons" type="text" placeholder="alias" ng-model="editAccount.newAlias">
-                              <button class="btn btn-success" ng-click="editCreateAlias(editAccount)" ng-disabled='editAccount.newAlias==""' type="button"><i class="icon-plus icon-white"></i></button>
-                           </form>                           
-                        </div>
-                     </div>
-                  </div>                
-
-                  <div id="collapseTwo" class="accordion-body collapse in">
-                     <div class="accordion-inner">
-                        <div ng-show="ProcessService.isLoading()"> <img src="img/loading.gif" /> Loading...</div>
-                        <alert ng-repeat="alert in AlertService.alerts()" type="alert.type" close="AlertService.closeAlert($index)">{{alert.msg}}</alert>
-                        <table ng-show="!ProcessService.isLoading()" class="table table-bordered table-striped table-hover">
-                           <thead>
-                              <tr>
-                                 <th>Account Alias</th>
-                                 <th></th>
-                              </tr>
-                           </thead>                   
-                           <tbody>                
-                              <tr ng-repeat="aliasse in AccountAliasService.getAccountAliasList() ">                              
-                                 <form name='form3'>
-                                    <td>{{ aliasse.name }}</td>
-                                    <td style="width:50px">                                                   
-                                       <button class="btn btn-danger" ng-click="editRemoveAlias(editAccount, aliasse.name)" role="button" data-toggle="modal"><i class="icon-trash icon-white"></i></button>
-                                 </form>
-                                 </td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                  </div>
+         <div class="modal-body">
+            <!-- Domain -->
+            <div class="control-group">
+               <label class="control-label" for="domain">Domain: <img src="img/widget/domain_ico.png" alt="ico"/></label>
+               <div class="controls">
+                  <input type="text" name="domain" id="domain" readonly value="{{editAccount.domain}}" />                      
                </div>
             </div>
-            <div class="modal-footer">               
-               <button class="btn" ng-click="closeEdit()">Exit</button>         
+            <!-- end Domain -->
+            <!-- Account -->
+            <div class="control-group">
+               <label class="control-label" for="eMail">Account: <img src="img/widget/account_ico.png" alt="ico"/></label>
+               <div class="controls">               
+                  <input type="text" required name="account" id="account" ng-model="editAccount.name" focus="{{editIsVisible}}" placeholder="account">                  
+               </div>
             </div>
+            <!-- end Account -->
+            <!-- Password -->
+            <input type="password" required name="oldcheckpassword" id="password" ng-model="editAccount.checkOldPassword" ng-show="false" placeholder="password" value="{{editAccount.checkOldPassword}}">                 
+            <div class="control-group">
+               <label class="control-label" for="oldpassword">Old Password: <img src="img/widget/pw_ico.png" alt="ico"/></label>
+               <div class="controls">
+                  <input type="password" required name='oldpassword' id="oldpassword" password-validator="oldcheckpassword" ng-model="editAccount.oldPassword" placeholder="password">                 
+                  <span class='help-inline' ng-show='form.oldpassword.$valid'>
+                  <i class='icon-ok'></i>
+                  </span>
+               </div>
+            </div>
+            <div class="control-group">
+               <label class="control-label" for="password">New Password: <img src="img/widget/pw_ico.png" alt="ico"/></label>
+               <div class="controls">
+                  <input type="password" required name='password' id="password" ng-model="editAccount.newPassword" placeholder="password">                 
+                  <span class='help-inline' ng-show='form.password.$valid'>
+                  <i class='icon-ok'></i>
+                  </span>
+               </div>
+            </div>
+            <div class="control-group">
+               <label class="control-label" for="confirmPassword">Confirm new Password: <img src="img/widget/rpw_ico.png" alt="ico"/></label>
+               <div class="controls">
+                  <input type="password" required name="confirmPassword" id="confirmPassword" password-validator="password" ng-model="editAccount.confirmNewPassword" placeholder="confirm password">
+                  <span class='help-inline' ng-show='form.confirmPassword.$valid'>
+                  <i class='icon-ok'></i>
+                  </span>
+               </div>
+            </div>
+            <!-- end Password -->   
          </div>
-         <!-- end tab alias -->
-      </div>
+         <div class="modal-footer">            
+            <button class="btn btn-success" ng-click="edit(editAccount)" ng-disabled='!form.$valid'>Save <i class="icon-ok icon-white"></i></button>
+            <button class="btn" ng-click="closeEdit()">Cancel</button>         
+         </div>
+      </form>
    </div>
    <!-- end edit -->   
-   
    <!-- remove -->   
    <div modal="removeIsVisible" close="closeRemove()" options="opts">
       <div class="modal-header">
@@ -247,7 +183,7 @@
             <div class="control-group">
                <div class="controls">                        
                   <label class="control-label" for="destination">Domain: <img src="img/widget/domain_ico.png" alt="ico"/>            
-                  <select ng-required="true" name="domain" id="domain" ng-model="selectDomain.name" value="">
+                  <select required name="domain" id="domain" ng-model="selectDomain.name" value="">
                      <option ng-repeat="domain in DomainService.getDomainList()">{{domain.name}}</option>
                   </select>                                       
                   </label>
@@ -262,5 +198,5 @@
    </div>
    <!-- end select domain -->  
    <!-- CSS-Hack Background -->
-   <div ng-show="createIsVisible || editIsVisible || removeIsVisible || selectDomainIsVisible" class="modal-backdrop"></div>
+   <div ng-show="createIsVisible || editIsVisible || removeIsVisible || selectDomainIsVisible" class="modal-backdrop"></div>   
 </div>

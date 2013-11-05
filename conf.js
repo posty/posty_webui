@@ -1,6 +1,4 @@
 /**
 * configuration
 */
-
-var serverUrl = 'http://posty-api-development.herokuapp.com/api/v1';
-var serverAuthKey = '123456';
+var serverUrl = 'http://posty-api.herokuapp.com/api/v1';
