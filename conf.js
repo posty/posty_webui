@@ -2,5 +2,5 @@
 * configuration
 */
 
-var serverUrl = 'URL to posty_API';
-var serverAuthKey = 'YOUR API KEY';
+var serverUrl = 'http://posty-api-development.herokuapp.com/api/v1';
+var serverAuthKey = '123456';
