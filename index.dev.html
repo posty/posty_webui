@@ -12,14 +12,15 @@
 <html ng-app="postySoft" ng-controller="MainCtrl" ng-init="init()">  
 	<head>
 		<meta charset="utf-8">  
-		<title>postySoft - {{ Page.title() }}</title>  
-		<link rel="stylesheet" type="text/css" href="css/posty_webUI.min.css"/>	
+		<title>postySoft - {{ Page.title() }}</title>  		
+		<link rel="stylesheet" type="text/css" href="dev/css/bootstrap.css"/>	
+		<link rel="stylesheet"  type="text/css"href="dev/css/app.css"/>	
 
-		<script data-main="js/main" src="js/optimized.js"></script>
+		<script data-main="dev/js/main" src="dev/components/requirejs/require.js"></script>
 	</head>
 	<body class="body">		
-		<div ng-include="'partials/partial_request_messages.html'"></div>
-		<div ng-include="'partials/partial_process.html'"></div>
+		<div ng-include="'dev/partials/partial_request_messages.html'"></div>
+		<div ng-include="'dev/partials/partial_process.html'"></div>
 		<div class="modalalt">
 			<div class="navbar">
 				<div class="navbar-inner">

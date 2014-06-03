@@ -1,0 +1,14 @@
+<!--
+/*!
+ * posty_webUI
+ *
+ * Copyright 2014 posty-soft.org
+ * Licensed under the LGPL v3
+ * https://www.gnu.org/licenses/lgpl.html
+ *
+ */
+-->
+<div ng-controller="AlertCtrl">
+    <!--<alert class="alertsize" ng-repeat="alert in AlertService.alerts()" type="{{alert.type}}" close="AlertService.closeAlert($index)">{{alert.msg}}</alert>-->
+    <alert class="alertsize" ng-repeat="alert in AlertService.alerts()" type="{{alert.type}}">{{alert.msg}}</alert>
+</div>

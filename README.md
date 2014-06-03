@@ -1,6 +1,9 @@
-# posty\_webUI
+# posty\_webUI v1.9.1
+
+## This Version is a Beta only for Developers!!!
 
 The posty\_webUI is connected to the restful posty\_API and represents the web-interface of the posty softwarestack. It is developed to administrate a mailserver based on Postfix and Dovecot.
+
 
 ## Requirements
 
@@ -11,25 +14,64 @@ You need a running webserver
 The posty\_webUI has the following dependences:
 
 * AngularJS
+* Angular-bootstrap
+* Angular-mocks
+* Angular-route
+* Angular-scenario
+* D3
+* lodash
+* RequireJS
+* RequireJS-text
 * Restangular
-* UI-Bootstrap
+* Underscore
 
-## Installation
+
+## Installation for users
 
 1.  Download the source either using git or from the GitHub page as archive.
 2.  Extract the archive
 3.  Copy the extracted directory into the folder where your webserver is running
 4.  Adjust your posty\_api URL in the conf.js
 
+
+## Installation for developer
+
+1.  Download the source either using git or from the GitHub page as archive.
+2.  Extract the archive
+3.  Install node.js (http://nodejs.org/)
+4.	Install Bower -> npm install -g bower
+5.	Install Grunt -> npm install -g grunt-cli
+6.	Install the Grunt Plugins:
+		6.1.	npm install -g grunt-cli
+		6.2.	npm install -g grunt
+		6.3.	npm install grunt-contrib-cssmin --save-dev
+		6.4.	npm install grunt-contrib-yuidoc --save-dev
+		6.5.	npm install grunt-contrib-concat --save-dev
+		6.6.	npm install grunt-contrib-htmlmin --save-dev
+		6.7.	npm install grunt-contrib-requirejs --save-dev
+		6.8.	npm install grunt-sync --save-dev
+7.  Adjust your posty\_api URL in the dev/conf.js
+
+
 ## Usage
 
 Here is a short overview about the main screens of the posty-webUI.
-Also available at [(http://www.posty-soft.org/webui/)](http://www.posty-soft.org/webui/)
+Also available at [(http://www.posty-soft.org/webuiv2/)](http://www.posty-soft.org/webuiv2/)
 
 [![Build Status](http://posty-soft.org/img/dashboard_screen.png)](http://www.posty-soft.org/webui/)
 [![Build Status](http://posty-soft.org/img/domain_screen.png)](http://www.posty-soft.org/webui/#/view_domain)
 [![Build Status](http://posty-soft.org/img/account_screen.png)](http://www.posty-soft.org/webui/#/view_account)
 [![Build Status](http://posty-soft.org/img/alias_screen.png)](http://www.posty-soft.org/webui/#/view_alias)
+
+## 	Features
+
+* Domain administration
+* Domain aliases
+* User administration
+* User aliases
+* Statistic for domains, users, domain aliases and user aliases
+* Transports
+* API Key administration
 
 ## Compatible browser
 
@@ -54,8 +96,8 @@ LGPL v3 license. See LICENSE for details.
 
 ### Third-Party Software Components
 
-[Crystal Project](http://www.everaldo.com/crystal) Icons Copyright Â© Everaldo.com [GNU Lesser GPL].
+[Crystal Project](http://www.everaldo.com/crystal) Icons Copyright © Everaldo.com [GNU Lesser GPL].
 
 ### Copyright
 
-All rights are at (C) [http://www.posty-soft.org](http://www.posty-soft.org) 2013
+All rights are at (C) [http://www.posty-soft.org](http://www.posty-soft.org) 2014

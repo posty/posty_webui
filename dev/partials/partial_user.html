@@ -1,0 +1,196 @@
+<!--
+/*!
+ * posty_webUI
+ *
+ * Copyright 2014 posty-soft.org
+ * Licensed under the LGPL v3
+ * https://www.gnu.org/licenses/lgpl.html
+ *
+ */
+-->
+<div class="well well-large" ng-controller="UserCtrl" ng-cloak ng-init="init()">
+    <div ng-include="'partials/partial_navbar.html'"></div>
+    <p></p>
+    <!-- list -->
+    <div class="bs-docs-example">
+        <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a href="" class="accordion-toggle" ng-click="create()">
+                        <h5 class="h5new"><img src="img/widget/user_ico.png" alt="ico"/> New</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div id="collapseTwo" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                        <div ng-show="ProcessService.isLoading()"> <img src="img/loading.gif" /> Loading...</div>
+                        <table ng-show="!ProcessService.isLoading()" class="table table-bordered table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th colspan="2">
+                                    User
+
+                                    <div class="input-prepend pull-right">
+                                        <span class="add-on"><i class="icon-search"></i></span>
+                                        <input type="text" class="span2" ng-model="search.name" placeholder="Search text">
+                                    </div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr ng-repeat="user in getList() | filter:search:strict">
+                                <td>{{ user.name }}@{{ getDomain().name }}</td>
+                                <td class="tableButton"">
+                                    <button class="btn btn-warning" ng-click="edit(user)"><i class="icon-edit icon-white"></i></button>
+                                    &nbsp;&nbsp;
+                                    <button class="btn btn-danger" ng-click="remove(user)"><i class="icon-trash icon-white"></i></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end list -->
+    <!-- create -->
+    <script type="text/ng-template" id="createView.html">
+        <form name='form'>
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="modalOptions.close()">&times;</button>
+                <h3 class="modal-title">New User</h3>
+            </div>
+            <div class="modal-body">
+                <!-- Domain -->
+                <div class="control-group">
+                    <label class="control-label" for="domain">Domain: <img src="img/widget/domain_ico.png" alt="ico"/></label>
+                    <div class="controls">
+                        <input type="text" name="domain" id="domain" readonly value="{{data.domain.name}}" />
+                    </div>
+                </div>
+                <!-- end Domain -->
+                <!-- User -->
+                <div class="control-group">
+                    <label class="control-label" for="user">User: <img src="img/widget/user_ico.png" alt="ico"/></label>
+                    <div class="controls">
+                        <input type="text" ng-required="true" name="user" id="user" ng-model="data.user.name" focus="true" placeholder="user">
+                    </div>
+                </div>
+                <!-- end User -->
+                <!-- Password -->
+                <div class="control-group">
+                    <label class="control-label" for="password">Password: <img src="img/widget/pw_ico.png" alt="ico"/></label>
+                    <div class="controls">
+                        <input type="password" ng-required="true" name='password' id="password"  ng-model="data.user.password" placeholder="password">
+                  <span class='help-inline' ng-show='form.password.$valid'>
+                  <i class='icon-ok'></i>
+                  </span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="confirmPassword">Confirm Password: <img src="img/widget/rpw_ico.png" alt="ico"/></label>
+                    <div class="controls">
+                        <input type="password" ng-required="true" name="confirmPassword" id="confirmPassword" password-validator="password" ng-model="data.user.confirmPassword" placeholder="confirm password">
+                  <span class='help-inline' ng-show='form.confirmPassword.$valid'>
+                  <i class='icon-ok'></i>
+                  </span>
+                    </div>
+                </div>
+                <!-- end Password -->
+                <!-- Quota -->
+                <div class="control-group">
+                    <label class="control-label" for="quota">Quota (MB): <img src="img/widget/user_ico.png" alt="ico"/></label>
+                    <div class="controls">
+                        <input type="text" ng-required="true" name="quota" id="quota" ng-model="data.user.quota" placeholder="quota (MB)">
+                    </div>
+                </div>
+                <!-- end Quota -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" ng-click="modalOptions.ok(data)" ng-disabled='!form.$valid'>Save<i class="icon-ok icon-white"></i></button>
+                <button class="btn" ng-click="modalOptions.close()">Cancel</button>
+            </div>
+        </form>
+    </script>
+    <!-- end create -->
+    <!-- edit -->
+    <script type="text/ng-template" id="editView.html">
+        <form name='form'>
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="modalOptions.close()">&times;</button>
+                <h3 class="modal-title">Edit User</h3>
+            </div>
+            <div class="modal-body">
+                <tabset justified="true">
+                    <!-- tab general -->
+                    <tab heading="General" select="modalOptions.tabClick('general')">
+                        <!-- User -->
+                        <div class="control-group">
+                            <label class="control-label" for="user">User: <img src="img/widget/user_ico.png" alt="ico"/></label>
+                            <div class="controls">
+                                <input type="text" ng-required="true" name="user" id="user" ng-model="data.user.name" focus="true" placeholder="user">
+                            </div>
+                        </div>
+                        <!-- end User -->
+                        <!-- Password -->
+                        <input type="password" ng-required="modalOptions.passwordChanged" name="oldcheckpassword" id="password" ng-model="data.user.checkOldPassword" ng-show="false" placeholder="password" value="{{data.user.checkOldPassword}}">
+                        <div class="control-group">
+                            <label class="control-label" for="oldpassword">Old Password: <img src="img/widget/pw_ico.png" alt="ico"/></label>
+                            <div class="controls">
+                                <input type="password" ng-required="modalOptions.passwordChanged" name='oldpassword' id="oldpassword" password-validator="oldcheckpassword" ng-model="data.user.oldPassword" placeholder="password">
+                                <span class='help-inline' ng-show='form.oldpassword.$valid && modalOptions.passwordChanged'>
+                                    <i class='icon-ok'></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="password">New Password: <img src="img/widget/pw_ico.png" alt="ico"/></label>
+                            <div class="controls">
+                                <input type="password" ng-required="modalOptions.passwordChanged" name='password' id="password" ng-model="data.user.newPassword"  ng-keypress="modalOptions.newPasswordKeyPress(data.user.newPassword)" placeholder="password">
+                                <span class='help-inline' ng-show='form.password.$valid && modalOptions.passwordChanged'>
+                                      <i class='icon-ok'></i>
+                                 </span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="confirmPassword">Confirm new Password: <img src="img/widget/rpw_ico.png" alt="ico"/></label>
+                            <div class="controls">
+                                <input type="password" ng-required="modalOptions.passwordChanged" name="confirmPassword" id="confirmPassword" password-validator="password" ng-model="data.user.confirmNewPassword" placeholder="confirm password">
+                                 <span class='help-inline' ng-show='form.confirmPassword.$valid && modalOptions.passwordChanged'>
+                                     <i class='icon-ok'></i>
+                                 </span>
+                            </div>
+                        </div>
+                        <!-- end Password -->
+                        <!-- Quota -->
+                        <div class="control-group">
+                            <label class="control-label" for="quota">Quota (MB): <img src="img/widget/quota_ico.png" alt="ico"/></label>
+                            <div class="controls">
+                                <input type="text" ng-required="true" name="quota" id="quota" ng-model="data.user.quota" placeholder="quota (MB)">
+                            </div>
+                        </div>
+                        <!-- end Quota -->
+                    </tab>
+                    <!-- end tab general -->
+                    <!-- tab alias -->
+                    <tab heading="Alias" select="modalOptions.tabClick('alias')">
+                    <div ng-include="'partials/partial_user_alias.html'"></div> 
+                    </tab>
+                        <!-- end tab alias -->
+                </tabset>
+            </div>
+            <div class="modal-footer" ng-show="modalOptions.activeTab=='general'">
+                <button class="btn btn-success" ng-click="modalOptions.ok(data)" ng-disabled='!form.$valid'>Save<i class="icon-ok icon-white"></i></button>
+                <button class="btn" ng-click="modalOptions.close()">Cancel</button>
+            </div>
+            <div class="modal-footer" ng-show="modalOptions.activeTab=='alias'">
+                </button>
+                <button class="btn" ng-click="modalOptions.close()">Exit</button>
+            </div>
+        </form>
+    </script>
+    <!-- end edit -->
+</div>
