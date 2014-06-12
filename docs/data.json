@@ -1,0 +1,1694 @@
+{
+    "project": {
+        "name": "posty-soft.org",
+        "description": "",
+        "version": "2.0.0",
+        "url": ""
+    },
+    "files": {
+        "dev\\js\\conf.js": {
+            "name": "dev\\js\\conf.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "dev\\js\\controllers.js": {
+            "name": "dev\\js\\controllers.js",
+            "modules": {},
+            "classes": {
+                "MainCtrl": 1,
+                "ErrorCtrl": 1,
+                "ProcessCtrl": 1,
+                "AlertCtrl": 1,
+                "DashboardCtrl": 1,
+                "NavBarCtrl": 1,
+                "DomainData": 1,
+                "DomainCtrl": 1,
+                "TransportCtrl": 1,
+                "UserData": 1,
+                "UserCtrl": 1,
+                "UserAliasCtrl": 1,
+                "SummaryCtrl": 1,
+                "ApiKeyCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "dev\\js\\directives.js": {
+            "name": "dev\\js\\directives.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "dev\\js\\models.js": {
+            "name": "dev\\js\\models.js",
+            "modules": {},
+            "classes": {
+                "Domains": 1,
+                "DomainAliasses": 1,
+                "Transports": 1,
+                "UserAliasses": 1,
+                "Summaries": 1,
+                "ApiKeys": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "dev\\js\\services.js": {
+            "name": "dev\\js\\services.js",
+            "modules": {},
+            "classes": {
+                "Page": 1,
+                "AlertService": 1,
+                "Servers": 1,
+                "ProcessService": 1,
+                "ProcessServiceProvider": 1,
+                "ResponseHandler": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "MainCtrl": {
+            "name": "MainCtrl",
+            "shortname": "MainCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 17,
+            "description": "main-view-controller. first controller which will be instanced"
+        },
+        "ErrorCtrl": {
+            "name": "ErrorCtrl",
+            "shortname": "ErrorCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 61,
+            "description": "view-controller for the errors"
+        },
+        "ProcessCtrl": {
+            "name": "ProcessCtrl",
+            "shortname": "ProcessCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 87,
+            "description": "view-controller for the process-service"
+        },
+        "AlertCtrl": {
+            "name": "AlertCtrl",
+            "shortname": "AlertCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 95,
+            "description": "view-controller for the alert-service"
+        },
+        "DashboardCtrl": {
+            "name": "DashboardCtrl",
+            "shortname": "DashboardCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 103,
+            "description": "view-controller for the dashboard"
+        },
+        "NavBarCtrl": {
+            "name": "NavBarCtrl",
+            "shortname": "NavBarCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 112,
+            "description": "view-controller for the navbar"
+        },
+        "DomainData": {
+            "name": "DomainData",
+            "shortname": "DomainData",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 135,
+            "description": "Message-Class to transfer data between the domain-Ctrl"
+        },
+        "DomainCtrl": {
+            "name": "DomainCtrl",
+            "shortname": "DomainCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 144,
+            "description": "view-controller for the domains"
+        },
+        "TransportCtrl": {
+            "name": "TransportCtrl",
+            "shortname": "TransportCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 287,
+            "description": "view-controller for the transports"
+        },
+        "UserData": {
+            "name": "UserData",
+            "shortname": "UserData",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 380,
+            "description": "Message-Class to transfer data between the user-Ctrl"
+        },
+        "UserCtrl": {
+            "name": "UserCtrl",
+            "shortname": "UserCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 392,
+            "description": "view-controller for the user"
+        },
+        "UserAliasCtrl": {
+            "name": "UserAliasCtrl",
+            "shortname": "UserAliasCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 537,
+            "description": "view-controller for the user-aliasses"
+        },
+        "SummaryCtrl": {
+            "name": "SummaryCtrl",
+            "shortname": "SummaryCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 588,
+            "description": "view-controller for the summary"
+        },
+        "ApiKeyCtrl": {
+            "name": "ApiKeyCtrl",
+            "shortname": "ApiKeyCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\controllers.js",
+            "line": 609,
+            "description": "view-controller for the api-keys"
+        },
+        "Domains": {
+            "name": "Domains",
+            "shortname": "Domains",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\models.js",
+            "line": 29,
+            "description": "central domain-model. Here you do all the CRUD-operations with the REST-API"
+        },
+        "DomainAliasses": {
+            "name": "DomainAliasses",
+            "shortname": "DomainAliasses",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\models.js",
+            "line": 221,
+            "description": "central DomainAliasses-model. Here you do all the CRUD-operations with the REST-API"
+        },
+        "Transports": {
+            "name": "Transports",
+            "shortname": "Transports",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\models.js",
+            "line": 420,
+            "description": "central Transport-model. Here you do all the CRUD-operations with the REST-API"
+        },
+        "UserAliasses": {
+            "name": "UserAliasses",
+            "shortname": "UserAliasses",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\models.js",
+            "line": 558,
+            "description": "central UserAliasses-model. Here you do all the CRUD-operations with the REST-API"
+        },
+        "Summaries": {
+            "name": "Summaries",
+            "shortname": "Summaries",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\models.js",
+            "line": 672,
+            "description": "central Summaries-model. Here you do all the CRUD-operations with the REST-API"
+        },
+        "ApiKeys": {
+            "name": "ApiKeys",
+            "shortname": "ApiKeys",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\models.js",
+            "line": 715,
+            "description": "central ApiKeys-model. Here you do all the CRUD-operations with the REST-API"
+        },
+        "Page": {
+            "name": "Page",
+            "shortname": "Page",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\services.js",
+            "line": 18,
+            "description": "central page-service. stores the actual page-title"
+        },
+        "AlertService": {
+            "name": "AlertService",
+            "shortname": "AlertService",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\services.js",
+            "line": 391,
+            "description": "central alert-service. stores a list of alerts (type and message)"
+        },
+        "Servers": {
+            "name": "Servers",
+            "shortname": "Servers",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\services.js",
+            "line": 196,
+            "description": "Servers"
+        },
+        "ProcessService": {
+            "name": "ProcessService",
+            "shortname": "ProcessService",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\services.js",
+            "line": 360,
+            "description": "central process-service. stores a stack for each \"thread\" which is performed"
+        },
+        "ProcessServiceProvider": {
+            "name": "ProcessServiceProvider",
+            "shortname": "ProcessServiceProvider",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\services.js",
+            "line": 369,
+            "description": "central process-provider. delegates the functions to a ProcessServiceInstance"
+        },
+        "ResponseHandler": {
+            "name": "ResponseHandler",
+            "shortname": "ResponseHandler",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dev\\js\\services.js",
+            "line": 451,
+            "description": "ResponseHandler"
+        }
+    },
+    "classitems": [
+        {
+            "file": "dev\\js\\conf.js",
+            "line": 16,
+            "description": "Run-Configuration of the Apllication-Settings",
+            "class": "MainCtrl"
+        },
+        {
+            "file": "dev\\js\\conf.js",
+            "line": 57,
+            "description": "Configuration of the Apllication-Views",
+            "class": "MainCtrl"
+        },
+        {
+            "file": "dev\\js\\conf.js",
+            "line": 68,
+            "description": "Global constants for the Application",
+            "class": "MainCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 68,
+            "description": "initialises the controller-data",
+            "itemtype": "method",
+            "name": "init",
+            "class": "ErrorCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 150,
+            "description": "initialises the controller-data",
+            "itemtype": "method",
+            "name": "init",
+            "class": "DomainCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 159,
+            "description": "get the domain List",
+            "itemtype": "method",
+            "name": "getList",
+            "class": "DomainCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 174,
+            "description": "create a new domain",
+            "itemtype": "method",
+            "name": "create",
+            "class": "DomainCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 195,
+            "description": "edit an existing domain",
+            "itemtype": "method",
+            "name": "edit",
+            "params": [
+                {
+                    "name": "domain",
+                    "description": "domain-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "DomainCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 223,
+            "description": "remove an existing domain",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "domain",
+                    "description": "domain-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "DomainCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 250,
+            "description": "initialises the controller-data",
+            "itemtype": "method",
+            "name": "init",
+            "class": "DomainCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 265,
+            "description": "create a new alias",
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "domain",
+                    "description": "alais-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "DomainCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 276,
+            "description": "remove an existing alias",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "alias",
+                    "description": "alias-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "DomainCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 293,
+            "description": "initialises the controller-data",
+            "itemtype": "method",
+            "name": "init",
+            "class": "TransportCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 303,
+            "description": "get the transport List",
+            "itemtype": "method",
+            "name": "getList",
+            "class": "TransportCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 312,
+            "description": "create a new transport",
+            "itemtype": "method",
+            "name": "create",
+            "class": "TransportCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 339,
+            "description": "edit an existing transport",
+            "itemtype": "method",
+            "name": "edit",
+            "params": [
+                {
+                    "name": "transport",
+                    "description": "transport-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "TransportCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 361,
+            "description": "remove an existing transport",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "domain",
+                    "description": "transport-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "TransportCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 416,
+            "description": "initialises the controller-data",
+            "itemtype": "method",
+            "name": "init",
+            "class": "UserCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 427,
+            "description": "destroys the controller-data",
+            "itemtype": "method",
+            "name": "onDestroy",
+            "class": "UserCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 436,
+            "description": "get the user List",
+            "itemtype": "method",
+            "name": "getList",
+            "class": "UserCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 445,
+            "description": "get the current domain",
+            "itemtype": "method",
+            "name": "getList",
+            "class": "UserCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 454,
+            "description": "create a new domain",
+            "itemtype": "method",
+            "name": "create",
+            "class": "UserCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 482,
+            "description": "edit an existing user",
+            "itemtype": "method",
+            "name": "edit",
+            "params": [
+                {
+                    "name": "user",
+                    "description": "user-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "UserCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 518,
+            "description": "remove an existing user",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "user",
+                    "description": "user-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "UserCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 550,
+            "description": "initialises the controller-data",
+            "itemtype": "method",
+            "name": "init",
+            "class": "UserAliasCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 566,
+            "description": "create a new alias",
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "domain",
+                    "description": "alais-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "UserAliasCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 577,
+            "description": "remove an existing alias",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "alias",
+                    "description": "alias-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "UserAliasCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 594,
+            "description": "initialises the controller-data",
+            "itemtype": "method",
+            "name": "init",
+            "class": "SummaryCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 615,
+            "description": "initialises the controller-data",
+            "itemtype": "method",
+            "name": "init",
+            "class": "ApiKeyCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 625,
+            "description": "get the api-key List",
+            "itemtype": "method",
+            "name": "getList",
+            "class": "ApiKeyCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 634,
+            "description": "create a new api-key",
+            "itemtype": "method",
+            "name": "create",
+            "class": "ApiKeyCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 661,
+            "description": "edit an existing api-key",
+            "itemtype": "method",
+            "name": "edit",
+            "params": [
+                {
+                    "name": "apiKey",
+                    "description": "api-key-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "ApiKeyCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 683,
+            "description": "remove an existing api-key",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "apiKey",
+                    "description": "api-key-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "ApiKeyCtrl"
+        },
+        {
+            "file": "dev\\js\\controllers.js",
+            "line": 701,
+            "description": "transfers the api-key to the ImageName (valid,expired,inactive)",
+            "itemtype": "method",
+            "name": "imageName",
+            "params": [
+                {
+                    "name": "apiKey",
+                    "description": "api-key-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "ApiKeyCtrl"
+        },
+        {
+            "file": "dev\\js\\directives.js",
+            "line": 16,
+            "description": "directive which returns the app-version defined in the postySoft.services",
+            "directive": "appVersion",
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\directives.js",
+            "line": 27,
+            "description": "directive to validate passwords in the html-view",
+            "directive": "passwordValidator",
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\directives.js",
+            "line": 54,
+            "description": "directive to focus an element in the html-view",
+            "directive": "focus",
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\directives.js",
+            "line": 67,
+            "description": "directive to build a simple chart in the html-view",
+            "directive": "barsChart",
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\directives.js",
+            "line": 100,
+            "description": "directive to open the datepicker",
+            "directive": "dateclick",
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\directives.js",
+            "line": 119,
+            "description": "directive to open a dropdown-menu without \nchanging the route (href-directive)",
+            "directive": "dropdownclick",
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 14,
+            "description": "filters the error-messages of the response and returns the concated messages",
+            "itemtype": "method",
+            "name": "@return  Returns the error-message",
+            "type": "String",
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 81,
+            "description": "returns if the domain is valid or not",
+            "itemtype": "method",
+            "name": "isValid",
+            "params": [
+                {
+                    "name": "domain",
+                    "description": "the domain",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Returns true if the domain is valid",
+                "type": "Boolean"
+            },
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 91,
+            "description": "returns if all domains are selected or not",
+            "itemtype": "method",
+            "name": "allDomainsSelected",
+            "return": {
+                "description": "Returns true if currentDomain == ALL_DOMAINS",
+                "type": "Boolean"
+            },
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 100,
+            "description": "returns the current domain",
+            "itemtype": "method",
+            "name": "currentDomain",
+            "return": {
+                "description": "Returns the current domain",
+                "type": "Object"
+            },
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 109,
+            "description": "sets the current domain",
+            "itemtype": "method",
+            "name": "setCurrentDomain",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "the new current domain",
+                    "type": "Object"
+                }
+            ],
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 121,
+            "description": "creates a new domain",
+            "itemtype": "method",
+            "name": "createDomain",
+            "params": [
+                {
+                    "name": "domain",
+                    "description": "the domain-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 139,
+            "description": "edit a existing domain",
+            "itemtype": "method",
+            "name": "edit",
+            "params": [
+                {
+                    "name": "domain",
+                    "description": "the domain-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 159,
+            "description": "remove a existing domain",
+            "itemtype": "method",
+            "name": "removeDomain",
+            "params": [
+                {
+                    "name": "domain",
+                    "description": "the domain-object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 178,
+            "description": "get the list of all domains",
+            "itemtype": "method",
+            "name": "getlist",
+            "return": {
+                "description": "Returns the list-member",
+                "type": "Array"
+            },
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 187,
+            "description": "refreshes the List",
+            "itemtype": "method",
+            "name": "refreshList",
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 195,
+            "description": "register observers for the currentDomain change event",
+            "itemtype": "method",
+            "name": "registerCurrentDommainObserver",
+            "params": [
+                {
+                    "name": "observer",
+                    "description": "observer-Objecter with update-Method",
+                    "type": "Object"
+                }
+            ],
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 206,
+            "description": "unregister observers for the currentDomain change event",
+            "itemtype": "method",
+            "name": "unregisterCurrentDommainObserver",
+            "params": [
+                {
+                    "name": "observer",
+                    "description": "observer-Objecter with update-Method",
+                    "type": "Object"
+                }
+            ],
+            "class": "Domains"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 243,
+            "description": "set the domain",
+            "itemtype": "method",
+            "name": "setDomain",
+            "params": [
+                {
+                    "name": "newDomain",
+                    "description": "the domain object",
+                    "type": "Object"
+                }
+            ],
+            "class": "DomainAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 254,
+            "description": "get the domain",
+            "itemtype": "method",
+            "name": "getDomain",
+            "class": "DomainAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 262,
+            "description": "creates an new domain-alias",
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "alias",
+                    "description": "the alias object",
+                    "type": "Object"
+                }
+            ],
+            "class": "DomainAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 279,
+            "description": "remove an existing alias",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "alias",
+                    "description": "the alias object",
+                    "type": "Object"
+                }
+            ],
+            "class": "DomainAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 296,
+            "description": "get the list of all aliases",
+            "itemtype": "method",
+            "name": "getList",
+            "return": {
+                "description": "Returns the list-member",
+                "type": "Array"
+            },
+            "class": "DomainAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 305,
+            "description": "refreshes the list",
+            "itemtype": "method",
+            "name": "refresh",
+            "class": "DomainAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 345,
+            "description": "creates an new transport",
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "transport",
+                    "description": "the transport object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 362,
+            "description": "edit a existing tranpsort",
+            "itemtype": "method",
+            "name": "edit",
+            "params": [
+                {
+                    "name": "transport",
+                    "description": "the transport object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 383,
+            "description": "remove an existing transport",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "alias",
+                    "description": "the alias object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 400,
+            "description": "get the list of all transports",
+            "itemtype": "method",
+            "name": "getList",
+            "return": {
+                "description": "Returns the aliasList-member",
+                "type": "Array"
+            },
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 409,
+            "description": "refreshes the list",
+            "itemtype": "method",
+            "name": "refresh",
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 452,
+            "description": "returns if the user is valid or not",
+            "itemtype": "method",
+            "name": "isValid",
+            "params": [
+                {
+                    "name": "user",
+                    "description": "the user",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Returns true if the user is valid",
+                "type": "Boolean"
+            },
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 462,
+            "description": "set the domain",
+            "itemtype": "method",
+            "name": "setDomain",
+            "params": [
+                {
+                    "name": "newDomain",
+                    "description": "the domain object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 473,
+            "description": "get the domain",
+            "itemtype": "method",
+            "name": "getDomain",
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 481,
+            "description": "creates an new user",
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "user",
+                    "description": "the user object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 498,
+            "description": "edit a existing user",
+            "itemtype": "method",
+            "name": "edit",
+            "params": [
+                {
+                    "name": "user",
+                    "description": "the user object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 521,
+            "description": "remove an existing user",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "alias",
+                    "description": "the user object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 538,
+            "description": "get the list of all userers",
+            "itemtype": "method",
+            "name": "getList",
+            "return": {
+                "description": "Returns the aliasList-member",
+                "type": "Array"
+            },
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 547,
+            "description": "refreshes the list",
+            "itemtype": "method",
+            "name": "refresh",
+            "class": "Transports"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 580,
+            "description": "set the domain",
+            "itemtype": "method",
+            "name": "setDomain",
+            "params": [
+                {
+                    "name": "newDomain",
+                    "description": "the domain object",
+                    "type": "Object"
+                }
+            ],
+            "class": "UserAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 591,
+            "description": "get the domain",
+            "itemtype": "method",
+            "name": "getDomain",
+            "class": "UserAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 599,
+            "description": "set the user",
+            "itemtype": "method",
+            "name": "setUser",
+            "params": [
+                {
+                    "name": "newUser",
+                    "description": "the user object",
+                    "type": "Object"
+                }
+            ],
+            "class": "UserAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 610,
+            "description": "get the user",
+            "itemtype": "method",
+            "name": "getUser",
+            "class": "UserAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 618,
+            "description": "creates an new user-alias",
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "alias",
+                    "description": "the alias object",
+                    "type": "Object"
+                }
+            ],
+            "class": "UserAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 635,
+            "description": "remove an existing alias",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "alias",
+                    "description": "the alias object",
+                    "type": "Object"
+                }
+            ],
+            "class": "UserAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 652,
+            "description": "get the list of all aliases",
+            "itemtype": "method",
+            "name": "getList",
+            "return": {
+                "description": "Returns the list-member",
+                "type": "Array"
+            },
+            "class": "UserAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 661,
+            "description": "refreshes the list",
+            "itemtype": "method",
+            "name": "refresh",
+            "class": "UserAliasses"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 695,
+            "description": "get the list of all summary-entries",
+            "itemtype": "method",
+            "name": "getList",
+            "return": {
+                "description": "Returns the list-member",
+                "type": "Array"
+            },
+            "class": "Summaries"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 704,
+            "description": "refreshes the list",
+            "itemtype": "method",
+            "name": "refresh",
+            "class": "Summaries"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 744,
+            "description": "creates an new api-key",
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "apiKey",
+                    "description": "the api-key object",
+                    "type": "Object"
+                }
+            ],
+            "class": "ApiKeys"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 761,
+            "description": "edit a existing api-key",
+            "itemtype": "method",
+            "name": "edit",
+            "params": [
+                {
+                    "name": "apiKey",
+                    "description": "the api-key object",
+                    "type": "Object"
+                }
+            ],
+            "class": "ApiKeys"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 781,
+            "description": "remove an existing api-key",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "apiKey",
+                    "description": "the api-key object",
+                    "type": "Object"
+                }
+            ],
+            "class": "ApiKeys"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 798,
+            "description": "get the list of all api-keys",
+            "itemtype": "method",
+            "name": "getList",
+            "return": {
+                "description": "Returns list-member",
+                "type": "Array"
+            },
+            "class": "ApiKeys"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 807,
+            "description": "refreshes the list",
+            "itemtype": "method",
+            "name": "refresh",
+            "class": "ApiKeys"
+        },
+        {
+            "file": "dev\\js\\models.js",
+            "line": 815,
+            "description": "check if the api-key is expired",
+            "itemtype": "method",
+            "name": "isExpired",
+            "params": [
+                {
+                    "name": "apiKey",
+                    "description": "the api-key object",
+                    "type": "Object"
+                }
+            ],
+            "class": "ApiKeys"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 45,
+            "description": "pops the first element out of the alert-list",
+            "itemtype": "method",
+            "name": "popFirst",
+            "class": "AlertService"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 55,
+            "description": "add an alert to the service\nand sets an timeout that removes the alert out of the alert-list",
+            "itemtype": "method",
+            "name": "addAlert",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "the type of the message (info, error, confirmation)",
+                    "type": "String"
+                },
+                {
+                    "name": "msg",
+                    "description": "the message-text",
+                    "type": "String"
+                }
+            ],
+            "class": "AlertService"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 68,
+            "description": "closes an alert by index of the alert-list",
+            "itemtype": "method",
+            "name": "closeAlert",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "index of the element which should be closed",
+                    "type": "Int"
+                }
+            ],
+            "class": "AlertService"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 78,
+            "description": "clears the alert-list",
+            "itemtype": "method",
+            "name": "clearAlerts",
+            "class": "AlertService"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 87,
+            "description": "refers the alert-list",
+            "itemtype": "method",
+            "name": "alerts",
+            "return": {
+                "description": "the list of all alerts",
+                "type": "Array"
+            },
+            "class": "AlertService"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 212,
+            "description": "register observers for the currentDomain change event",
+            "itemtype": "method",
+            "name": "add",
+            "params": [
+                {
+                    "name": "server",
+                    "description": "server-Object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Servers"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 221,
+            "description": "unregister observers for the currentDomain change event",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "server",
+                    "description": "server-Object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Servers"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 234,
+            "description": "returns the current server",
+            "itemtype": "method",
+            "name": "currentServer",
+            "return": {
+                "description": "Returns the current server",
+                "type": "Object"
+            },
+            "class": "Servers"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 243,
+            "description": "sets the current server",
+            "itemtype": "method",
+            "name": "setCurrentServer",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "the new current server",
+                    "type": "Object"
+                }
+            ],
+            "class": "Servers"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 257,
+            "description": "get the list of all api-keys",
+            "itemtype": "method",
+            "name": "getList",
+            "return": {
+                "description": "Returns list-member",
+                "type": "Array"
+            },
+            "class": "Servers"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 267,
+            "description": "more than one server is saved",
+            "itemtype": "method",
+            "name": "moreThanOneServer",
+            "return": {
+                "description": "Returns true if the there are more than one server saved",
+                "type": "Boolean"
+            },
+            "class": "Servers"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 277,
+            "description": "valid Server is set",
+            "itemtype": "method",
+            "name": "isValid",
+            "return": {
+                "description": "Returns true if the current Server is valid",
+                "type": "Boolean"
+            },
+            "class": "Servers"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 331,
+            "description": "pushes the process-stack",
+            "itemtype": "method",
+            "name": "register",
+            "class": "Servers"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 340,
+            "description": "pops an element fromt the process-stack",
+            "itemtype": "method",
+            "name": "unregister",
+            "class": "Servers"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 349,
+            "description": "refers if the stack is full or not",
+            "itemtype": "method",
+            "name": "isLoading",
+            "return": {
+                "description": "true if the stack is not empty",
+                "type": "Boolean"
+            },
+            "class": "Servers"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 402,
+            "description": "add an alert to the service\nand sets an timeout that removes the alert out of the alert-list",
+            "itemtype": "method",
+            "name": "throw",
+            "class": "AlertService"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 414,
+            "description": "closes an alert by index of the alert-list",
+            "itemtype": "method",
+            "name": "reset",
+            "class": "AlertService"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 423,
+            "description": "clears the alert-list",
+            "itemtype": "method",
+            "name": "clearAlerts",
+            "class": "AlertService"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 432,
+            "description": "clears the alert-list",
+            "itemtype": "method",
+            "name": "clearAlerts",
+            "class": "AlertService"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 440,
+            "description": "clears the alert-list",
+            "itemtype": "method",
+            "name": "clearAlerts",
+            "class": "AlertService"
+        },
+        {
+            "file": "dev\\js\\services.js",
+            "line": 460,
+            "description": "adding responses to the local list",
+            "itemtype": "method",
+            "name": "add",
+            "params": [
+                {
+                    "name": "response",
+                    "description": "response-Object",
+                    "type": "Object"
+                }
+            ],
+            "class": "ResponseHandler"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: directive",
+            "line": " dev\\js\\directives.js:16"
+        },
+        {
+            "message": "unknown tag: directive",
+            "line": " dev\\js\\directives.js:27"
+        },
+        {
+            "message": "unknown tag: directive",
+            "line": " dev\\js\\directives.js:54"
+        },
+        {
+            "message": "unknown tag: directive",
+            "line": " dev\\js\\directives.js:67"
+        },
+        {
+            "message": "unknown tag: directive",
+            "line": " dev\\js\\directives.js:100"
+        },
+        {
+            "message": "unknown tag: directive",
+            "line": " dev\\js\\directives.js:119"
+        },
+        {
+            "message": "Missing item type\nRun-Configuration of the Apllication-Settings",
+            "line": " dev\\js\\conf.js:16"
+        },
+        {
+            "message": "Missing item type\nConfiguration of the Apllication-Views",
+            "line": " dev\\js\\conf.js:57"
+        },
+        {
+            "message": "Missing item type\nGlobal constants for the Application",
+            "line": " dev\\js\\conf.js:68"
+        },
+        {
+            "message": "Missing item type\ndirective which returns the app-version defined in the postySoft.services",
+            "line": " dev\\js\\directives.js:16"
+        },
+        {
+            "message": "Missing item type\ndirective to validate passwords in the html-view",
+            "line": " dev\\js\\directives.js:27"
+        },
+        {
+            "message": "Missing item type\ndirective to focus an element in the html-view",
+            "line": " dev\\js\\directives.js:54"
+        },
+        {
+            "message": "Missing item type\ndirective to build a simple chart in the html-view",
+            "line": " dev\\js\\directives.js:67"
+        },
+        {
+            "message": "Missing item type\ndirective to open the datepicker",
+            "line": " dev\\js\\directives.js:100"
+        },
+        {
+            "message": "Missing item type\ndirective to open a dropdown-menu without \nchanging the route (href-directive)",
+            "line": " dev\\js\\directives.js:119"
+        }
+    ]
+}

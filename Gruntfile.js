@@ -5,7 +5,7 @@
 * Licensed under the LGPL v3
 * https://www.gnu.org/licenses/lgpl.html
 *
-* grunt package cssmin, yuidoc, requirejs, concat, htmlmin, sync
+* grunt package cssmin, yuidoc, requirejs, concat, htmlmin, sync, copy, uglify
 *
 * npm install -g grunt-cli
 * npm install -g grunt
@@ -17,6 +17,7 @@
 * npm install grunt-sync --save-dev
 * npm install grunt-angular-gettext --save-dev
 * npm install grunt-contrib-copy --save-dev
+* npm install grunt-contrib-uglify --save-dev
 *
 */
 module.exports = function(grunt) {
@@ -72,7 +73,7 @@ module.exports = function(grunt) {
 	* minify the js files 
 	*
 	*/
-	/*
+	
 	requirejs: {
 	  compile: {
 		options: {
@@ -82,44 +83,8 @@ module.exports = function(grunt) {
 		  out: "dist/js/optimized.js"
 		}
 	  }
-	},*/
-	
-	
-	uglify: {
-	  options: {
-        banner: '/*! \n*posty_webUI\n*\n*Copyright 2014 posty-soft.org\n*Licensed under the LGPL v3\n*https://www.gnu.org/licenses/lgpl.html \n*/\n',
-		compress: {
-			global_defs: {
-			  "DEBUG": false
-			},
-			dead_code: true
-		},
-		beautify: {
-          width: 80,
-          beautify: false
-        }
-      },
-	  
-      /*build: {
-        src: 'dev/js/*.js',
-        dest: 'js/posty_webUI.js'
-      }*/
-	  my_target: {
-		  files: {
-			// posty APP
-			'dist/js/directives.js': 'dev/js/directives.js',
-			'dist/js/services.js': 'dev/js/services.js', 
-			'dist/js/routes.js': 'dev/js/routes.js', 
-			'dist/js/models.js': 'dev/js/models.js', 
-			'dist/js/app.js': 'dev/js/app.js', 
-			'dist/js/controllers.js': 'dev/js/controllers.js', 
-			'dist/js/main.js': 'dev/js/main.js',
-			'dist/js/conf.js': 'dev/js/conf.js'
-		  }
-	  }
-    },
-	
-	
+	},
+
 	/*!
 	* cminify the html files
 	*
@@ -170,13 +135,46 @@ module.exports = function(grunt) {
 	  }
 	},
 	
+	
+	/*!
+	* copy settings.js
+	*
+	*/
 	copy: {
 	  main: {
-		src: 'dev/settings.js',
-		dest: 'dist/settings.js',
+		files:[
+			{
+			src: 'dev/settings.js',
+			dest: 'dist/settings.js'
+			}
+		]
+		
 	  },
-	}
-
+	},
+	
+	/*!
+	* uglify require.js
+	*
+	*/
+	   uglify: {
+		options: {
+		  banner: '/*!vim: et:ts=4:sw=4:sts=4 \n' +
+					'* @license RequireJS 2.1.14 Copyright (c) 2010-2014, The Dojo Foundation All Rights Reserved.\n' +
+					'* Available via the MIT or new BSD license.\n' +
+					'* see: http://github.com/jrburke/requirejs for details\n*/\n',
+		  compress: {
+			global_defs: {
+			  "DEBUG": false
+			},
+			dead_code: true
+		  }
+		},
+		my_target: {
+		  files: {
+			'dist/js/require.js': ['dev/components/requirejs/require.js']
+		  }
+		}
+	  }
 
   });
 
@@ -184,7 +182,7 @@ module.exports = function(grunt) {
 	* Load tasks
 	*
 	*/
-	//grunt.loadNpmTasks('grunt-contrib-requirejs');
+	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-yuidoc');
@@ -193,7 +191,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.registerTask('default', [
-		'concat', 'cssmin', 'yuidoc', 'uglify', 'htmlmin', 'sync', 'copy'
+		'concat', 'cssmin', 'yuidoc', 'requirejs', 'htmlmin', 'sync', 'copy', 'uglify'
 	]);
 
 };
