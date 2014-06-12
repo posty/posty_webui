@@ -1,4 +1,6 @@
-# posty\_webUI v1.9.3
+# posty\_webUI v1.9.1
+
+## This Version is a Beta only for Developers!!!
 
 The posty\_webUI is connected to the restful posty\_API and represents the web-interface of the posty softwarestack. It is developed to administrate a mailserver based on Postfix and Dovecot.
 
@@ -29,7 +31,7 @@ The posty\_webUI has the following dependences:
 1.  Download the source either using git or from the GitHub page as archive.
 2.  Extract the archive
 3.  Copy the extracted directory into the folder where your webserver is running
-4.  Adjust your posty\_api URL in the dist/settings.js
+4.  Adjust your posty\_api URL in the conf.js
 
 
 ## Installation for developer
@@ -48,8 +50,7 @@ The posty\_webUI has the following dependences:
 		6.6.	npm install grunt-contrib-htmlmin --save-dev
 		6.7.	npm install grunt-contrib-requirejs --save-dev
 		6.8.	npm install grunt-sync --save-dev
-7.	Run "bower install"
-8.  Adjust your posty\_api URL in the dev/settings.js
+7.  Adjust your posty\_api URL in the dev/conf.js
 
 
 ## Usage

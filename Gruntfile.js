@@ -102,7 +102,7 @@ module.exports = function(grunt) {
 			'dist/partials/partial_dashboard.html': 'dev/partials/partial_dashboard.html',
 			'dist/partials/partial_domain.html': 'dev/partials/partial_domain.html',
 			'dist/partials/partial_domain_alias.html': 'dev/partials/partial_domain_alias.html',
-			'dist/partials/partial_user_alias.html': 'dev/partials/partial_error.html',
+			'dist/partials/partial_error.html': 'dev/partials/partial_error.html',
 			'dist/partials/partial_modal.html': 'dev/partials/partial_modal.html',
 			'dist/partials/partial_navbar.html': 'dev/partials/partial_navbar.html',
 			'dist/partials/partial_navbar_dash.html': 'dev/partials/partial_navbar_dash.html',
@@ -113,7 +113,8 @@ module.exports = function(grunt) {
 			'dist/partials/partial_summary.html': 'dev/partials/partial_summary.html',
 			'dist/partials/partial_transport.html': 'dev/partials/partial_transport.html',
 			'dist/partials/partial_user.html': 'dev/partials/partial_user.html',
-			'dist/partials/partial_user_alias.html': 'dev/partials/partial_user_alias.html'		
+			'dist/partials/partial_user_alias.html': 'dev/partials/partial_user_alias.html',		
+			'dist/partials/partial_select_server.html': 'dev/partials/partial_select_server.html'		
 		  }
 		}
 	}, 
