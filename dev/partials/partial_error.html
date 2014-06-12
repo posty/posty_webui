@@ -1,0 +1,25 @@
+<!--
+/*!
+ * posty_webUI
+ *
+ * Copyright 2014 posty-soft.org
+ * Licensed under the LGPL v3
+ * https://www.gnu.org/licenses/lgpl.html
+ *
+ */
+-->
+<div class="well well-large" ng-controller="ErrorCtrl" ng-cloak ng-init="init()">
+ 	<p></p>
+ 	<div class="accordion-group">
+	    <div class="accordion-heading">
+	    	<a class="accordion-toggle" href="">
+	          <h4 class="h5show">{{getStatusCode()}}</h4>
+	       </a>
+		 	<div id="collapseTwo" class="accordion-body collapse in">
+			    <div class="accordion-inner">  
+				 	<alert  type="danger">{{getMessage()}}</alert>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

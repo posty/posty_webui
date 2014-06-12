@@ -42,7 +42,7 @@
                             <tbody>
                             <tr ng-repeat="apikey in getList() | filter:search:strict">
                                 <td>{{ apikey.access_token }}</td>
-                                <td>{{ apikey.expires_at | date:CONFIGS.DATE_FORMAT}}
+                                <td>{{ apikey.expires_at | date:CONFIGS.DATE_FORMAT}} <z class="pull-right"><img ng-src="img/widget/{{imageName(apikey)}}.png" alt="stat" /></z></td>
                                 <td class="tableButton">
                                     <div class="pull-right">
                                         <button class="btn btn-warning" ng-click="edit(apikey)"><i class="icon-edit icon-white"></i></button>

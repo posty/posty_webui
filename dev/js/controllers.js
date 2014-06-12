@@ -1,5 +1,5 @@
 /*!
- * posty_webUI
+ * posty_webUI controller
  *
  * Copyright 2014 posty-soft.org
  * Licensed under the LGPL v3
@@ -19,17 +19,70 @@ define(['angular', 'services'], function (angular, services) {
 	*
 	* @class MainCtrl
 	*/		
-	app.controller('MainCtrl', ['$scope', '$rootScope', 'Page', 'Domains', 'ProcessService' ,'AlertService', 'CONFIGS', function ($scope, $rootScope, Page, Domains, ProcessService, AlertService, CONFIGS) {
+	app.controller('MainCtrl', ['$scope', '$rootScope', 'Page', 'Domains', 'Servers', 'SelectServerService' ,'ProcessService' ,'AlertService', 'CONFIGS', function ($scope, $rootScope, Page, Domains, Servers, SelectServerService, ProcessService, AlertService, CONFIGS) {
+		
+        var initServer = function() {                        
+            var selectServer = SelectServerService.show();
+            selectServer.result.then(function (server) {                               
+                Servers.setCurrentServer(server);
+                Domains.refresh();
+            });            
+        };  
 
-		$rootScope.init = function() {
-            Domains.refresh();
+        $rootScope.init = function() {            
 			$scope = $rootScope;
 			$scope.Page = Page;
 			$scope.ProcessService = ProcessService;
             $scope.AlertService = AlertService;
             $scope.CONFIGS = CONFIGS;
-		};					
+            if (Servers.moreThanOneServer()) {
+                initServer();    
+            } else {
+                Domains.refresh();
+            }
+
+		};					                                
+
+        $rootScope.postyIcon = function() {            
+             Domains.refresh();
+        };                                                  
+
+
+        $rootScope.changeServer = function() {            
+            initServer();
+        };                                                          
+
+        $rootScope.moreThanOneServer = function() {            
+            return Servers.moreThanOneServer();
+        };                                                          
+
 	}]);
+
+    /**
+    * view-controller for the errors
+    *
+    * @class ErrorCtrl
+    */
+    app.controller('ErrorCtrl', ['$scope', 'Page', 'ErrorService', function ($scope, Page, ErrorService) {              
+
+        /**
+        * initialises the controller-data
+        *
+        * @method init  
+        */  
+        $scope.init = function() {      
+            Page.setTitle('Error');                                    
+        };        
+
+        $scope.getStatusCode = function() {            
+            return ErrorService.getStatusCode();
+        };
+
+        $scope.getMessage = function() {            
+            return ErrorService.getMessage();
+        };
+
+    }]);    
 
 	/**
 	* view-controller for the process-service
@@ -643,6 +696,23 @@ define(['angular', 'services'], function (angular, services) {
             modalInstance.result.then(function (data) {
                 ApiKeys.remove(apiKey);
             });
+        };
+
+        /**
+         * transfers the api-key to the ImageName (valid,expired,inactive)
+         *
+         * @method imageName
+         * @param apiKey {Object} api-key-object
+         */
+        $scope.imageName = function(apiKey) {
+            
+            if (ApiKeys.isExpired(apiKey)) {
+                return "api_expired";
+            } else if (!apiKey.active) {
+                return "api_inactive";
+            }               
+
+            return "api_valid";            
         };
     }]);
 

@@ -1,5 +1,5 @@
 /*!
- * posty_webUI
+ * posty_webUI routes
  *
  * Copyright 2014 posty-soft.org
  * Licensed under the LGPL v3
@@ -33,11 +33,11 @@ define(['angular', 'app'], function(angular, app) {
         $routeProvider.when('/view_apikey', {
             templateUrl: 'partials/partial_apikey.html',
             controller: 'ApiKeyCtrl'
-        });   
-        $routeProvider.when('/view_test', {
-            templateUrl: 'partials/partial_test.html',
-            controller: 'TestCtrl'
-        });        
+        });           
+        $routeProvider.when('/error', {
+            templateUrl: 'partials/partial_error.html',            
+            controller: 'ErrorCtrl'
+        });
 		$routeProvider.otherwise({redirectTo: '/view_dashboard'});
 	}]);
 

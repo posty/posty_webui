@@ -1,5 +1,5 @@
 /*!
- * posty_webUI
+ * posty_webUI models
  *
  * Copyright 2014 posty-soft.org
  * Licensed under the LGPL v3
@@ -65,7 +65,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 			 		realDataList.push(angular.copy(data[i]));
 			 		list.push(data[i].virtual_domain);			 		
 			 	}													
-			});				
+			});		
 		};	
 
 		var oldDomainByID = function(id) {
@@ -133,7 +133,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 					refresh();						
 				}, function(response) {	
 					var msg = "There was an error saving the domain "+domain.name+": \n"+errorMsg(response.data.error);
-					AlertService.addAlert("error",msg);					
+					AlertService.addAlert("danger",msg);					
 				});			
 			},
 			/**
@@ -152,7 +152,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 					refresh();
 				}, function(response) {
 					var msg = "There was an error updating the domain "+domain.name+": \n"+errorMsg(response.data.error);
-					AlertService.addAlert("error",msg);
+					AlertService.addAlert("danger",msg);
 					refresh();
 				});
 			},
@@ -172,7 +172,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 					refresh();									
 				}, function(response) {				
 					var msg = "There was an error deleting the domain "+domain.name+": \n"+errorMsg(response.data.error);
-					AlertService.addAlert("error",msg);					
+					AlertService.addAlert("danger",msg);					
 				});				
 			},						
 			/**
@@ -273,7 +273,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 					refresh();
 				}, function(response) {	
 					var msg = "There was an error saving the domain alias "+alias.name+": \n"+errorMsg(response.data.error);
-					AlertService.addAlert("error",msg); 						
+					AlertService.addAlert("danger",msg); 						
 				});							
 			},
 			/**
@@ -290,7 +290,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 					refresh();
 				}, function(response) {
 					var msg = "There was an error deleting the domain alias "+alias.name+": \n"+errorMsg(response.data.error);
-					AlertService.addAlert("error",msg);					
+					AlertService.addAlert("danger",msg);					
 				});		
 			},
 			/**
@@ -356,7 +356,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
                     refresh();
                 }, function(response) {
                     var msg = "There was an error saving the transport "+transport.name+": \n"+errorMsg(response.data.error);
-                    AlertService.addAlert("error",msg);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -376,7 +376,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
                     refresh();
                 }, function(response) {
                     var msg = "There was an error updating the transport "+transport.name+": \n"+errorMsg(response.data.error);
-                    AlertService.addAlert("error",msg);
+                    AlertService.addAlert("danger",msg);
                     refresh();
                 });
             },
@@ -394,7 +394,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
                     refresh();
                 }, function(response) {
                     var msg = "There was an error deleting the transport "+transport.name+": \n"+errorMsg(response.data.error);
-                    AlertService.addAlert("error",msg);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -492,7 +492,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
                     refresh();
                 }, function(response) {
                     var msg = "There was an error saving the user "+user.name+": \n"+errorMsg(response.data.error);
-                    AlertService.addAlert("error",msg);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -514,7 +514,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
                     refresh();
                 }, function(response) {
                     var msg = "There was an error updating the user "+user.name+": \n"+errorMsg(response.data.error);
-                    AlertService.addAlert("error",msg);
+                    AlertService.addAlert("danger",msg);
                     refresh();
                 });
             },
@@ -532,7 +532,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
                     refresh();
                 }, function(response) {
                     var msg = "There was an error deleting the user "+user.name+": \n"+errorMsg(response.data.error);
-                    AlertService.addAlert("error",msg);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -629,7 +629,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 					refresh();
 				}, function(response) {	
 					var msg = "There was an error saving the user alias "+alias.name+": \n"+errorMsg(response.data.error);
-					AlertService.addAlert("error",msg); 						
+					AlertService.addAlert("danger",msg); 						
 				});							
 			},
 			/**
@@ -646,7 +646,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 					refresh();
 				}, function(response) {
 					var msg = "There was an error deleting the user alias "+alias.name+": \n"+errorMsg(response.data.error);
-					AlertService.addAlert("error",msg);					
+					AlertService.addAlert("danger",msg);					
 				});		
 			},
 			/**
@@ -755,7 +755,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
                     refresh();
                 }, function(response) {
                     var msg = "There was an error saving the api-key "+response.apiKey.access_token+": \n"+errorMsg(response.data.error);
-                    AlertService.addAlert("error",msg);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -774,7 +774,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
                     refresh();
                 }, function(response) {
                     var msg = "There was an error updating the api-key "+apiKey.access_token+": \n"+errorMsg(response.data.error);
-                    AlertService.addAlert("error",msg);
+                    AlertService.addAlert("danger",msg);
                     refresh();
                 });
             },
@@ -792,7 +792,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
                     refresh();
                 }, function(response) {
                     var msg = "There was an error deleting the api-key "+apiKey.access_token+": \n"+errorMsg(response.data.error);
-                    AlertService.addAlert("error",msg);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -811,6 +811,17 @@ define(['angular', 'restangular'], function (angular, Restangular) {
              */
             refresh: function() {
                 refresh();
+            },
+            /**
+             * check if the api-key is expired
+             *
+             * @method isExpired
+             * @param apiKey {Object} the api-key object
+             */
+            isExpired: function(apiKey) {
+            	var today = new Date();
+            	var date = new Date(apiKey.expires_at);	
+            	return date-today<0;
             }
         };
     }]);	

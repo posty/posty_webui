@@ -1,5 +1,5 @@
 /*!
- * posty_webUI
+ * posty_webUI app
  *
  * Copyright 2014 posty-soft.org
  * Licensed under the LGPL v3
@@ -7,13 +7,12 @@
  *
  */
 define([
-	'angular',
-	//'filters',
+	'angular',	
 	'services',
 	'directives',
 	'controllers',
 	'models',
-	'../conf',	
+	'conf',				
 	'angularRoute',	
 	], function (angular) {
 		'use strict';
@@ -22,10 +21,9 @@ define([
 			'ngRoute',
 			'restangular',						
 			'postySoft.controllers',
-			'postySoft.models',
-			//'postySoft.filters',
+			'postySoft.models',			
 			'postySoft.services',
 			'postySoft.directives',
-			'postySoft.configurations'
+			'postySoft.configurations'			
         ]);
 });

@@ -1,0 +1,60 @@
+<!--
+/*!
+ * posty_webUI
+ *
+ * Copyright 2014 posty-soft.org
+ * Licensed under the LGPL v3
+ * https://www.gnu.org/licenses/lgpl.html
+ *
+ */
+-->
+<!doctype html>
+<html ng-app="postySoft" ng-controller="MainCtrl" ng-init="init()">  
+	<head>
+		<meta charset="utf-8">  
+		<title>postySoft - {{ Page.title() }}</title>  		
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap.css"/>	
+		<link rel="stylesheet"  type="text/css"href="./css/app.css"/>	
+
+		
+		<script src="./settings.js"></script>
+		<script data-main="./js/main" src="./components/requirejs/require.js"></script>
+		
+	</head>
+	<body class="body">		
+		<div ng-include="'./partials/partial_request_messages.html'"></div>
+		<div ng-include="'./partials/partial_process.html'"></div>
+		<div class="modalalt">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">					 
+					  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </a>					 
+					  <a href="#/view_dashboard" title=""><img class="brand" src="img/posty_logo.png" alt="logo" ng-click="postyIcon()"/></a>					  
+					  <ul class="nav pull-right">
+						<li class="divider-vertical"></li>
+						<li>
+							<br/>					
+							<p class="titlefont"><img ng-src="img/widget/{{ Page.title() | lowercase }}_min.png" alt="stat" /> {{ Page.title() }}</p>
+						</li>			
+					  </ul>								 
+					</div>
+				</div>
+			</div>		
+			
+			<div ng-view></div>
+		
+			<div class="modal-footer">
+				<div class="pull-right">
+					<img src="img/pimpmypostfix.png" alt="logo"/>
+				</div>
+				<div class="pull-left">
+					<a href="index.html" class="btn" ng-show="moreThanOneServer()" ng-click="changeServer()"><i class="icon-random icon-black"></i> change posty_API</a>
+				</div>
+			</div>					
+		</div>		
+	</body>
+</html>

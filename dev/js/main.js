@@ -1,5 +1,5 @@
 /*!
- * posty_webUI
+ * posty_webUI Main
  *
  * Copyright 2014 posty-soft.org
  * Licensed under the LGPL v3
