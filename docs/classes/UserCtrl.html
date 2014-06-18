@@ -61,7 +61,11 @@
             
                 <li><a href="../classes/ErrorCtrl.html">ErrorCtrl</a></li>
             
+                <li><a href="../classes/ErrorService.html">ErrorService</a></li>
+            
                 <li><a href="../classes/MainCtrl.html">MainCtrl</a></li>
+            
+                <li><a href="../classes/ModalService.html">ModalService</a></li>
             
                 <li><a href="../classes/NavBarCtrl.html">NavBarCtrl</a></li>
             
@@ -74,6 +78,10 @@
                 <li><a href="../classes/ProcessServiceProvider.html">ProcessServiceProvider</a></li>
             
                 <li><a href="../classes/ResponseHandler.html">ResponseHandler</a></li>
+            
+                <li><a href="../classes/SelectDomainService.html">SelectDomainService</a></li>
+            
+                <li><a href="../classes/SelectServerService.html">SelectServerService</a></li>
             
                 <li><a href="../classes/Servers.html">Servers</a></li>
             
@@ -140,7 +148,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/dev_js_controllers.js.html#l392"><code>dev\js\controllers.js:392</code></a>
+            Defined in: <a href="../files/dev_js_controllers.js.html#l440"><code>dev\js\controllers.js:440</code></a>
         </div>
     
 
@@ -188,6 +196,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_currentDomainChange">currentDomainChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_edit">edit</a>
 
                                 
@@ -195,7 +210,7 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getList">getList</a>
+                                <a href="#method_getDomain">getDomain</a>
 
                                 
                                 
@@ -277,7 +292,7 @@
             
         
         
-        <a href="../files/dev_js_controllers.js.html#l454"><code>dev\js\controllers.js:454</code></a>
+        <a href="../files/dev_js_controllers.js.html#l512"><code>dev\js\controllers.js:512</code></a>
         
         </p>
 
@@ -289,6 +304,61 @@
 
     <div class="description">
         <p>create a new domain</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_currentDomainChange" class="method item">
+    <h3 class="name"><code>currentDomainChange</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/dev_js_controllers.js.html#l447"><code>dev\js\controllers.js:447</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>on change Event for the Domains</p>
 
     </div>
 
@@ -342,7 +412,7 @@
             
         
         
-        <a href="../files/dev_js_controllers.js.html#l482"><code>dev\js\controllers.js:482</code></a>
+        <a href="../files/dev_js_controllers.js.html#l540"><code>dev\js\controllers.js:540</code></a>
         
         </p>
 
@@ -389,13 +459,17 @@
 </div>
 
                 
-                    <div id="method_getList" class="method item">
-    <h3 class="name"><code>getList</code></h3>
+                    <div id="method_getDomain" class="method item">
+    <h3 class="name"><code>getDomain</code></h3>
 
     
         <span class="paren">()</span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
     
 
     
@@ -421,62 +495,7 @@
             
         
         
-        <a href="../files/dev_js_controllers.js.html#l436"><code>dev\js\controllers.js:436</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>get the user List</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_getList" class="method item">
-    <h3 class="name"><code>getList</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/dev_js_controllers.js.html#l445"><code>dev\js\controllers.js:445</code></a>
+        <a href="../files/dev_js_controllers.js.html#l502"><code>dev\js\controllers.js:502</code></a>
         
         </p>
 
@@ -493,6 +512,93 @@
 
     
 
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>Returns the currentDomain</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getList" class="method item">
+    <h3 class="name"><code>getList</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/dev_js_controllers.js.html#l492"><code>dev\js\controllers.js:492</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>returns the list of the Users</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Array</span>:
+                    
+                    <p>Returns the list of the Users</p>
+
+                
+            </div>
+        </div>
     
 
     
@@ -531,7 +637,7 @@
             
         
         
-        <a href="../files/dev_js_controllers.js.html#l416"><code>dev\js\controllers.js:416</code></a>
+        <a href="../files/dev_js_controllers.js.html#l472"><code>dev\js\controllers.js:472</code></a>
         
         </p>
 
@@ -586,7 +692,7 @@
             
         
         
-        <a href="../files/dev_js_controllers.js.html#l427"><code>dev\js\controllers.js:427</code></a>
+        <a href="../files/dev_js_controllers.js.html#l483"><code>dev\js\controllers.js:483</code></a>
         
         </p>
 
@@ -651,7 +757,7 @@
             
         
         
-        <a href="../files/dev_js_controllers.js.html#l518"><code>dev\js\controllers.js:518</code></a>
+        <a href="../files/dev_js_controllers.js.html#l576"><code>dev\js\controllers.js:576</code></a>
         
         </p>
 

@@ -9,51 +9,38 @@
  */
 -->
 <div class="well well-large">
-	
-	<div ng-include="'partials/partial_navbar_dash.html'"></div>
-	<p></p>
-	
-	<h5>Mailserver Widgets <img src="img/widget/widget_min.png" /></h5>
-	<div class="well well-large">
-			<a href="#/view_user" class="btn tooltipnew dashboardButton">
-				<h6>User</h6><img src="img/widget/user_big.png" />
-				<span>
-					<img class="callout" src="img/callout_black.gif" />
-					Here you can create and edit Users <img src="img/widget/user_ico.png" />
-				</span>
-			</a>
-			<a href="#/view_domain" class="btn tooltipnew dashboardButton">
-				<h6>Domain</h6><img src="img/widget/domain_big.png" />
-				<span>
-					<img class="callout" src="img/callout_black.gif" />
-					Here you can create and edit Domain <img src="img/widget/domain_ico.png" alt="ico"/>
-				</span>
-			</a>
-			<a href="#/view_transport" class="btn tooltipnew dashboardButton">
-				<h6>Transport</h6><img src="img/widget/transport_big.png" />
-				<span>
-					<img class="callout" src="img/callout_black.gif" />
-					Here you can create and edit Domain <img src="img/widget/transport_ico.png" alt="ico"/>
-				</span>
-			</a>						
-	</div>
-	
-	<h5>Server Widgets <img src="img/widget/widget_min.png" /></h5>
-	<div class="well well-large">
-		<a href="#/view_summary" class="btn tooltipnew dashboardButton">
-			<h6>Summary</h6><img src="img/widget/summary_big.png" />
-			<span>
-				<img class="callout" src="img/callout_black.gif" />
-				Here you can create and edit Users <img src="img/widget/summary_ico.png" />
-			</span>
-		</a>
-		<a href="#/view_apikey" class="btn tooltipnew dashboardButton">
-			<h6>API Key</h6><img src="img/widget/apikey_big.png" />
-			<span>
-				<img class="callout" src="img/callout_black.gif" />
-				Here you can create and edit API Keys <img src="img/widget/apikey_ico.png" alt="ico"/>
-			</span>
-		</a>		
-	</div>	
+
+    <div ng-include="'partials/partial_navbar_dash.html'"></div>
+    <p></p>
+
+    <h5>Mailserver Widgets <img src="img/widget/widget_min.png"/></h5>
+
+    <div class="well well-large">
+        <a href="#/view_user" class="btn dashboardbutton" popover-placement="bottom" popover-trigger="mouseenter"
+           popover="Here you can create and edit Users">
+            <h6>User</h6><img src="img/widget/user_big.png"/>
+        </a>
+        <a href="#/view_domain" class="btn dashboardbutton" popover-placement="bottom" popover-trigger="mouseenter"
+           popover="Here you can create and edit Domains">
+            <h6>Domain</h6><img src="img/widget/domain_big.png"/>
+        </a>
+        <a href="#/view_transport" class="btn dashboardbutton" popover-placement="bottom" popover-trigger="mouseenter"
+           popover="Here you can create and edit Transports">
+            <h6>Transport</h6><img src="img/widget/transport_big.png"/>
+        </a>
+    </div>
+
+    <h5>Server Widgets <img src="img/widget/widget_min.png"/></h5>
+
+    <div class="well well-large">
+        <a href="#/view_summary" class="btn dashboardbutton" popover-placement="bottom" popover-trigger="mouseenter"
+           popover="Here you see the Summary">
+            <h6>Summary</h6><img src="img/widget/summary_big.png"/>
+        </a>
+        <a href="#/view_apikey" class="btn dashboardbutton" popover-placement="bottom" popover-trigger="mouseenter"
+           popover="Here you can create and edit API Keys">
+            <h6>API Key</h6><img src="img/widget/apikey_big.png"/>
+        </a>
+    </div>
 
 </div>

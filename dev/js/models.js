@@ -32,7 +32,8 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 	* @class Domains
 	*/
 	app.factory('Domains', ['Restangular', 'AlertService', function(Restangular, AlertService) {
-		var ALL_DOMAINS = {
+
+        var ALL_DOMAINS = {
 			name: "all Domains"
 		}; // const for the all-domain-selection
 
@@ -41,14 +42,14 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 		var realDataList = []; // list of all data before it is edited			
 		var observerList = []; // observer for sitching the current-domain
 
-		var notifyObservers = function() {
-			for (var i = 0; i < observerList.length; i++) {	
+		var notifyObservers = function() { // all observers will be notified
+			for (var i = 0; i < observerList.length; i++) {
 				observerList[i].update();
 			}
 		};
 
-		var containsObserver = function(observer) {
-			for (var i = 0; i < observerList.length; i++) {		 						 		
+		var containsObserver = function(observer) { // contains observer in the observerList (identifier: getName())
+			for (var i = 0; i < observerList.length; i++) {
 		 		if (observerList[i].getName() === observer.getName()) {
 		 			return true;		 			
 		 		}				 						 		
@@ -56,7 +57,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 	 		return false;
 		}
 
-		var refresh = function() {
+		var refresh = function() { // refreshes the Lists
 			list = [];			
 			realDataList = [];
 			var dao = Restangular.all('domains'); 
@@ -68,7 +69,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 			});		
 		};	
 
-		var oldDomainByID = function(id) {
+		var oldDomainByID = function(id) { // returns the old of a record via id.
 		 	for (var i = 0; i < realDataList.length; i++) {		 						 		
 		 		if (realDataList[i].virtual_domain.id == id) {
 		 			return realDataList[i].virtual_domain;
@@ -195,7 +196,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 			/**
 			* register observers for the currentDomain change event
 			*
-			* @method registerCurrentDommainObserver
+			* @method registerCurrentDomainObserver
 			* @param observer {Object} observer-Objecter with update-Method
 			*/			
 			registerCurrentDomainObserver: function(observer) {							
@@ -206,7 +207,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 			/**
 			* unregister observers for the currentDomain change event
 			*
-			* @method unregisterCurrentDommainObserver
+			* @method unregisterCurrentDomainObserver
 			* @param observer {Object} observer-Objecter with update-Method
 			*/			
 			unregisterCurrentDomainObserver: function(observer) {
@@ -226,9 +227,9 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 	app.factory('DomainAliasses', ['Restangular', 'AlertService', 'Domains', function(Restangular, AlertService, Domains) {
 		var list = [];	// list of all aliases
 
-		var domain = null;	
+		var domain = null; // domain member
 		
-		var refresh = function() {
+		var refresh = function() { // refreshes the lists
 			list = [];			
 			if (Domains.isValid(domain)) {  												
 				Restangular.one('domains',domain.name).all('aliases').getList().then(function(data) {										 	
@@ -322,7 +323,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
         var list = [];	// list of all transports
         var realDataList = []; // list of all data before it is edited
 
-        var refresh = function() {
+        var refresh = function() { // refreshes the lists
             list = [];
             realDataList = [];
             Restangular.all('transports').getList().then(function(data) {
@@ -333,7 +334,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
             });
         };
 
-        var oldItemByID = function(id) {
+        var oldItemByID = function(id) { // returns the old of a record via id.
             for (var i = 0; i < realDataList.length; i++) {
                 if (realDataList[i].virtual_transport.id == id) {
                     return realDataList[i].virtual_transport;
@@ -565,7 +566,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 		var domain = null;	
 		var user = null;
 		
-		var refresh = function() {
+		var refresh = function() { // refreshes the lists
 			list = [];	
 			if (Domains.isValid(domain) && Users.isValid(user)) { 
 				Restangular.one('domains',domain.name).one('users',user.name).all('aliases').getList().then(function(data) {									 	
@@ -677,7 +678,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
 	app.factory('Summaries', ['Restangular', function(Restangular) {
 		var list = [];
 		
-		var refresh = function() {			
+		var refresh = function() { // refreshes the lists
 			list = [];		
 			Restangular.all('summary').getList().then(function(items) {	
 				angular.forEach(items, function(item){
@@ -721,7 +722,7 @@ define(['angular', 'restangular'], function (angular, Restangular) {
         var list = [];	// list of all api-keys
         var realDataList = []; // list of all data before it is edited
 
-        var refresh = function() {
+        var refresh = function() { // refreshes the lists
             list = [];
             realDataList = [];
             Restangular.all('api_keys').getList().then(function(data) {
@@ -824,6 +825,5 @@ define(['angular', 'restangular'], function (angular, Restangular) {
             	return date-today<0;
             }
         };
-    }]);	
-
+    }]);
 });

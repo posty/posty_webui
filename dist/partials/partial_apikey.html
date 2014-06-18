@@ -4,20 +4,26 @@
                 <h3 class="modal-title">New Api-Key</h3>
             </div>
             <div class="modal-body">
-               <!-- Expires at -->
-               <div class="control-group">
-                  <label class="control-label" for="name">Expires at: <img src="img/widget/transport_ico.png" alt="ico"/></label>
-                  <div class="controls" dateclick>  
-                     <input type="text" ng-required="true" name="expires_at" id="expires_at" ng-model="data.expires_at" focus="true" placeholder="1.1.2014" datepicker-popup="" is-open="dateIsOpen" ng-click="openCalendar($event)"/>
+                <!-- Expires at -->
+                <div class="control-group">
+                    <label class="control-label" for="name">Expires at: <img src="img/widget/transport_ico.png"
+                                                                             alt="ico"/></label>
+
+                    <div class="controls" dateclick>
+                        <input type="text" ng-required="true" name="expires_at" id="expires_at"
+                               ng-model="data.expires_at" focus="true" placeholder="1.1.2014" datepicker-popup=""
+                               is-open="dateIsOpen" ng-click="openCalendar($event)"/>
                     <span class="input-group-btn">
-                      <button class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      <button class="btn btn-default" ng-click="openCalendar($event)"><i
+                              class="glyphicon glyphicon-calendar"></i></button>
                     </span>
-                  </div>   
-               </div>
-               <!-- end Expires at -->
+                    </div>
+                </div>
+                <!-- end Expires at -->
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" ng-click="modalOptions.ok(data)" ng-disabled='!form.$valid'>Save<i class="icon-ok icon-white"></i></button>
+                <button class="btn btn-success" ng-click="modalOptions.ok(data)" ng-disabled='!form.$valid'>Save<i
+                        class="icon-ok icon-white"></i></button>
                 <button class="btn" ng-click="modalOptions.close()">Cancel</button>
             </div>
         </form></script><script type="text/ng-template" id="editView.html"><form name='form'>
@@ -26,41 +32,53 @@
                 <h3 class="modal-title">Edit Api-Key</h3>
             </div>
             <div class="modal-body">
-               <!-- Access Token -->
-               <div class="control-group">
-                  <label class="control-label" for="name">Access token: <img src="img/widget/domain_ico.png" alt="ico"/></label>
-                  <div class="controls">                     
-                     <input type="text" ng-required="true" name="access_token" id="access_token" readonly="true" ng-model="data.access_token" placeholder="api-key">
-                  </div>
-               </div>
-               <!-- end Access Token --> 
-               <!-- Expires at -->
-               <div class="control-group">
-                  <label class="control-label" for="name">Expires at: <img src="img/widget/apikey_ico.png" alt="ico"/></label>
-                  <div class="controls" dateclick>  
-                     <input type="text" ng-required="true" name="expires_at" id="expires_at" ng-model="data.expires_at" focus="true" placeholder="1.1.2014" datepicker-popup="" is-open="dateIsOpen" ng-click="openCalendar($event)"/>
+                <!-- Access Token -->
+                <div class="control-group">
+                    <label class="control-label" for="name">Access token: <img src="img/widget/domain_ico.png"
+                                                                               alt="ico"/></label>
+
+                    <div class="controls">
+                        <input type="text" ng-required="true" name="access_token" id="access_token" readonly="true"
+                               ng-model="data.access_token" placeholder="api-key">
+                    </div>
+                </div>
+                <!-- end Access Token -->
+                <!-- Expires at -->
+                <div class="control-group">
+                    <label class="control-label" for="name">Expires at: <img src="img/widget/apikey_ico.png" alt="ico"/></label>
+
+                    <div class="controls" dateclick>
+                        <input type="text" ng-required="true" name="expires_at" id="expires_at"
+                               ng-model="data.expires_at" focus="true" placeholder="1.1.2014" datepicker-popup=""
+                               is-open="dateIsOpen" ng-click="openCalendar($event)"/>
                     <span class="input-group-btn">
-                      <button class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      <button class="btn btn-default" ng-click="openCalendar($event)"><i
+                              class="glyphicon glyphicon-calendar"></i></button>
                     </span>
-                  </div>
-               </div>
-               <!-- end Expires at -->               
-               <!-- Active -->
-               <div class="control-group">
-                  <label class="control-label" for="name">Active: <img src="img/widget/active_ico.png" alt="ico"/></label>
-                  <div class="controls">
-                     <div ng-if="data.active">
-                         <button type="button" class="btn btn-info" ng-model="data.active" btn-checkbox >Active</button>
-                     </div>
-                     <div ng-if="!data.active">
-                         <button type="button" class="btn btn-danger" ng-model="data.active" btn-checkbox >Inactive</button>
-                     </div>                  
-                  </div>
-               </div>
-               <!-- end Active -->
+                    </div>
+                </div>
+                <!-- end Expires at -->
+                <!-- Active -->
+                <div class="control-group">
+                    <label class="control-label" for="name">Active: <img src="img/widget/active_ico.png"
+                                                                         alt="ico"/></label>
+
+                    <div class="controls">
+                        <div ng-if="data.active">
+                            <button type="button" class="btn btn-info" ng-model="data.active" btn-checkbox>Active
+                            </button>
+                        </div>
+                        <div ng-if="!data.active">
+                            <button type="button" class="btn btn-danger" ng-model="data.active" btn-checkbox>Inactive
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- end Active -->
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" ng-click="modalOptions.ok(data)" ng-disabled='!form.$valid'>Save<i class="icon-ok icon-white"></i></button>
+                <button class="btn btn-success" ng-click="modalOptions.ok(data)" ng-disabled='!form.$valid'>Save<i
+                        class="icon-ok icon-white"></i></button>
                 <button class="btn" ng-click="modalOptions.close()">Cancel</button>
             </div>
         </form></script></div>

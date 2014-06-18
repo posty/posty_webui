@@ -61,7 +61,11 @@
             
                 <li><a href="../classes/ErrorCtrl.html">ErrorCtrl</a></li>
             
+                <li><a href="../classes/ErrorService.html">ErrorService</a></li>
+            
                 <li><a href="../classes/MainCtrl.html">MainCtrl</a></li>
+            
+                <li><a href="../classes/ModalService.html">ModalService</a></li>
             
                 <li><a href="../classes/NavBarCtrl.html">NavBarCtrl</a></li>
             
@@ -74,6 +78,10 @@
                 <li><a href="../classes/ProcessServiceProvider.html">ProcessServiceProvider</a></li>
             
                 <li><a href="../classes/ResponseHandler.html">ResponseHandler</a></li>
+            
+                <li><a href="../classes/SelectDomainService.html">SelectDomainService</a></li>
+            
+                <li><a href="../classes/SelectServerService.html">SelectServerService</a></li>
             
                 <li><a href="../classes/Servers.html">Servers</a></li>
             
@@ -140,7 +148,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/dev_js_services.js.html#l196"><code>dev\js\services.js:196</code></a>
+            Defined in: <a href="../files/dev_js_services.js.html#l211"><code>dev\js\services.js:211</code></a>
         </div>
     
 
@@ -152,7 +160,8 @@
 
 
 <div class="box intro">
-    <p>Servers</p>
+    <p>central Server-model.
+This Service contains the available Servers and operations on it</p>
 
 </div>
 
@@ -202,13 +211,6 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_isLoading">isLoading</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#method_isValid">isValid</a>
 
                                 
@@ -223,13 +225,6 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_register">register</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#method_remove">remove</a>
 
                                 
@@ -238,13 +233,6 @@
                         
                             <li class="index-item method">
                                 <a href="#method_setCurrentServer">setCurrentServer</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_unregister">unregister</a>
 
                                 
                                 
@@ -308,7 +296,7 @@
             
         
         
-        <a href="../files/dev_js_services.js.html#l212"><code>dev\js\services.js:212</code></a>
+        <a href="../files/dev_js_services.js.html#l228"><code>dev\js\services.js:228</code></a>
         
         </p>
 
@@ -319,7 +307,7 @@
     </div>
 
     <div class="description">
-        <p>register observers for the currentDomain change event</p>
+        <p>adds a server</p>
 
     </div>
 
@@ -391,7 +379,7 @@
             
         
         
-        <a href="../files/dev_js_services.js.html#l234"><code>dev\js\services.js:234</code></a>
+        <a href="../files/dev_js_services.js.html#l249"><code>dev\js\services.js:249</code></a>
         
         </p>
 
@@ -464,7 +452,7 @@
             
         
         
-        <a href="../files/dev_js_services.js.html#l257"><code>dev\js\services.js:257</code></a>
+        <a href="../files/dev_js_services.js.html#l271"><code>dev\js\services.js:271</code></a>
         
         </p>
 
@@ -475,7 +463,7 @@
     </div>
 
     <div class="description">
-        <p>get the list of all api-keys</p>
+        <p>get the list of all servers</p>
 
     </div>
 
@@ -491,79 +479,6 @@
                         <span class="type">Array</span>:
                     
                     <p>Returns list-member</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_isLoading" class="method item">
-    <h3 class="name"><code>isLoading</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/dev_js_services.js.html#l349"><code>dev\js\services.js:349</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>refers if the stack is full or not</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>true if the stack is not empty</p>
 
                 
             </div>
@@ -610,7 +525,7 @@
             
         
         
-        <a href="../files/dev_js_services.js.html#l277"><code>dev\js\services.js:277</code></a>
+        <a href="../files/dev_js_services.js.html#l289"><code>dev\js\services.js:289</code></a>
         
         </p>
 
@@ -683,7 +598,7 @@
             
         
         
-        <a href="../files/dev_js_services.js.html#l267"><code>dev\js\services.js:267</code></a>
+        <a href="../files/dev_js_services.js.html#l280"><code>dev\js\services.js:280</code></a>
         
         </p>
 
@@ -714,61 +629,6 @@
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_register" class="method item">
-    <h3 class="name"><code>register</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/dev_js_services.js.html#l331"><code>dev\js\services.js:331</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>pushes the process-stack</p>
-
-    </div>
-
-    
-
     
 
     
@@ -817,7 +677,7 @@
             
         
         
-        <a href="../files/dev_js_services.js.html#l221"><code>dev\js\services.js:221</code></a>
+        <a href="../files/dev_js_services.js.html#l237"><code>dev\js\services.js:237</code></a>
         
         </p>
 
@@ -828,7 +688,7 @@
     </div>
 
     <div class="description">
-        <p>unregister observers for the currentDomain change event</p>
+        <p>removes a server</p>
 
     </div>
 
@@ -906,7 +766,7 @@
             
         
         
-        <a href="../files/dev_js_services.js.html#l243"><code>dev\js\services.js:243</code></a>
+        <a href="../files/dev_js_services.js.html#l258"><code>dev\js\services.js:258</code></a>
         
         </p>
 
@@ -945,61 +805,6 @@
             
             </ul>
         </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_unregister" class="method item">
-    <h3 class="name"><code>unregister</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/dev_js_services.js.html#l340"><code>dev\js\services.js:340</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>pops an element fromt the process-stack</p>
-
-    </div>
-
     
 
     

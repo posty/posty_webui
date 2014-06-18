@@ -1,22 +1,21 @@
 {
-  "name": "postySoft",
-  "version": "2.0.0",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "components"
-  ],
-  "devDependencies": {
-    "angular": "~1.2.1",
-    "angular-scenario": "~1.2.1",
-    "angular-route": "~1.2.1",
-    "angular-mocks": "~1.2.1",
-    "requirejs": "~2.1.9",
-    "requirejs-text": "~2.0.10",
-    "restangular": "~1.4.0",
-    "underscore": "~1.6.0",
-	"angular-bootstrap": "~0.11.0",
-	"d3": "~3.4.8"
-	
-  }
+    "name": "postySoft",
+    "version": "2.0.0",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "components"
+    ],
+    "devDependencies": {
+        "angular": "~1.2.19",
+        "angular-scenario": "~1.2.19",
+        "angular-route": "~1.2.19",
+        "angular-mocks": "~1.2.19",
+        "requirejs": "~2.1.14",
+        "requirejs-text": "~2.0.12",
+        "restangular": "~1.4.0",
+        "underscore": "~1.6.0",
+        "angular-bootstrap": "~0.11.0",
+        "d3": "~3.4.8"
+    }
 }

@@ -61,7 +61,11 @@
             
                 <li><a href="../classes/ErrorCtrl.html">ErrorCtrl</a></li>
             
+                <li><a href="../classes/ErrorService.html">ErrorService</a></li>
+            
                 <li><a href="../classes/MainCtrl.html">MainCtrl</a></li>
+            
+                <li><a href="../classes/ModalService.html">ModalService</a></li>
             
                 <li><a href="../classes/NavBarCtrl.html">NavBarCtrl</a></li>
             
@@ -74,6 +78,10 @@
                 <li><a href="../classes/ProcessServiceProvider.html">ProcessServiceProvider</a></li>
             
                 <li><a href="../classes/ResponseHandler.html">ResponseHandler</a></li>
+            
+                <li><a href="../classes/SelectDomainService.html">SelectDomainService</a></li>
+            
+                <li><a href="../classes/SelectServerService.html">SelectServerService</a></li>
             
                 <li><a href="../classes/Servers.html">Servers</a></li>
             
@@ -145,282 +153,329 @@
  *
  */
 define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services) {
-	&#x27;use strict&#x27;;
+    &#x27;use strict&#x27;;
 
-	/* Controllers */
-	
-	var app = angular.module(&#x27;postySoft.controllers&#x27;, [&#x27;postySoft.services&#x27;, &#x27;postySoft.configurations&#x27;, &#x27;ui.bootstrap&#x27;]);
-	
-	
-	/**
-	* main-view-controller. first controller which will be instanced 
-	*
-	* @class MainCtrl
-	*/		
-	app.controller(&#x27;MainCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;$rootScope&#x27;, &#x27;Page&#x27;, &#x27;Domains&#x27;, &#x27;Servers&#x27;, &#x27;SelectServerService&#x27; ,&#x27;ProcessService&#x27; ,&#x27;AlertService&#x27;, &#x27;CONFIGS&#x27;, function ($scope, $rootScope, Page, Domains, Servers, SelectServerService, ProcessService, AlertService, CONFIGS) {
-		
-        var initServer = function() {                        
+    /* Controllers */
+
+    var app = angular.module(&#x27;postySoft.controllers&#x27;, [&#x27;postySoft.services&#x27;, &#x27;postySoft.configurations&#x27;, &#x27;ui.bootstrap&#x27;]);
+
+
+    /**
+     * main-view-controller. first controller which will be instanced
+     *
+     * @class MainCtrl
+     */
+    app.controller(&#x27;MainCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;$rootScope&#x27;, &#x27;Page&#x27;, &#x27;Domains&#x27;, &#x27;Servers&#x27;, &#x27;SelectServerService&#x27; , &#x27;ProcessService&#x27; , &#x27;AlertService&#x27;, &#x27;CONFIGS&#x27;, function ($scope, $rootScope, Page, Domains, Servers, SelectServerService, ProcessService, AlertService, CONFIGS) {
+
+        /**
+         * sets the new Server from the Selection-View and refreshes the app.
+         *
+         * @method initServer
+         */
+        var initServer = function () {
             var selectServer = SelectServerService.show();
-            selectServer.result.then(function (server) {                               
+            selectServer.result.then(function (server) {
                 Servers.setCurrentServer(server);
                 Domains.refresh();
-            });            
-        };  
+            });
+        };
 
-        $rootScope.init = function() {            
-			$scope = $rootScope;
-			$scope.Page = Page;
-			$scope.ProcessService = ProcessService;
+        /**
+         * initialises the Services which will be need in all scopes
+         *
+         * @method init
+         */
+        $rootScope.init = function () {
+            $scope = $rootScope;
+            $scope.Page = Page;
+            $scope.ProcessService = ProcessService;
             $scope.AlertService = AlertService;
             $scope.CONFIGS = CONFIGS;
             if (Servers.moreThanOneServer()) {
-                initServer();    
+                initServer();
             } else {
                 Domains.refresh();
             }
-
-		};					                                
-
-        $rootScope.postyIcon = function() {            
-             Domains.refresh();
-        };                                                  
-
-
-        $rootScope.changeServer = function() {            
-            initServer();
-        };                                                          
-
-        $rootScope.moreThanOneServer = function() {            
-            return Servers.moreThanOneServer();
-        };                                                          
-
-	}]);
-
-    /**
-    * view-controller for the errors
-    *
-    * @class ErrorCtrl
-    */
-    app.controller(&#x27;ErrorCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;Page&#x27;, &#x27;ErrorService&#x27;, function ($scope, Page, ErrorService) {              
+        };
 
         /**
-        * initialises the controller-data
-        *
-        * @method init  
-        */  
-        $scope.init = function() {      
-            Page.setTitle(&#x27;Error&#x27;);                                    
-        };        
+         * click-event for the postyIcon
+         *
+         * @method postyIcon
+         */
+        $rootScope.postyIcon = function () {
+            Domains.refresh();
+        };
 
-        $scope.getStatusCode = function() {            
+        /**
+         * click-event to change the Server
+         *
+         * @method changeServer
+         */
+        $rootScope.changeServer = function () {
+            initServer();
+        };
+
+        /**
+         * click-event to change the Server
+         *
+         * @method changeServer
+         * @return {Boolean} Returns true if there is more than one Server registered
+         */
+        $rootScope.moreThanOneServer = function () {
+            return Servers.moreThanOneServer();
+        };
+    }]);
+
+    /**
+     * view-controller for the errors
+     *
+     * @class ErrorCtrl
+     */
+    app.controller(&#x27;ErrorCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;Page&#x27;, &#x27;ErrorService&#x27;, function ($scope, Page, ErrorService) {
+
+        /**
+         * initialises the controller-data
+         *
+         * @method init
+         */
+        $scope.init = function () {
+            Page.setTitle(&#x27;Error&#x27;);
+        };
+
+        /**
+         * returns the status-code of the Errror-Service
+         *
+         * @method getStatusCode
+         * @return {Boolean} Returns the status-code of the Errror-Service
+         */
+        $scope.getStatusCode = function () {
             return ErrorService.getStatusCode();
         };
 
-        $scope.getMessage = function() {            
+        /**
+         * returns the message of the Errror-Service
+         *
+         * @method getStatusCode
+         * @return {Boolean} Returns the message of the Errror-Service
+         */
+        $scope.getMessage = function () {
             return ErrorService.getMessage();
         };
+    }]);
 
-    }]);    
+    /**
+     * view-controller for the process-service
+     *
+     * @class ProcessCtrl
+     */
+    app.controller(&#x27;ProcessCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;ProcessService&#x27;, function ($scope, ProcessService) {
+    }]);
 
-	/**
-	* view-controller for the process-service
-	*
-	* @class ProcessCtrl
-	*/
-	app.controller(&#x27;ProcessCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;ProcessService&#x27;, function ($scope, ProcessService) {				
-	}]);
+    /**
+     * view-controller for the alert-service
+     *
+     * @class AlertCtrl
+     */
+    app.controller(&#x27;AlertCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;AlertService&#x27;, function ($scope, AlertService) {
+    }]);
 
-	/**
-	* view-controller for the alert-service
-	*
-	* @class AlertCtrl
-	*/
-	app.controller(&#x27;AlertCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;AlertService&#x27;, function ($scope, AlertService) {				
-	}]);
-			
-	/**
-	* view-controller for the dashboard
-	*
-	* @class DashboardCtrl
-	*/
-	app.controller(&#x27;DashboardCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;Page&#x27;, function ($scope, Page) {
-		Page.setTitle(&#x27;Dashboard&#x27;);						
-	}]);
+    /**
+     * view-controller for the dashboard
+     *
+     * @class DashboardCtrl
+     */
+    app.controller(&#x27;DashboardCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;Page&#x27;, function ($scope, Page) {
+        Page.setTitle(&#x27;Dashboard&#x27;);
+    }]);
 
-	/**
-	* view-controller for the navbar
-	*
-	* @class NavBarCtrl
-	*/
-	app.controller(&#x27;NavBarCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;Domains&#x27;, function ($scope, Domains) {
-		$scope.getDomainList = function() {		
-			return Domains.getList();
-		};
+    /**
+     * view-controller for the navbar
+     *
+     * @class NavBarCtrl
+     */
+    app.controller(&#x27;NavBarCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;Domains&#x27;, function ($scope, Domains) {
+        $scope.getDomainList = function () {
+            return Domains.getList();
+        };
 
-		$scope.getCurrentDomain = function() {		
-			return Domains.currentDomain();
-		};
+        $scope.getCurrentDomain = function () {
+            return Domains.currentDomain();
+        };
 
-        $scope.setCurrentDomainToAll = function() {
+        $scope.setCurrentDomainToAll = function () {
             return Domains.setCurrentDomain(Domains.ALL_DOMAINS);
         };
 
-		$scope.setCurrentDomain = function(domain) {		
-			return Domains.setCurrentDomain(domain);
-		};										
-	}]);				
+        $scope.setCurrentDomain = function (domain) {
+            return Domains.setCurrentDomain(domain);
+        };
+    }]);
 
-	/**
-	* Message-Class to transfer data between the domain-Ctrl
-	*
-	* @class DomainData
-	*/
-	app.factory(&#x27;DomainData&#x27;, function() {
-		return {domain: null};
-	});		
+    /**
+     * Message-Class to transfer data between the domain-Ctrl
+     *
+     * @class DomainData
+     */
+    app.factory(&#x27;DomainData&#x27;, function () {
+        return {domain: null};
+    });
 
-	/**
-	* view-controller for the domains
-	*
-	* @class DomainCtrl
-	*/
-	app.controller(&#x27;DomainCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;ModalService&#x27;, &#x27;Page&#x27;, &#x27;Domains&#x27;, &#x27;DomainData&#x27;, function ($scope, ModalService, Page, Domains, DomainData) {
-		/**
-		* initialises the controller-data
-		*
-		* @method init	
-		*/	
-		$scope.init = function() {		
-			Page.setTitle(&#x27;Domain&#x27;);									
-		};
+    /**
+     * view-controller for the domains
+     *
+     * @class DomainCtrl
+     */
+    app.controller(&#x27;DomainCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;ModalService&#x27;, &#x27;Page&#x27;, &#x27;Domains&#x27;, &#x27;DomainData&#x27;, function ($scope, ModalService, Page, Domains, DomainData) {
+        /**
+         * initialises the controller-data
+         *
+         * @method init
+         */
+        $scope.init = function () {
+            Page.setTitle(&#x27;Domain&#x27;);
+        };
 
         /**
-         * get the domain List
+         * returns the list of the Domains.
+         * If not allDomains then the list is filled with the currentDomain.
          *
          * @method getList
+         * @return {Array} Returns the list of the Domains
          */
-		$scope.getList = function() {	
-			if (!Domains.allDomainsSelected()) {
-				var list = [];
-				list.push(Domains.currentDomain());
-				return list;
-			} else {					
-				return Domains.getList();
-			}
-		};				
+        $scope.getList = function () {
+            if (!Domains.allDomainsSelected()) {
+                var list = [];
+                list.push(Domains.currentDomain());
+                return list;
+            } else {
+                return Domains.getList();
+            }
+        };
 
-		/**
-		* create a new domain
-		*
-		* @method create				
-		*/		
-		$scope.create = function() {				
-			var modalDefaults = {					
-				templateUrl: &#x27;createView.html&#x27;,
-				resolve: {
-					data: function () {
-						return { name: &quot;&quot; };
-					}
-				}  									
-			};				
-	        var modalInstance = ModalService.show(modalDefaults, {});
-			modalInstance.result.then(function (data) {	
-				var item = {name: data.name};
+        /**
+         * create a new domain
+         *
+         * @method create
+         */
+        $scope.create = function () {
+            var modalDefaults = {
+                templateUrl: &#x27;createView.html&#x27;,
+                resolve: {
+                    data: function () {
+                        return { name: &quot;&quot; };
+                    }
+                }
+            };
+            var modalInstance = ModalService.show(modalDefaults, {});
+            modalInstance.result.then(function (data) {
+                var item = {name: data.name};
                 Domains.create(item);
-			});				
-		};
-		
-		/**
-		* edit an existing domain
-		*
-		* @method edit	
-		* @param domain {Object} domain-object
-		*/		
-		$scope.edit = function(domain) {				
-			DomainData.domain = domain;			
-			var modalDefaults = {					
-				templateUrl: &#x27;editView.html&#x27;,
-				resolve: {
-					data: function () {
-						return { domain: domain };
-					}
-				}  									
-			};					
-			var modalOptions = {
-				activeTab: &#x27;general&#x27;,							
-	            tabClick: function (type) {
-	            	this.activeTab = type;			            	
-	            }
-	        };			
-	        var modalInstance = ModalService.show(modalDefaults, modalOptions);
-			modalInstance.result.then(function (data) {
+            });
+        };
+
+        /**
+         * edit an existing domain
+         *
+         * @method edit
+         * @param domain {Object} domain-object
+         */
+        $scope.edit = function (domain) {
+            DomainData.domain = domain;
+            var modalDefaults = {
+                templateUrl: &#x27;editView.html&#x27;,
+                resolve: {
+                    data: function () {
+                        return { domain: domain };
+                    }
+                }
+            };
+            var modalOptions = {
+                activeTab: &#x27;general&#x27;,
+                tabClick: function (type) {
+                    this.activeTab = type;
+                }
+            };
+            var modalInstance = ModalService.show(modalDefaults, modalOptions);
+            modalInstance.result.then(function (data) {
                 Domains.edit(data.domain);
-			});		
-		};	
+            });
+        };
 
-		/**
-		* remove an existing domain
-		*
-		* @method remove	
-		* @param domain {Object} domain-object
-		*/	
-		$scope.remove = function(domain) {	
-	        var modalOptions = {		            
-	            actionButtonText: &#x27;Confirm&#x27;,
-	            headerText: &#x27;Delete domain?&#x27;,
-	            bodyText: &#x27;Are you sure you want to delete the domain &quot;&#x27;+domain.name+&#x27;&quot;?&#x27;
-	        };
-	        var modalInstance = ModalService.show({}, modalOptions);
-			modalInstance.result.then(function (data) {
+        /**
+         * remove an existing domain
+         *
+         * @method remove
+         * @param domain {Object} domain-object
+         */
+        $scope.remove = function (domain) {
+            var modalOptions = {
+                actionButtonText: &#x27;Confirm&#x27;,
+                headerText: &#x27;Delete domain?&#x27;,
+                bodyText: &#x27;Are you sure you want to delete the domain &quot;&#x27; + domain.name + &#x27;&quot;?&#x27;
+            };
+            var modalInstance = ModalService.show({}, modalOptions);
+            modalInstance.result.then(function (data) {
                 Domains.remove(domain);
-			});
-		};								
-	}]);
-	
-	app.controller(&#x27;DomainAliasCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;DomainAliasses&#x27;, &#x27;DomainData&#x27;, function ($scope, DomainAliasses, DomainData) {
+            });
+        };
+    }]);
 
-		var emptyView = function() {
-			$scope.alias = {
-				name: &quot;&quot;
-			};
-		}			
+    app.controller(&#x27;DomainAliasCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;DomainAliasses&#x27;, &#x27;DomainData&#x27;, function ($scope, DomainAliasses, DomainData) {
 
-		/**
-		* initialises the controller-data
-		*
-		* @method init	
-		*/	
-		$scope.init = function() {
+        /**
+         * clears the view
+         *
+         * @method emptyView
+         */
+        var emptyView = function () {
+            $scope.alias = {
+                name: &quot;&quot;
+            };
+        }
+
+        /**
+         * initialises the controller-data
+         *
+         * @method init
+         */
+        $scope.init = function () {
             DomainAliasses.setDomain(DomainData.domain);
             DomainAliasses.refresh();
-			emptyView();
-		};
+            emptyView();
+        };
 
-		$scope.getList = function() {		
-			return DomainAliasses.getList();
-		};				
+        /**
+         * returns the list of the DomainAliasses
+         *
+         * @method getList
+         * @return {Array} Returns the list of the DomainAliasses
+         */
+        $scope.getList = function () {
+            return DomainAliasses.getList();
+        };
 
-		/**
-		* create a new alias
-		*
-		* @method create	
-		* @param domain {Object} alais-object			
-		*/		
-		$scope.create = function(alias) {
+        /**
+         * create a new alias
+         *
+         * @method create
+         * @param domain {Object} alais-object
+         */
+        $scope.create = function (alias) {
             DomainAliasses.create(alias);
-			emptyView();
-		};	
+            emptyView();
+        };
 
-		/**
-		* remove an existing alias
-		*
-		* @method remove	
-		* @param alias {Object} alias-object
-		*/	
-		$scope.remove = function(alias) {
+        /**
+         * remove an existing alias
+         *
+         * @method remove
+         * @param alias {Object} alias-object
+         */
+        $scope.remove = function (alias) {
             DomainAliasses.remove(alias);
-		};
-	}]);
+        };
+    }]);
 
     /**
      * view-controller for the transports
@@ -433,17 +488,18 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          *
          * @method init
          */
-        $scope.init = function() {
+        $scope.init = function () {
             Page.setTitle(&#x27;Transport&#x27;);
             Transports.refresh();
         };
 
         /**
-         * get the transport List
+         * returns the list of the Transports
          *
          * @method getList
+         * @return {Array} Returns the list of the Transports
          */
-        $scope.getList = function() {
+        $scope.getList = function () {
             return Transports.getList();
         };
 
@@ -452,7 +508,7 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          *
          * @method create
          */
-        $scope.create = function() {
+        $scope.create = function () {
             var modalDefaults = {
                 templateUrl: &#x27;createView.html&#x27;,
                 resolve: {
@@ -480,7 +536,7 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          * @method edit
          * @param transport {Object} transport-object
          */
-        $scope.edit = function(transport) {
+        $scope.edit = function (transport) {
             var modalDefaults = {
                 templateUrl: &#x27;editView.html&#x27;,
                 resolve: {
@@ -502,11 +558,11 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          * @method remove
          * @param domain {Object} transport-object
          */
-        $scope.remove = function(transport) {
+        $scope.remove = function (transport) {
             var modalOptions = {
                 actionButtonText: &#x27;Confirm&#x27;,
                 headerText: &#x27;Delete transport?&#x27;,
-                bodyText: &#x27;Are you sure you want to delete the transport &quot;&#x27;+transport.name+&#x27;&quot;?&#x27;
+                bodyText: &#x27;Are you sure you want to delete the transport &quot;&#x27; + transport.name + &#x27;&quot;?&#x27;
             };
             var modalInstance = ModalService.show({}, modalOptions);
             modalInstance.result.then(function (data) {
@@ -516,11 +572,11 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
     }]);
 
     /**
-    * Message-Class to transfer data between the user-Ctrl
-    *
-    * @class UserData
-    */
-    app.factory(&#x27;UserData&#x27;, function() {
+     * Message-Class to transfer data between the user-Ctrl
+     *
+     * @class UserData
+     */
+    app.factory(&#x27;UserData&#x27;, function () {
         return {
             domain: null,
             user: null
@@ -532,60 +588,70 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
      *
      * @class UserCtrl
      */
-    app.controller(&#x27;UserCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;SelectDomainService&#x27;, &#x27;ModalService&#x27;, &#x27;Page&#x27;, &#x27;Users&#x27;, &#x27;Domains&#x27;, &#x27;UserData&#x27;,  function ($scope, SelectDomainService, ModalService, Page, Users, Domains, UserData) {
+    app.controller(&#x27;UserCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;SelectDomainService&#x27;, &#x27;ModalService&#x27;, &#x27;Page&#x27;, &#x27;Users&#x27;, &#x27;Domains&#x27;, &#x27;UserData&#x27;, function ($scope, SelectDomainService, ModalService, Page, Users, Domains, UserData) {
 
-        var currentDomainChange = function() {
+        /**
+         * on change Event for the Domains
+         *
+         * @method currentDomainChange
+         */
+        var currentDomainChange = function () {
             if (Domains.currentDomain() === Domains.ALL_DOMAINS) {
                 var selectDomain = SelectDomainService.show();
-                selectDomain.result.then(function (domain) {               
+                selectDomain.result.then(function (domain) {
                     Domains.setCurrentDomain(domain);
+                    console.log(domain);
                 });
             }
+            console.log(&quot;test&quot;);
             Users.setDomain(Domains.currentDomain());
             Users.refresh();
-        } 
+        }
 
         var observer = {
             update: currentDomainChange,
-            getName: function() {
-               return &quot;UserCtrl&quot;;
+            getName: function () {
+                return &quot;UserCtrl&quot;;
             }
         }
+
         /**
          * initialises the controller-data
          *
          * @method init
          */
-        $scope.init = function() {
+        $scope.init = function () {
             Page.setTitle(&#x27;User&#x27;);
-            currentDomainChange();                        
+            currentDomainChange();
             Domains.registerCurrentDomainObserver(observer);
-         };
+        };
 
         /**
          * destroys the controller-data
          *
          * @method onDestroy
          */
-        $scope.$on(&#x27;$destroy&#x27;, function() {
+        $scope.$on(&#x27;$destroy&#x27;, function () {
             Domains.unregisterCurrentDomainObserver(observer);
         });
 
         /**
-         * get the user List
+         * returns the list of the Users
          *
          * @method getList
+         * @return {Array} Returns the list of the Users
          */
-        $scope.getList = function() {
+        $scope.getList = function () {
             return Users.getList();
         };
 
         /**
          * get the current domain
          *
-         * @method getList
+         * @method getDomain
+         * @return {Object} Returns the currentDomain
          */
-        $scope.getDomain = function() {
+        $scope.getDomain = function () {
             return Domains.currentDomain();
         };
 
@@ -594,7 +660,7 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          *
          * @method create
          */
-        $scope.create = function() {
+        $scope.create = function () {
             var modalDefaults = {
                 templateUrl: &#x27;createView.html&#x27;,
                 resolve: {
@@ -607,13 +673,13 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
                 }
             };
             var modalInstance = ModalService.show(modalDefaults, {});
-            modalInstance.result.then(function (data) {               
+            modalInstance.result.then(function (data) {
                 var item = {
                     name: data.user.name,
                     password: data.user.password,
                     quota: data.user.quota * 1024 * 1024
                 };
-                Users.create(item);                
+                Users.create(item);
             });
         };
 
@@ -623,7 +689,7 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          * @method edit
          * @param user {Object} user-object
          */
-        $scope.edit = function(user) {
+        $scope.edit = function (user) {
             UserData.domain = Domains.currentDomain();
             UserData.user = user;
             var modalDefaults = {
@@ -643,7 +709,7 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
                     this.activeTab = type;
                 },
                 passwordChanged: false,
-                newPasswordKeyPress: function(password) {
+                newPasswordKeyPress: function (password) {
                     this.passwordChanged = (password != &#x27;&#x27;);
                 }
             };
@@ -659,11 +725,11 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          * @method remove
          * @param user {Object} user-object
          */
-        $scope.remove = function(user) {
+        $scope.remove = function (user) {
             var modalOptions = {
                 actionButtonText: &#x27;Confirm&#x27;,
                 headerText: &#x27;Delete user?&#x27;,
-                bodyText: &#x27;Are you sure you want to delete the user &quot;&#x27;+user.name+&#x27;&quot;?&#x27;
+                bodyText: &#x27;Are you sure you want to delete the user &quot;&#x27; + user.name + &#x27;&quot;?&#x27;
             };
             var modalInstance = ModalService.show({}, modalOptions);
             modalInstance.result.then(function (data) {
@@ -679,46 +745,57 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
      */
     app.controller(&#x27;UserAliasCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;UserAliasses&#x27;, &#x27;UserData&#x27;, function ($scope, UserAliasses, UserData) {
 
-        var emptyView = function() {
+        /**
+         * clears the view
+         *
+         * @method emptyView
+         */
+        var emptyView = function () {
             $scope.alias = {
                 name: &quot;&quot;
             };
-        }           
+        }
 
         /**
-        * initialises the controller-data
-        *
-        * @method init  
-        */  
-        $scope.init = function() {
+         * initialises the controller-data
+         *
+         * @method init
+         */
+        $scope.init = function () {
             UserAliasses.setDomain(UserData.domain);
             UserAliasses.setUser(UserData.user);
             UserAliasses.refresh();
             emptyView();
         };
 
-        $scope.getList = function() {       
+        /**
+         * returns the list of the UserAliasses
+         *
+         * @method getList
+         * @return {Array} Returns the list of the UserAliasses
+         */
+        $scope.getList = function () {
             return UserAliasses.getList();
-        };              
+        };
 
         /**
-        * create a new alias
-        *
-        * @method create    
-        * @param domain {Object} alais-object           
-        */      
-        $scope.create = function(alias) {
+         * create a new alias
+         *
+         * @method create
+         * @param domain {Object} alais-object
+         */
+        $scope.create = function (alias) {
             UserAliasses.create(alias);
             emptyView();
-        };  
+        };
 
         /**
-        * remove an existing alias
-        *
-        * @method remove    
-        * @param alias {Object} alias-object
-        */  
-        $scope.remove = function(alias) {
+         * remove an existing alias
+         *
+         * @method remove
+         * @param alias {Object} alias-object
+         */
+        $scope.remove = function (alias) {
             UserAliasses.remove(alias);
         };
     }]);
@@ -729,19 +806,26 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
      * @class SummaryCtrl
      */
     app.controller(&#x27;SummaryCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;Page&#x27;, &#x27;Summaries&#x27;, function ($scope, Page, Summaries) {
+
         /**
-        * initialises the controller-data
-        *
-        * @method init  
-        */  
-        $scope.init = function() {      
-            Page.setTitle(&#x27;Summary&#x27;);       
-            Summaries.refresh();              
+         * initialises the controller-data
+         *
+         * @method init
+         */
+        $scope.init = function () {
+            Page.setTitle(&#x27;Summary&#x27;);
+            Summaries.refresh();
         };
 
-        $scope.getList = function() {       
+        /**
+         * returns the list of the Summaries
+         *
+         * @method getList
+         * @return {Array} Returns the list of the Summaries
+         */
+        $scope.getList = function () {
             return Summaries.getList();
-        };         
+        };
     }]);
 
     /**
@@ -755,17 +839,18 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          *
          * @method init
          */
-        $scope.init = function() {
+        $scope.init = function () {
             Page.setTitle(&#x27;ApiKey&#x27;);
             ApiKeys.refresh();
         };
 
         /**
-         * get the api-key List
+         * returns the list of the ApiKeys
          *
          * @method getList
+         * @return {Array} Returns the list of the ApiKeys
          */
-        $scope.getList = function() {
+        $scope.getList = function () {
             return ApiKeys.getList();
         };
 
@@ -774,7 +859,7 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          *
          * @method create
          */
-        $scope.create = function() {
+        $scope.create = function () {
             var modalDefaults = {
                 templateUrl: &#x27;createView.html&#x27;,
                 resolve: {
@@ -802,7 +887,7 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          * @method edit
          * @param apiKey {Object} api-key-object
          */
-        $scope.edit = function(apiKey) {
+        $scope.edit = function (apiKey) {
             var modalDefaults = {
                 templateUrl: &#x27;editView.html&#x27;,
                 resolve: {
@@ -824,11 +909,11 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          * @method remove
          * @param apiKey {Object} api-key-object
          */
-        $scope.remove = function(apiKey) {
+        $scope.remove = function (apiKey) {
             var modalOptions = {
                 actionButtonText: &#x27;Confirm&#x27;,
                 headerText: &#x27;Delete api-key?&#x27;,
-                bodyText: &#x27;Are you sure you want to delete the api-key &quot;&#x27;+apiKey.access_token+&#x27;&quot;?&#x27;
+                bodyText: &#x27;Are you sure you want to delete the api-key &quot;&#x27; + apiKey.access_token + &#x27;&quot;?&#x27;
             };
             var modalInstance = ModalService.show({}, modalOptions);
             modalInstance.result.then(function (data) {
@@ -842,55 +927,17 @@ define([&#x27;angular&#x27;, &#x27;services&#x27;], function (angular, services)
          * @method imageName
          * @param apiKey {Object} api-key-object
          */
-        $scope.imageName = function(apiKey) {
-            
+        $scope.imageName = function (apiKey) {
+
             if (ApiKeys.isExpired(apiKey)) {
                 return &quot;api_expired&quot;;
             } else if (!apiKey.active) {
                 return &quot;api_inactive&quot;;
-            }               
+            }
 
-            return &quot;api_valid&quot;;            
+            return &quot;api_valid&quot;;
         };
     }]);
-
-    // Sample controller where service is being used
-    app.controller(&#x27;TestCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;$modal&#x27;, &#x27;version&#x27;, function ($scope, $modal, version) {          
-      
-
-      
-
-      $scope.open = function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-        $scope.opened = true;
-      };
-
-      $scope.dateOptions = {
-        formatYear: &#x27;yy&#x27;,
-        startingDay: 1
-      };
-
-      $scope.formats = [&#x27;dd-MMMM-yyyy&#x27;, &#x27;yyyy/MM/dd&#x27;, &#x27;dd.MM.yyyy&#x27;, &#x27;shortDate&#x27;];
-      $scope.format = $scope.formats[0];
-    }]);
-
-    /*
-	// Sample controller where service is being used
-	app.controller(&#x27;MyCtrl1&#x27;, [&#x27;$scope&#x27;, &#x27;$modal&#x27;, &#x27;version&#x27;, function ($scope, $modal, version) {			
-
-	}]);
-	// More involved example where controller is required from an external file
-	app.controller(&#x27;MyCtrl2&#x27;, [&#x27;$scope&#x27;, &#x27;$injector&#x27;, function($scope, $injector) {
-		require([&#x27;controllers/myctrl2&#x27;], function(myctrl2) {
-			// injector method takes an array of modules as the first argument
-			// if you want your controller to be able to use components from
-			// any of your other modules, make sure you include it together with &#x27;ng&#x27;
-			// Furthermore we need to pass on the $scope as it&#x27;s unique to this controller
-			$injector.invoke(myctrl2, this, {&#x27;$scope&#x27;: $scope});
-		});
-	}]);
-    */
 });
     </pre>
 </div>

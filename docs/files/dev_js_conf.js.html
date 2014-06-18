@@ -61,7 +61,11 @@
             
                 <li><a href="../classes/ErrorCtrl.html">ErrorCtrl</a></li>
             
+                <li><a href="../classes/ErrorService.html">ErrorService</a></li>
+            
                 <li><a href="../classes/MainCtrl.html">MainCtrl</a></li>
+            
+                <li><a href="../classes/ModalService.html">ModalService</a></li>
             
                 <li><a href="../classes/NavBarCtrl.html">NavBarCtrl</a></li>
             
@@ -74,6 +78,10 @@
                 <li><a href="../classes/ProcessServiceProvider.html">ProcessServiceProvider</a></li>
             
                 <li><a href="../classes/ResponseHandler.html">ResponseHandler</a></li>
+            
+                <li><a href="../classes/SelectDomainService.html">SelectDomainService</a></li>
+            
+                <li><a href="../classes/SelectServerService.html">SelectServerService</a></li>
             
                 <li><a href="../classes/Servers.html">Servers</a></li>
             
@@ -137,79 +145,92 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 /*!
-* posty_webUI
-* 
-* Copyright 2014 posty-soft.org
-* Licensed under the LGPL v3
-* https://www.gnu.org/licenses/lgpl.html
-*
-*/
-define([&#x27;angular&#x27;], function (angular) {
-	&#x27;use strict&#x27;;
+ * posty_webUI
+ *
+ * Copyright 2014 posty-soft.org
+ * Licensed under the LGPL v3
+ * https://www.gnu.org/licenses/lgpl.html
+ *
+ */
+define([&#x27;angular&#x27;, &#x27;text!../settings.json&#x27;], function (angular, settings) {
+    &#x27;use strict&#x27;;
 
-	/* Configurations */
+    /* Parsing the settings.json to load the settings */
+    var SETTINGS = JSON.parse(settings);
 
-	var app = angular.module(&#x27;postySoft.configurations&#x27;, [&#x27;postySoft.services&#x27;, &#x27;ui.bootstrap&#x27;]); 
+    /* Configurations */
 
-	/**
-	* Run-Configuration of the Apllication-Settings
-	*/
-	app.run([&#x27;Restangular&#x27;, &#x27;ProcessService&#x27;, &#x27;ResponseHandler&#x27;, &#x27;Servers&#x27;, function(Restangular, ProcessService, ResponseHandler, Servers) {   		
+    var app = angular.module(&#x27;postySoft.configurations&#x27;, [&#x27;postySoft.services&#x27;, &#x27;ui.bootstrap&#x27;]);
 
-	    /* Setting configurations before a request is send */
-		Restangular.addRequestInterceptor(
-			function(elem, operation, what, url) { 
-				ProcessService.register();					
-				return elem;
-			}
-		);	
+    /**
+     * Run-Configuration of the Apllication-Settings
+     */
+    app.run([&#x27;Restangular&#x27;, &#x27;ProcessService&#x27;, &#x27;ResponseHandler&#x27;, &#x27;Servers&#x27;, function (Restangular, ProcessService, ResponseHandler, Servers) {
 
-		/* Setting configurations after a response was received */
-		Restangular.addResponseInterceptor(			
-			function(data, operation, what, url, response, deferred) {					
-				ResponseHandler.add(response);					
-				ProcessService.unregister();					
-				return data;
-			}
-		);	
+        /* Setting configurations before a request is send */
+        Restangular.addRequestInterceptor(
+            function (elem, operation, what, url) {
+                ProcessService.register();
+                return elem;
+            }
+        );
 
-		/* Setting configurations after an error was received */
-		Restangular.setErrorInterceptor(
-			function(response) {																
-				ResponseHandler.add(response);
-				ProcessService.unregister();					
-				return true;
-			}
-		);
+        /* Setting configurations after a response was received */
+        Restangular.addResponseInterceptor(
+            function (data, operation, what, url, response, deferred) {
+                ResponseHandler.add(response);
+                ProcessService.unregister();
+                return data;
+            }
+        );
 
-		/* Adding the possible Server to connect with */
-		angular.forEach(SETTINGS.servers, function(server){							
-			Servers.add(server);
-		});	
-		if (!Servers.moreThanOneServer()) {
-			var firstElement = Servers.getList()[0];
-			Servers.setCurrentServer(firstElement);				
-		}
-	}]);
-	
-	/**
-	* Configuration of the Apllication-Views
-	*/
-	app.config([&#x27;datepickerConfig&#x27;, &#x27;datepickerPopupConfig&#x27;, &#x27;CONFIGS&#x27;, function (datepickerConfig, datepickerPopupConfig, CONFIGS) {
-		datepickerConfig.minDate = null;
-		datepickerConfig.maxDate = null;
-		datepickerConfig.startingDay = 1; // monday
-		datepickerConfig.initDate = new Date();
-		datepickerPopupConfig.datepickerPopup = CONFIGS.DATE_FORMAT;
+        /* Setting configurations after an error was received */
+        Restangular.setErrorInterceptor(
+            function (response) {
+                ResponseHandler.add(response);
+                ProcessService.unregister();
+                return true;
+            }
+        );
+
+        /* Adding the possible Server to connect with */
+        angular.forEach(SETTINGS.servers, function (server) {
+            Servers.add(server);
+        });
+
+        /* Set the currentServer to the first List-Item if there is just one Server registered */
+        if (!Servers.moreThanOneServer()) {
+            var firstElement = Servers.getList()[0];
+            Servers.setCurrentServer(firstElement);
+        }
     }]);
 
     /**
-	* Global constants for the Application
-	*/
-	app.constant(&#x27;CONFIGS&#x27;,{
-		DATE_FORMAT: &#x27;dd.MM.yyyy&#x27;,
-		API_DATE_FORMAT: &#x27;yyyy-MM-dd HH:mm:ss&#x27;,		
-	});
+     * Configuration of the Apllication-Views
+     */
+    app.config([&#x27;datepickerConfig&#x27;, &#x27;datepickerPopupConfig&#x27;, &#x27;CONFIGS&#x27;, function (datepickerConfig, datepickerPopupConfig, CONFIGS) {
+        datepickerConfig.minDate = null;
+        datepickerConfig.maxDate = null;
+        datepickerConfig.startingDay = 1; // starting day is monday
+        datepickerConfig.initDate = new Date();
+        datepickerPopupConfig.datepickerPopup = CONFIGS.DATE_FORMAT;
+    }]);
+
+    /**
+     * Global constants for the Application
+     */
+    app.constant(&#x27;CONFIGS&#x27;, {
+        DATE_FORMAT: &#x27;dd.MM.yyyy&#x27;,
+        API_DATE_FORMAT: &#x27;yyyy-MM-dd HH:mm:ss&#x27;
+    });
+
+    app.constant(&#x27;SETTINGS2&#x27;, JSON.parse(settings));
+	
+	window.setTimeout(function(){
+
+		window.console &amp;&amp; console.info &amp;&amp; console.info(&#x27;You want to actively co-develop posty?\n Go on http://www.posty-soft.org&#x27;)
+	}, 5000);	
+
 
 });
 

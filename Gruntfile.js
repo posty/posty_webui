@@ -15,7 +15,6 @@
 * npm install grunt-contrib-htmlmin --save-dev
 * npm install grunt-contrib-requirejs --save-dev
 * npm install grunt-sync --save-dev
-* npm install grunt-angular-gettext --save-dev
 * npm install grunt-contrib-copy --save-dev
 * npm install grunt-contrib-uglify --save-dev
 *
@@ -64,6 +63,7 @@ module.exports = function(grunt) {
 		  url: '<%= pkg.homepage %>',
 		  options: {
 			paths: 'dev/js/',
+			themedir: 'dev/yuidocTheme',
 			outdir: 'docs/'
 		  }
 		}
@@ -138,15 +138,15 @@ module.exports = function(grunt) {
 	
 	
 	/*!
-	* copy settings.js
+	* copy settings.json
 	*
 	*/
 	copy: {
 	  main: {
 		files:[
 			{
-			src: 'dev/settings.js',
-			dest: 'dist/settings.js'
+			src: 'dev/settings.json',
+			dest: 'dist/settings.json'
 			}
 		]
 		

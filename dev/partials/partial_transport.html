@@ -24,8 +24,9 @@
             <div class="accordion-group">
                 <div id="collapseTwo" class="accordion-body collapse in">
                     <div class="accordion-inner">
-                        <div ng-show="ProcessService.isLoading()"> <img src="img/loading.gif" /> Loading...</div>
-                        <table ng-show="!ProcessService.isLoading()" class="table table-bordered table-striped table-hover">
+                        <div ng-show="ProcessService.isLoading()"><img src="img/loading.gif"/> Loading...</div>
+                        <table ng-show="!ProcessService.isLoading()"
+                               class="table table-bordered table-striped table-hover">
                             <thead>
                             <tr>
                                 <th>Name</th>
@@ -34,7 +35,7 @@
                                     <div class="input-prepend pull-right">
                                         <span class="add-on"><i class="icon-search"></i></span>
                                         <input type="text" class="span2" ng-model="search.$" placeholder="Search text">
-                                     </div>
+                                    </div>
                                 </th>
                             </tr>
                             </thead>
@@ -44,9 +45,11 @@
                                 <td>{{ transport.destination }}</td>
                                 <td class="tableButton">
                                     <div class="pull-right">
-                                        <button class="btn btn-warning" ng-click="edit(transport)"><i class="icon-edit icon-white"></i></button>
+                                        <button class="btn btn-warning" ng-click="edit(transport)"><i
+                                                class="icon-edit icon-white"></i></button>
                                         &nbsp;&nbsp;
-                                        <button class="btn btn-danger" ng-click="remove(transport)"><i class="icon-trash icon-white"></i></button>
+                                        <button class="btn btn-danger" ng-click="remove(transport)"><i
+                                                class="icon-trash icon-white"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -68,23 +71,30 @@
             <div class="modal-body">
                 <!-- Name -->
                 <div class="control-group">
-                    <label class="control-label" for="name">Name: <img src="img/widget/domain_ico.png" alt="ico"/></label>
+                    <label class="control-label" for="name">Name: <img src="img/widget/domain_ico.png"
+                                                                       alt="ico"/></label>
+
                     <div class="controls">
-                        <input type="text" ng-required="true" name="name" id="name" ng-model="data.name" focus="true" placeholder="posty-soft.org">
+                        <input type="text" ng-required="true" name="name" id="name" ng-model="data.name" focus="true"
+                               placeholder="posty-soft.org">
                     </div>
                 </div>
                 <!-- end Name -->
                 <!-- Destination -->
                 <div class="control-group">
-                    <label class="control-label" for="name">Destination: <img src="img/widget/transport_ico.png" alt="ico"/></label>
+                    <label class="control-label" for="name">Destination: <img src="img/widget/transport_ico.png"
+                                                                              alt="ico"/></label>
+
                     <div class="controls">
-                        <input type="text" ng-required="true" name="destination" id="destination" ng-model="data.destination" placeholder="192.168.1.0">
+                        <input type="text" ng-required="true" name="destination" id="destination"
+                               ng-model="data.destination" placeholder="192.168.1.0">
                     </div>
                 </div>
                 <!-- end Destination -->
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" ng-click="modalOptions.ok(data)" ng-disabled='!form.$valid'>Save<i class="icon-ok icon-white"></i></button>
+                <button class="btn btn-success" ng-click="modalOptions.ok(data)" ng-disabled='!form.$valid'>Save<i
+                        class="icon-ok icon-white"></i></button>
                 <button class="btn" ng-click="modalOptions.close()">Cancel</button>
             </div>
         </form>
@@ -100,23 +110,30 @@
             <div class="modal-body">
                 <!-- Name -->
                 <div class="control-group">
-                    <label class="control-label" for="name">Name: <img src="img/widget/domain_ico.png" alt="ico"/></label>
+                    <label class="control-label" for="name">Name: <img src="img/widget/domain_ico.png"
+                                                                       alt="ico"/></label>
+
                     <div class="controls">
-                        <input type="text" ng-required="true" name="name" id="name" ng-model="data.name" focus="true" placeholder="posty-soft.org">
+                        <input type="text" ng-required="true" name="name" id="name" ng-model="data.name" focus="true"
+                               placeholder="posty-soft.org">
                     </div>
                 </div>
                 <!-- end Name -->
                 <!-- Destination -->
                 <div class="control-group">
-                    <label class="control-label" for="name">Destination: <img src="img/widget/transport_ico.png" alt="ico"/></label>
+                    <label class="control-label" for="name">Destination: <img src="img/widget/transport_ico.png"
+                                                                              alt="ico"/></label>
+
                     <div class="controls">
-                        <input type="text" ng-required="true" name="destination" id="destination" ng-model="data.destination" placeholder="192.168.1.0">
+                        <input type="text" ng-required="true" name="destination" id="destination"
+                               ng-model="data.destination" placeholder="192.168.1.0">
                     </div>
                 </div>
                 <!-- end Destination -->
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" ng-click="modalOptions.ok(data)" ng-disabled='!form.$valid'>Save<i class="icon-ok icon-white"></i></button>
+                <button class="btn btn-success" ng-click="modalOptions.ok(data)" ng-disabled='!form.$valid'>Save<i
+                        class="icon-ok icon-white"></i></button>
                 <button class="btn" ng-click="modalOptions.close()">Cancel</button>
             </div>
         </form>

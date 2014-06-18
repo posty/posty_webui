@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SelectServerService - posty-soft.org</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="posty-soft.org"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 2.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/AlertCtrl.html">AlertCtrl</a></li>
+            
+                <li><a href="../classes/AlertService.html">AlertService</a></li>
+            
+                <li><a href="../classes/ApiKeyCtrl.html">ApiKeyCtrl</a></li>
+            
+                <li><a href="../classes/ApiKeys.html">ApiKeys</a></li>
+            
+                <li><a href="../classes/DashboardCtrl.html">DashboardCtrl</a></li>
+            
+                <li><a href="../classes/DomainAliasses.html">DomainAliasses</a></li>
+            
+                <li><a href="../classes/DomainCtrl.html">DomainCtrl</a></li>
+            
+                <li><a href="../classes/DomainData.html">DomainData</a></li>
+            
+                <li><a href="../classes/Domains.html">Domains</a></li>
+            
+                <li><a href="../classes/ErrorCtrl.html">ErrorCtrl</a></li>
+            
+                <li><a href="../classes/ErrorService.html">ErrorService</a></li>
+            
+                <li><a href="../classes/MainCtrl.html">MainCtrl</a></li>
+            
+                <li><a href="../classes/ModalService.html">ModalService</a></li>
+            
+                <li><a href="../classes/NavBarCtrl.html">NavBarCtrl</a></li>
+            
+                <li><a href="../classes/Page.html">Page</a></li>
+            
+                <li><a href="../classes/ProcessCtrl.html">ProcessCtrl</a></li>
+            
+                <li><a href="../classes/ProcessService.html">ProcessService</a></li>
+            
+                <li><a href="../classes/ProcessServiceProvider.html">ProcessServiceProvider</a></li>
+            
+                <li><a href="../classes/ResponseHandler.html">ResponseHandler</a></li>
+            
+                <li><a href="../classes/SelectDomainService.html">SelectDomainService</a></li>
+            
+                <li><a href="../classes/SelectServerService.html">SelectServerService</a></li>
+            
+                <li><a href="../classes/Servers.html">Servers</a></li>
+            
+                <li><a href="../classes/Summaries.html">Summaries</a></li>
+            
+                <li><a href="../classes/SummaryCtrl.html">SummaryCtrl</a></li>
+            
+                <li><a href="../classes/TransportCtrl.html">TransportCtrl</a></li>
+            
+                <li><a href="../classes/Transports.html">Transports</a></li>
+            
+                <li><a href="../classes/UserAliasCtrl.html">UserAliasCtrl</a></li>
+            
+                <li><a href="../classes/UserAliasses.html">UserAliasses</a></li>
+            
+                <li><a href="../classes/UserCtrl.html">UserCtrl</a></li>
+            
+                <li><a href="../classes/UserData.html">UserData</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>SelectServerService Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/dev_js_services.js.html#l301"><code>dev\js\services.js:301</code></a>
+        </div>
+    
+
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>central modal-server-selection-service. responsible for opening the server-selection-view</p>
+
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_isLoading">isLoading</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_register">register</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_show">show</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_unregister">unregister</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_isLoading" class="method item">
+    <h3 class="name"><code>isLoading</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/dev_js_services.js.html#l369"><code>dev\js\services.js:369</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>refers if the stack is full or not</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <p>true if the stack is not empty</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_register" class="method item">
+    <h3 class="name"><code>register</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/dev_js_services.js.html#l351"><code>dev\js\services.js:351</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>pushes the process-stack</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_show" class="method item">
+    <h3 class="name"><code>show</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/dev_js_services.js.html#l334"><code>dev\js\services.js:334</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>opens the modal view</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_unregister" class="method item">
+    <h3 class="name"><code>unregister</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/dev_js_services.js.html#l360"><code>dev\js\services.js:360</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>pops an element fromt the process-stack</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

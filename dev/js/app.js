@@ -7,23 +7,23 @@
  *
  */
 define([
-	'angular',	
-	'services',
-	'directives',
-	'controllers',
-	'models',
-	'conf',				
-	'angularRoute',	
-	], function (angular) {
-		'use strict';
-		// Declare app level module which depends on filters, and services		
-		return angular.module('postySoft', [
-			'ngRoute',
-			'restangular',						
-			'postySoft.controllers',
-			'postySoft.models',			
-			'postySoft.services',
-			'postySoft.directives',
-			'postySoft.configurations'			
-        ]);
+    'angular',
+    'services',
+    'directives',
+    'controllers',
+    'models',
+    'conf',
+    'angularRoute'
+], function (angular) {
+    'use strict';
+
+    return angular.module('postySoft', [
+        'ngRoute',
+        'restangular',
+        'postySoft.controllers',
+        'postySoft.models',
+        'postySoft.services',
+        'postySoft.directives',
+        'postySoft.configurations'
+    ]);
 });

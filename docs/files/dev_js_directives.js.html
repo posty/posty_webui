@@ -61,7 +61,11 @@
             
                 <li><a href="../classes/ErrorCtrl.html">ErrorCtrl</a></li>
             
+                <li><a href="../classes/ErrorService.html">ErrorService</a></li>
+            
                 <li><a href="../classes/MainCtrl.html">MainCtrl</a></li>
+            
+                <li><a href="../classes/ModalService.html">ModalService</a></li>
             
                 <li><a href="../classes/NavBarCtrl.html">NavBarCtrl</a></li>
             
@@ -74,6 +78,10 @@
                 <li><a href="../classes/ProcessServiceProvider.html">ProcessServiceProvider</a></li>
             
                 <li><a href="../classes/ResponseHandler.html">ResponseHandler</a></li>
+            
+                <li><a href="../classes/SelectDomainService.html">SelectDomainService</a></li>
+            
+                <li><a href="../classes/SelectServerService.html">SelectServerService</a></li>
             
                 <li><a href="../classes/Servers.html">Servers</a></li>
             
@@ -144,134 +152,149 @@
  * https://www.gnu.org/licenses/lgpl.html
  *
  */
-define([&#x27;angular&#x27;, &#x27;services&#x27;, &#x27;d3&#x27;], function(angular, services, d3) {
-	&#x27;use strict&#x27;;
+define([&#x27;angular&#x27;, &#x27;services&#x27;, &#x27;d3&#x27;], function (angular, services, d3) {
+    &#x27;use strict&#x27;;
 
-  	/* Directives */
+    /* Directives */
 
-  	var app = angular.module(&#x27;postySoft.directives&#x27;, [&#x27;postySoft.services&#x27;])
+    var app = angular.module(&#x27;postySoft.directives&#x27;, [&#x27;postySoft.services&#x27;])
 
-	/**
-	* directive which returns the app-version defined in the postySoft.services
-	*
-	* @directive appVersion
-	*/
-	app.directive(&#x27;appVersion&#x27;, [&#x27;version&#x27;, function(version) {
-			return function(scope, elm, attrs) {
-				elm.text(version);
-		};
-	}]);
+    /**
+     * directive which returns the app-version defined in the postySoft.services
+     *
+     * @directive appVersion
+     */
+    app.directive(&#x27;appVersion&#x27;, [&#x27;version&#x27;, function (version) {
+        return function (scope, elm, attrs) {
+            elm.text(version);
+        };
+    }]);
 
-	/**
-	* directive to validate passwords in the html-view
-	*
-	* @directive passwordValidator
-	*/
-	app.directive(&#x27;passwordValidator&#x27;, [function() {
-	  return {
-	    require: &#x27;ngModel&#x27;,
-	    link: function(scope, elm, attr, ctrl) {
-	      var pwdWidget = elm.inheritedData(&#x27;$formController&#x27;)[attr.passwordValidator];
+    /**
+     * directive to validate passwords in the html-view
+     *
+     * @directive passwordValidator
+     */
+    app.directive(&#x27;passwordValidator&#x27;, [function () {
+        return {
+            require: &#x27;ngModel&#x27;,
+            link: function (scope, elm, attr, ctrl) {
+                var pwdWidget = elm.inheritedData(&#x27;$formController&#x27;)[attr.passwordValidator];
 
-	      ctrl.$parsers.push(function(value) {
-	        if (value === pwdWidget.$viewValue) {
-	          ctrl.$setValidity(&#x27;MATCH&#x27;, true);
-	          return value;
-	        }
-	        ctrl.$setValidity(&#x27;MATCH&#x27;, false);
-	      });
+                ctrl.$parsers.push(function (value) {
+                    if (value === pwdWidget.$viewValue) {
+                        ctrl.$setValidity(&#x27;MATCH&#x27;, true);
+                        return value;
+                    }
+                    ctrl.$setValidity(&#x27;MATCH&#x27;, false);
+                });
 
-	      pwdWidget.$parsers.push(function(value) {
-	        ctrl.$setValidity(&#x27;MATCH&#x27;, value === ctrl.$viewValue);
-	        return value;
-	      });
-	    }
-	  };
-	}]);
+                pwdWidget.$parsers.push(function (value) {
+                    ctrl.$setValidity(&#x27;MATCH&#x27;, value === ctrl.$viewValue);
+                    return value;
+                });
+            }
+        };
+    }]);
 
-	/**
-	* directive to focus an element in the html-view
-	*
-	* @directive focus
-	*/
-	app.directive(&#x27;focus&#x27;, function () {
-	  return function (scope, element, attrs) {
-	    attrs.$observe(&#x27;focus&#x27;, function (newValue) {
-	      newValue === &#x27;true&#x27; &amp;&amp; element[0].focus();
-	    });
-	  }
-	});
+    /**
+     * directive to focus an element in the html-view
+     *
+     * @directive focus
+     */
+    app.directive(&#x27;focus&#x27;, function () {
+        return function (scope, element, attrs) {
+            attrs.$observe(&#x27;focus&#x27;, function (newValue) {
+                newValue === &#x27;true&#x27; &amp;&amp; element[0].focus();
+            });
+        }
+    });
 
-	/**
-	* directive to build a simple chart in the html-view
-	*
-	* @directive barsChart
-	*/
-	app.directive(&#x27;barsChart&#x27;, [&#x27;$parse&#x27;, function ($parse) {
-	  return {
-	    restrict: &#x27;E&#x27;,
-	    replace: true,
-	    scope: {data: &#x27;=chartData&#x27;},
-	    link: function (scope, element, attrs) {
-	      var chart = d3.select(element[0]);
-	      scope.$watchCollection(&#x27;data&#x27;, function(newValue, oldValue) {
-	        chart.append(&quot;div&quot;).attr(&quot;class&quot;, &quot;chart&quot;)
-	        .selectAll(&#x27;div&#x27;)
-	        .data(scope.data).enter().append(&quot;div&quot;)
-	        .transition().ease(&quot;elastic&quot;)
-	        .style(&quot;width&quot;, function(d) { 
-	         var tmp = 10;
-	         var val = d.percent + tmp; 
-	         if(val &gt;= 100) {
-	            val = 98; 
-	          }            
-	         return val + &quot;%&quot;;
-	        })
-	        .text(function(d) { 
-	          return d.caption; 
-	        });
-	      });
-	    } 
-	  };      
-	}]);
+    /**
+     * directive to build a simple chart in the html-view
+     *
+     * @directive barsChart
+     */
+    app.directive(&#x27;barsChart&#x27;, [&#x27;$parse&#x27;, function ($parse) {
+        return {
+            restrict: &#x27;E&#x27;,
+            replace: true,
+            scope: {data: &#x27;=chartData&#x27;},
+            link: function (scope, element, attrs) {
+                var chart = d3.select(element[0]);
+                scope.$watchCollection(&#x27;data&#x27;, function (newValue, oldValue) {
+                    chart.append(&quot;div&quot;).attr(&quot;class&quot;, &quot;chart&quot;)
+                        .selectAll(&#x27;div&#x27;)
+                        .data(scope.data).enter().append(&quot;div&quot;)
+                        .transition().ease(&quot;elastic&quot;)
+                        .style(&quot;width&quot;, function (d) {
+                            var tmp = 10;
+                            var val = d.percent + tmp;
+                            if (val &gt;= 100) {
+                                val = 98;
+                            }
+                            return val + &quot;%&quot;;
+                        })
+                        .text(function (d) {
+                            return d.caption;
+                        });
+                });
+            }
+        };
+    }]);
 
-	/**
-	* directive to open the datepicker
-	*
-	* @directive dateclick
-	*/
-	app.directive(&quot;dateclick&quot;, function(){
-		return {						
-			link: function($scope, element, attrs) {
-				$scope.dateIsOpen = false;
-				
-				$scope.openCalendar = function(event){
-					event.preventDefault();
-					event.stopPropagation();										
-					$scope.dateIsOpen = !$scope.dateIsOpen;
-				};				
-			}			
-		}
-	});	
+    /**
+     * directive to open the datepicker
+     *
+     * @directive dateclick
+     */
+    app.directive(&quot;dateclick&quot;, function () {
+        return {
+            link: function ($scope, element, attrs) {
+                $scope.dateIsOpen = false;
 
-	/**
-	* directive to open a dropdown-menu without 
-	* changing the route (href-directive)
-	*
-	* @directive dropdownclick
-	*/
-	app.directive(&quot;dropdownNoRouteChange&quot;, function(){
-		return {						
-			link: function($scope, element, attrs) {
-				$scope.dropDownIsOpen = false;
-				
-				$scope.openDropDown = function(event){																			
-					$scope.dropDownIsOpen = !$scope.dropDownIsOpen;
-				};				
-			}			
-		}
-	});	
+                $scope.openCalendar = function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    $scope.dateIsOpen = !$scope.dateIsOpen;
+                };
+            }
+        }
+    });
 
+    /**
+     * directive to open a dropdown-menu without
+     * changing the route (href-directive)
+     *
+     * @directive dropdownclick
+     */
+    app.directive(&quot;dropdownNoRouteChange&quot;, function () {
+        return {
+            link: function ($scope, element, attrs) {
+                $scope.dropDownIsOpen = false;
+
+                $scope.openDropDown = function (event) {
+                    $scope.dropDownIsOpen = !$scope.dropDownIsOpen;
+                };
+            }
+        }
+    });
+
+
+    app.directive(&#x27;focusMe&#x27;, function($timeout) {
+  return {
+    scope: { trigger: &#x27;@focusMe&#x27; },
+    link: function(scope, element) {
+      scope.$watch(&#x27;trigger&#x27;, function(value) {
+        if(value === &quot;true&quot;) { 
+          $timeout(function() {
+            element[0].focus(); 
+          });
+        }
+      });
+    }
+  };
+});
 });
 
     </pre>
