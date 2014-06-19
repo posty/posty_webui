@@ -1,7 +1,7 @@
 {
     "servers": [
         {
-            "caption": "posty server 1",
+            "caption": "posty adsf 1",
             "url": "http://posty-api-development.herokuapp.com/api/v1",
             "key": "123456"
         }, 

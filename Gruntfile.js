@@ -81,7 +81,7 @@ module.exports = function(grunt) {
 		  mainConfigFile: "dev/js/main.js",
 		  name: "main",
 		  out: "dist/js/optimized.js",
-		  exclude: [
+		  excludeShallow: [
 			'text!../settings.json'
 		  ]
 		}
