@@ -6,7 +6,8 @@
  * https://www.gnu.org/licenses/lgpl.html
  *
  */
-define(['angular', 'text!../settings.json'], function (angular, settings) {
+
+define(['angular',  'text!../settings.json'], function (angular, settings) {
     'use strict';
 
     /* Parsing the settings.json to load the settings */

@@ -80,7 +80,10 @@ module.exports = function(grunt) {
 		  baseUrl: "dev/js",
 		  mainConfigFile: "dev/js/main.js",
 		  name: "main",
-		  out: "dist/js/optimized.js"
+		  out: "dist/js/optimized.js",
+		  exclude: [
+			'text!../settings.json'
+		  ]
 		}
 	  }
 	},

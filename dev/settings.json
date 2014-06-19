@@ -2,17 +2,17 @@
     "servers": [
         {
             "caption": "posty server 1",
-            "url": "http://posty-api-development.herokuapp.com/api/v1",
+            "url": "EXAMPLE.com/api/v1",
             "key": "123456"
         }, 
 		{
             "caption": "posty server 2",
-            "url": "http://posty-api-development.herokuapp.com/api/v1",
+            "url": "EXAMPLE.com/api/v1",
             "key": "123457"
         },
 		{
             "caption": "posty server 3",
-            "url": "http://posty-api-development.herokuapp.com/api/1",
+            "url": "EXAMPLE.com/api/v1",
             "key": "123456"
         }
     ]

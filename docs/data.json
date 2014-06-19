@@ -441,19 +441,19 @@
     "classitems": [
         {
             "file": "dev\\js\\conf.js",
-            "line": 19,
+            "line": 20,
             "description": "Run-Configuration of the Apllication-Settings",
             "class": "MainCtrl"
         },
         {
             "file": "dev\\js\\conf.js",
-            "line": 62,
+            "line": 63,
             "description": "Configuration of the Apllication-Views",
             "class": "MainCtrl"
         },
         {
             "file": "dev\\js\\conf.js",
-            "line": 73,
+            "line": 74,
             "description": "Global constants for the Application",
             "class": "MainCtrl"
         },
@@ -1904,15 +1904,15 @@
         },
         {
             "message": "Missing item type\nRun-Configuration of the Apllication-Settings",
-            "line": " dev\\js\\conf.js:19"
+            "line": " dev\\js\\conf.js:20"
         },
         {
             "message": "Missing item type\nConfiguration of the Apllication-Views",
-            "line": " dev\\js\\conf.js:62"
+            "line": " dev\\js\\conf.js:63"
         },
         {
             "message": "Missing item type\nGlobal constants for the Application",
-            "line": " dev\\js\\conf.js:73"
+            "line": " dev\\js\\conf.js:74"
         },
         {
             "message": "Missing item type\ndirective which returns the app-version defined in the postySoft.services",
