@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>dev\js\services.js - posty-soft.org</title>
+    <title>dev/js/services.js - posty-soft.org</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -140,7 +140,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: dev\js\services.js</h1>
+                        <h1 class="file-heading">File: dev/js/services.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -410,8 +410,13 @@ define([&#x27;angular&#x27;], function (angular) {
             setCurrentServer: function (server) {
                 if (server != currentServer) {
                     currentServer = server;
-                    Restangular.setBaseUrl(server.url);
-                    Restangular.setDefaultHeaders({auth_token: server.key});
+                    Restangular.setBaseUrl(server.url);                          
+                    Restangular.setDefaultHeaders(
+                        {
+                            &#x27;Content-Type&#x27;:&#x27;application/json&#x27;,
+                            &#x27;auth_token&#x27;: server.key                             
+                        }
+                    );                    
                 }
             },
             /**
