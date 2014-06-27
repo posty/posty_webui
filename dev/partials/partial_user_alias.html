@@ -17,7 +17,7 @@
                         <form name='form'>
                             <input class="span4" id="appendedInputButtons" type="text" placeholder="alias"
                                    ng-model="alias.name">
-                            <button class="btn btn-success" ng-click="create(alias)" ng-disabled='alias.name==""'
+                            <button class="btn btn-success" ng-click="create(alias)" ng-disabled='alias.name.length == 0'
                                     type="button"><i class="icon-plus icon-white"></i></button>
                         </form>
                     </div>

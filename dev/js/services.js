@@ -264,8 +264,13 @@ define(['angular'], function (angular) {
             setCurrentServer: function (server) {
                 if (server != currentServer) {
                     currentServer = server;
-                    Restangular.setBaseUrl(server.url);
-                    Restangular.setDefaultHeaders({auth_token: server.key});
+                    Restangular.setBaseUrl(server.url);                          
+                    Restangular.setDefaultHeaders(
+                        {
+                            'Content-Type':'application/json',
+                            'auth_token': server.key                             
+                        }
+                    );                    
                 }
             },
             /**
