@@ -12,17 +12,18 @@ You need a running webserver
 
 The posty\_webUI has the following dependences:
 
+* Underscore
 * AngularJS
 * Angular-bootstrap
 * Angular-mocks
 * Angular-route
 * Angular-scenario
-* D3
-* Lodash
+* Restangular
 * RequireJS
 * RequireJS-text
-* Restangular
-* Underscore
+* D3
+* Lodash
+* Posty\_webModel
 
 
 ## Installation for users

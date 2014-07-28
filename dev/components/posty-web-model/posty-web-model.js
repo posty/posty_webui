@@ -1,161 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>dev/js/models.js - posty-soft.org</title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
-    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
-</head>
-<body class="yui3-skin-sam">
-
-<div id="doc">
-    <div id="hd" class="yui3-g header">
-        <div class="yui3-u-3-4">
-            
-                <h1><img src="../assets/css/logo.png" title="posty-soft.org"></h1>
-            
-        </div>
-        <div class="yui3-u-1-4 version">
-            <em>API Docs for: 2.0.0</em>
-        </div>
-    </div>
-    <div id="bd" class="yui3-g">
-
-        <div class="yui3-u-1-4">
-            <div id="docs-sidebar" class="sidebar apidocs">
-                <div id="api-list">
-    <h2 class="off-left">APIs</h2>
-    <div id="api-tabview" class="tabview">
-        <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
-        </ul>
-
-        <div id="api-tabview-filter">
-            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-        </div>
-
-        <div id="api-tabview-panel">
-            <ul id="api-classes" class="apis classes">
-            
-                <li><a href="../classes/AlertCtrl.html">AlertCtrl</a></li>
-            
-                <li><a href="../classes/AlertService.html">AlertService</a></li>
-            
-                <li><a href="../classes/ApiKeyCtrl.html">ApiKeyCtrl</a></li>
-            
-                <li><a href="../classes/ApiKeys.html">ApiKeys</a></li>
-            
-                <li><a href="../classes/DashboardCtrl.html">DashboardCtrl</a></li>
-            
-                <li><a href="../classes/DomainAliasses.html">DomainAliasses</a></li>
-            
-                <li><a href="../classes/DomainCtrl.html">DomainCtrl</a></li>
-            
-                <li><a href="../classes/DomainData.html">DomainData</a></li>
-            
-                <li><a href="../classes/Domains.html">Domains</a></li>
-            
-                <li><a href="../classes/ErrorCtrl.html">ErrorCtrl</a></li>
-            
-                <li><a href="../classes/ErrorService.html">ErrorService</a></li>
-            
-                <li><a href="../classes/MainCtrl.html">MainCtrl</a></li>
-            
-                <li><a href="../classes/ModalService.html">ModalService</a></li>
-            
-                <li><a href="../classes/NavBarCtrl.html">NavBarCtrl</a></li>
-            
-                <li><a href="../classes/Page.html">Page</a></li>
-            
-                <li><a href="../classes/ProcessCtrl.html">ProcessCtrl</a></li>
-            
-                <li><a href="../classes/ProcessService.html">ProcessService</a></li>
-            
-                <li><a href="../classes/ProcessServiceProvider.html">ProcessServiceProvider</a></li>
-            
-                <li><a href="../classes/ResponseHandler.html">ResponseHandler</a></li>
-            
-                <li><a href="../classes/SelectDomainService.html">SelectDomainService</a></li>
-            
-                <li><a href="../classes/SelectServerService.html">SelectServerService</a></li>
-            
-                <li><a href="../classes/Servers.html">Servers</a></li>
-            
-                <li><a href="../classes/Summaries.html">Summaries</a></li>
-            
-                <li><a href="../classes/SummaryCtrl.html">SummaryCtrl</a></li>
-            
-                <li><a href="../classes/TransportCtrl.html">TransportCtrl</a></li>
-            
-                <li><a href="../classes/Transports.html">Transports</a></li>
-            
-                <li><a href="../classes/UserAliasCtrl.html">UserAliasCtrl</a></li>
-            
-                <li><a href="../classes/UserAliasses.html">UserAliasses</a></li>
-            
-                <li><a href="../classes/UserCtrl.html">UserCtrl</a></li>
-            
-                <li><a href="../classes/UserData.html">UserData</a></li>
-            
-            </ul>
-
-            <ul id="api-modules" class="apis modules">
-            
-            </ul>
-        </div>
-    </div>
-</div>
-
-            </div>
-        </div>
-        <div class="yui3-u-3-4">
-                <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited" checked>
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-            <div class="apidocs">
-                <div id="docs-main">
-                    <div class="content">
-                        <h1 class="file-heading">File: dev/js/models.js</h1>
-
-<div class="file">
-    <pre class="code prettyprint linenums">
 /*!
- * posty_webUI
+ * posty_webModel
  *
  * Copyright 2014 posty-soft.org
  * Licensed under the LGPL v3
  * https://www.gnu.org/licenses/lgpl.html
  *
  */
-define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restangular) {
-	&#x27;use strict&#x27;;
+	'use strict';
 
-	var app = angular.module(&#x27;postySoft.models&#x27;, [&#x27;postySoft.services&#x27;]);
+	var app = angular.module('postySoft.models', []);
 
 	/**
 	* filters the error-messages of the response and returns the concated messages
@@ -163,24 +16,87 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 	* @method  @return {String} Returns the error-message
 	*/
 	var errorMsg = function(response) {
-		var result = &quot;&quot;;
+		var result = "";
 		for(var prop in response) {			
 		    if(response.hasOwnProperty(prop)) {
-				result = result+&quot;. &quot;+response[prop];
+				result = result+". "+response[prop];
 		    }
 		}
-		return result.substr(2, result.length)+&quot;.&quot;;		
+		return result.substr(2, result.length)+".";		
 	};	
+
+    /**
+     * central alert-service. stores a list of alerts (type and message)
+     *
+     * @class AlertService
+     */
+    app.factory('AlertService', ['$timeout', function ($timeout) {
+        var alerts = [];
+        var DELETE_ALERT_INTERVAL = 10000; // Time in ms when an Alert will be dropped out of the List
+
+        /**
+         * pops the first element out of the alert-list
+         *
+         * @method popFirst
+         */
+        var popFirst = function () {
+            alerts.splice(0, 1);
+        }
+
+        return {
+            /**
+             * add an alert to the service
+             * and sets an timeout that removes the alert out of the alert-list
+             *
+             * @method addAlert
+             * @param type {String} the type of the message (info, error, confirmation)
+             * @param msg {String} the message-text
+             */
+            addAlert: function (type, msg) {
+                var element = alerts.push({'type': type, 'msg': msg});
+                $timeout(popFirst, DELETE_ALERT_INTERVAL);
+            },
+
+            /**
+             * closes an alert by index of the alert-list
+             *
+             * @method closeAlert
+             * @param index {int} index of the element which should be closed
+             */
+            closeAlert: function (index) {
+                alerts.splice(index, 1);
+            },
+
+            /**
+             * clears the alert-list
+             *
+             * @method clearAlerts
+             */
+            clearAlerts: function () {
+                alerts = [];
+            },
+
+            /**
+             * refers the alert-list
+             *
+             * @method alerts
+             * @return {Array} the list of all alerts
+             */
+            alerts: function () {
+                return alerts;
+            }
+        };
+    }]);	
 
 	/**
 	* central domain-model. Here you do all the CRUD-operations with the REST-API
 	*
 	* @class Domains
 	*/
-	app.factory(&#x27;Domains&#x27;, [&#x27;Restangular&#x27;, &#x27;AlertService&#x27;, function(Restangular, AlertService) {
+	app.factory('Domains', ['Restangular', 'AlertService', function(Restangular, AlertService) {
 
         var ALL_DOMAINS = {
-			name: &quot;all Domains&quot;
+			name: "all Domains"
 		}; // const for the all-domain-selection
 
 		var currentDomain = ALL_DOMAINS; // current Domain you have selected 	
@@ -189,13 +105,13 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 		var observerList = []; // observer for sitching the current-domain
 
 		var notifyObservers = function() { // all observers will be notified
-			for (var i = 0; i &lt; observerList.length; i++) {
+			for (var i = 0; i < observerList.length; i++) {
 				observerList[i].update();
 			}
 		};
 
 		var containsObserver = function(observer) { // contains observer in the observerList (identifier: getName())
-			for (var i = 0; i &lt; observerList.length; i++) {
+			for (var i = 0; i < observerList.length; i++) {
 		 		if (observerList[i].getName() === observer.getName()) {
 		 			return true;		 			
 		 		}				 						 		
@@ -206,9 +122,9 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 		var refresh = function() { // refreshes the Lists
 			list = [];			
 			realDataList = [];
-			var dao = Restangular.all(&#x27;domains&#x27;); 
+			var dao = Restangular.all('domains'); 
 			dao.getList().then(function(data) {									
-			 	for (var i = 0; i &lt; data.length; i++) {	
+			 	for (var i = 0; i < data.length; i++) {	
 			 		realDataList.push(angular.copy(data[i]));
 			 		list.push(data[i].virtual_domain);			 		
 			 	}													
@@ -216,7 +132,7 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 		};	
 
 		var oldDomainByID = function(id) { // returns the old of a record via id.
-		 	for (var i = 0; i &lt; realDataList.length; i++) {		 						 		
+		 	for (var i = 0; i < realDataList.length; i++) {		 						 		
 		 		if (realDataList[i].virtual_domain.id == id) {
 		 			return realDataList[i].virtual_domain;
 		 		}				 						 		
@@ -233,7 +149,7 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 			* @return {Boolean} Returns true if the domain is valid	
 			*/			
 			isValid: function(domain) {
-				return (domain &amp;&amp; domain != ALL_DOMAINS);			
+				return (domain && domain != ALL_DOMAINS);			
 			},
 			/**
 			* returns if all domains are selected or not
@@ -272,15 +188,15 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 			* @param domain {Object} the domain-object
 			*/
 			create: function(domain) {	
-				var dao = Restangular.all(&#x27;domains&#x27;); 
+				var dao = Restangular.all('domains'); 
 				dao.post(domain).then(function(response) {	
-					var msg = &quot;New domain created: &quot;+domain.name;
-					AlertService.addAlert(&quot;success&quot;,msg);					
+					var msg = "New domain created: "+domain.name;
+					AlertService.addAlert("success",msg);					
 					currentDomain = ALL_DOMAINS;												
 					refresh();						
 				}, function(response) {	
-					var msg = &quot;There was an error saving the domain &quot;+domain.name+&quot;: \n&quot;+errorMsg(response.data.error);
-					AlertService.addAlert(&quot;danger&quot;,msg);					
+					var msg = "There was an error saving the domain "+domain.name+": \n"+errorMsg(response.data.error);
+					AlertService.addAlert("danger",msg);					
 				});			
 			},
 			/**
@@ -291,15 +207,15 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 			*/
 			edit: function(domain) {
 				var oldDomain = oldDomainByID(domain.id);
-				var dao = Restangular.one(&#x27;domains&#x27;,oldDomain.name);
+				var dao = Restangular.one('domains',oldDomain.name);
 				dao.name = domain.name;
 				dao.put().then(function(response) {
-					var msg = &quot;Domain &quot;+domain.name+&quot; updated!&quot;;
-					AlertService.addAlert(&quot;success&quot;,msg);
+					var msg = "Domain "+domain.name+" updated!";
+					AlertService.addAlert("success",msg);
 					refresh();
 				}, function(response) {
-					var msg = &quot;There was an error updating the domain &quot;+domain.name+&quot;: \n&quot;+errorMsg(response.data.error);
-					AlertService.addAlert(&quot;danger&quot;,msg);
+					var msg = "There was an error updating the domain "+domain.name+": \n"+errorMsg(response.data.error);
+					AlertService.addAlert("danger",msg);
 					refresh();
 				});
 			},
@@ -310,16 +226,16 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 			* @param domain {Object} the domain-object
 			*/
 			remove: function(domain) {				
-				var dao = Restangular.one(&#x27;domains&#x27;,domain.name);		
+				var dao = Restangular.one('domains',domain.name);		
 				dao.remove().then(function(response) {							
-					var msg = &quot;Domain &quot;+domain.name+&quot; deleted!&quot;;
-					AlertService.addAlert(&quot;success&quot;,msg);					
+					var msg = "Domain "+domain.name+" deleted!";
+					AlertService.addAlert("success",msg);					
 					if (domain == currentDomain)
 						currentDomain = ALL_DOMAINS;	
 					refresh();									
 				}, function(response) {				
-					var msg = &quot;There was an error deleting the domain &quot;+domain.name+&quot;: \n&quot;+errorMsg(response.data.error);
-					AlertService.addAlert(&quot;danger&quot;,msg);					
+					var msg = "There was an error deleting the domain "+domain.name+": \n"+errorMsg(response.data.error);
+					AlertService.addAlert("danger",msg);					
 				});				
 			},						
 			/**
@@ -358,7 +274,7 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 			*/			
 			unregisterCurrentDomainObserver: function(observer) {
 				var index = observerList.indexOf(observer);
-				if (index &gt; -1) {
+				if (index > -1) {
 					observerList.splice(index, 1);
 				}
 			}
@@ -370,7 +286,7 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 	*
 	* @class DomainAliasses
 	*/
-	app.factory(&#x27;DomainAliasses&#x27;, [&#x27;Restangular&#x27;, &#x27;AlertService&#x27;, &#x27;Domains&#x27;, function(Restangular, AlertService, Domains) {
+	app.factory('DomainAliasses', ['Restangular', 'AlertService', 'Domains', function(Restangular, AlertService, Domains) {
 		var list = [];	// list of all aliases
 
 		var domain = null; // domain member
@@ -378,8 +294,8 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 		var refresh = function() { // refreshes the lists
 			list = [];			
 			if (Domains.isValid(domain)) {  												
-				Restangular.one(&#x27;domains&#x27;,domain.name).all(&#x27;aliases&#x27;).getList().then(function(data) {										 	
-				 	for (var i = 0; i &lt; data.length; i++) {				 					 		
+				Restangular.one('domains',domain.name).all('aliases').getList().then(function(data) {										 	
+				 	for (var i = 0; i < data.length; i++) {				 					 		
 				 		list.push(data[i].virtual_domain_alias);				 						 						 				 		
 				 	}					 																		
 				});				
@@ -413,14 +329,14 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 			* @param alias {Object} the alias object			
 			*/			
 			create: function(alias) {
-				var dao = Restangular.one(&#x27;domains&#x27;,domain.name).all(&#x27;aliases&#x27;);				
+				var dao = Restangular.one('domains',domain.name).all('aliases');				
 				dao.post(alias).then(function(response) {	
-					var msg = &quot;New domain alias created: &quot;+alias.name;
-					AlertService.addAlert(&quot;success&quot;,msg);
+					var msg = "New domain alias created: "+alias.name;
+					AlertService.addAlert("success",msg);
 					refresh();
 				}, function(response) {	
-					var msg = &quot;There was an error saving the domain alias &quot;+alias.name+&quot;: \n&quot;+errorMsg(response.data.error);
-					AlertService.addAlert(&quot;danger&quot;,msg); 						
+					var msg = "There was an error saving the domain alias "+alias.name+": \n"+errorMsg(response.data.error);
+					AlertService.addAlert("danger",msg); 						
 				});							
 			},
 			/**
@@ -430,14 +346,14 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 			* @param alias {Object} the alias object			
 			*/
 			remove: function(alias) {													
-				var dao = Restangular.one(&#x27;domains&#x27;,domain.name).one(&#x27;aliases&#x27;, alias.name);
+				var dao = Restangular.one('domains',domain.name).one('aliases', alias.name);
 				dao.remove().then(function(response) {							
-					var msg = &quot;Domain alias &quot;+alias.name+&quot; deleted!&quot;;
-					AlertService.addAlert(&quot;success&quot;,msg);					
+					var msg = "Domain alias "+alias.name+" deleted!";
+					AlertService.addAlert("success",msg);					
 					refresh();
 				}, function(response) {
-					var msg = &quot;There was an error deleting the domain alias &quot;+alias.name+&quot;: \n&quot;+errorMsg(response.data.error);
-					AlertService.addAlert(&quot;danger&quot;,msg);					
+					var msg = "There was an error deleting the domain alias "+alias.name+": \n"+errorMsg(response.data.error);
+					AlertService.addAlert("danger",msg);					
 				});		
 			},
 			/**
@@ -465,15 +381,15 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
      *
      * @class Transports
      */
-    app.factory(&#x27;Transports&#x27;, [&#x27;Restangular&#x27;, &#x27;AlertService&#x27;, function(Restangular, AlertService) {
+    app.factory('Transports', ['Restangular', 'AlertService', function(Restangular, AlertService) {
         var list = [];	// list of all transports
         var realDataList = []; // list of all data before it is edited
 
         var refresh = function() { // refreshes the lists
             list = [];
             realDataList = [];
-            Restangular.all(&#x27;transports&#x27;).getList().then(function(data) {
-                for (var i = 0; i &lt; data.length; i++) {
+            Restangular.all('transports').getList().then(function(data) {
+                for (var i = 0; i < data.length; i++) {
                     realDataList.push(angular.copy(data[i]));
                     list.push(data[i].virtual_transport);
                 }
@@ -481,7 +397,7 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
         };
 
         var oldItemByID = function(id) { // returns the old of a record via id.
-            for (var i = 0; i &lt; realDataList.length; i++) {
+            for (var i = 0; i < realDataList.length; i++) {
                 if (realDataList[i].virtual_transport.id == id) {
                     return realDataList[i].virtual_transport;
                 }
@@ -496,14 +412,14 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
              * @param transport {Object} the transport object
              */
             create: function(transport) {
-                var dao = Restangular.all(&#x27;transports&#x27;);
+                var dao = Restangular.all('transports');
                 dao.post(transport).then(function(response) {
-                    var msg = &quot;New transport created: &quot;+transport.name;
-                    AlertService.addAlert(&quot;success&quot;,msg);
+                    var msg = "New transport created: "+transport.name;
+                    AlertService.addAlert("success",msg);
                     refresh();
                 }, function(response) {
-                    var msg = &quot;There was an error saving the transport &quot;+transport.name+&quot;: \n&quot;+errorMsg(response.data.error);
-                    AlertService.addAlert(&quot;danger&quot;,msg);
+                    var msg = "There was an error saving the transport "+transport.name+": \n"+errorMsg(response.data.error);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -514,16 +430,16 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
              */
             edit: function(transport) {
                 var oldItem = oldItemByID(transport.id);
-                var dao = Restangular.one(&#x27;transports&#x27;,oldItem.name);
+                var dao = Restangular.one('transports',oldItem.name);
                 dao.name = transport.name;
                 dao.destination = transport.destination;
                 dao.put().then(function(response) {
-                    var msg = &quot;Transport &quot;+transport.name+&quot; updated!&quot;;
-                    AlertService.addAlert(&quot;success&quot;,msg);
+                    var msg = "Transport "+transport.name+" updated!";
+                    AlertService.addAlert("success",msg);
                     refresh();
                 }, function(response) {
-                    var msg = &quot;There was an error updating the transport &quot;+transport.name+&quot;: \n&quot;+errorMsg(response.data.error);
-                    AlertService.addAlert(&quot;danger&quot;,msg);
+                    var msg = "There was an error updating the transport "+transport.name+": \n"+errorMsg(response.data.error);
+                    AlertService.addAlert("danger",msg);
                     refresh();
                 });
             },
@@ -534,14 +450,14 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
              * @param alias {Object} the alias object
              */
             remove: function(transport) {
-                var dao = Restangular.one(&#x27;transports&#x27;, transport.name);
+                var dao = Restangular.one('transports', transport.name);
                 dao.remove().then(function(response) {
-                    var msg = &quot;Transport &quot;+transport.name+&quot; deleted!&quot;;
-                    AlertService.addAlert(&quot;success&quot;,msg);
+                    var msg = "Transport "+transport.name+" deleted!";
+                    AlertService.addAlert("success",msg);
                     refresh();
                 }, function(response) {
-                    var msg = &quot;There was an error deleting the transport &quot;+transport.name+&quot;: \n&quot;+errorMsg(response.data.error);
-                    AlertService.addAlert(&quot;danger&quot;,msg);
+                    var msg = "There was an error deleting the transport "+transport.name+": \n"+errorMsg(response.data.error);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -569,7 +485,7 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
      *
      * @class Transports
      */
-    app.factory(&#x27;Users&#x27;, [&#x27;Restangular&#x27;, &#x27;AlertService&#x27;, &#x27;Domains&#x27;, function(Restangular, AlertService, Domains) {
+    app.factory('Users', ['Restangular', 'AlertService', 'Domains', function(Restangular, AlertService, Domains) {
         var list = [];	// list of all users
         var realDataList = []; // list of all data before it is edited
         var domain = null;
@@ -578,8 +494,8 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
             list = [];
             realDataList = [];
             if (Domains.isValid(domain)) {            
-                Restangular.one(&#x27;domains&#x27;,domain.name).all(&#x27;users&#x27;).getList().then(function(data) {
-                    for (var i = 0; i &lt; data.length; i++) {
+                Restangular.one('domains',domain.name).all('users').getList().then(function(data) {
+                    for (var i = 0; i < data.length; i++) {
                         realDataList.push(angular.copy(data[i]));
                         list.push(data[i].virtual_user);
                     }
@@ -588,7 +504,7 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
         };
 
         var oldItemByID = function(id) {
-            for (var i = 0; i &lt; realDataList.length; i++) {
+            for (var i = 0; i < realDataList.length; i++) {
                 if (realDataList[i].virtual_user.id == id) {
                     return realDataList[i].virtual_user;
                 }
@@ -632,14 +548,14 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
              * @param user {Object} the user object
              */
             create: function(user) {
-                var dao = Restangular.one(&#x27;domains&#x27;,domain.name).all(&#x27;users&#x27;);
+                var dao = Restangular.one('domains',domain.name).all('users');
                 dao.post(user).then(function(response) {
-                    var msg = &quot;New user created: &quot;+user.name;
-                    AlertService.addAlert(&quot;success&quot;,msg);
+                    var msg = "New user created: "+user.name;
+                    AlertService.addAlert("success",msg);
                     refresh();
                 }, function(response) {
-                    var msg = &quot;There was an error saving the user &quot;+user.name+&quot;: \n&quot;+errorMsg(response.data.error);
-                    AlertService.addAlert(&quot;danger&quot;,msg);
+                    var msg = "There was an error saving the user "+user.name+": \n"+errorMsg(response.data.error);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -650,18 +566,18 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
              */
             edit: function(user) {
                 var oldItem = oldItemByID(user.id);
-                var dao = Restangular.one(&#x27;domains&#x27;,domain.name).one(&#x27;users&#x27;,oldItem.name);
+                var dao = Restangular.one('domains',domain.name).one('users',oldItem.name);
                 dao.name = user.name;
                 dao.quota = user.quota;
                 if (user.password != dao.password)
                     dao.password = user.password;
                 dao.put().then(function(response) {
-                    var msg = &quot;User &quot;+user.name+&quot; updated!&quot;;
-                    AlertService.addAlert(&quot;success&quot;,msg);
+                    var msg = "User "+user.name+" updated!";
+                    AlertService.addAlert("success",msg);
                     refresh();
                 }, function(response) {
-                    var msg = &quot;There was an error updating the user &quot;+user.name+&quot;: \n&quot;+errorMsg(response.data.error);
-                    AlertService.addAlert(&quot;danger&quot;,msg);
+                    var msg = "There was an error updating the user "+user.name+": \n"+errorMsg(response.data.error);
+                    AlertService.addAlert("danger",msg);
                     refresh();
                 });
             },
@@ -672,14 +588,14 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
              * @param alias {Object} the user object
              */
             remove: function(user) {
-                var dao = Restangular.one(&#x27;domains&#x27;,domain.name).one(&#x27;users&#x27;,user.name);
+                var dao = Restangular.one('domains',domain.name).one('users',user.name);
                 dao.remove().then(function(response) {
-                    var msg = &quot;User &quot;+user.name+&quot; deleted!&quot;;
-                    AlertService.addAlert(&quot;success&quot;,msg);
+                    var msg = "User "+user.name+" deleted!";
+                    AlertService.addAlert("success",msg);
                     refresh();
                 }, function(response) {
-                    var msg = &quot;There was an error deleting the user &quot;+user.name+&quot;: \n&quot;+errorMsg(response.data.error);
-                    AlertService.addAlert(&quot;danger&quot;,msg);
+                    var msg = "There was an error deleting the user "+user.name+": \n"+errorMsg(response.data.error);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -707,16 +623,16 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 	*
 	* @class UserAliasses
 	*/
-	app.factory(&#x27;UserAliasses&#x27;, [&#x27;Restangular&#x27;, &#x27;AlertService&#x27;, &#x27;Domains&#x27;, &#x27;Users&#x27;, function(Restangular, AlertService, Domains, Users) {
+	app.factory('UserAliasses', ['Restangular', 'AlertService', 'Domains', 'Users', function(Restangular, AlertService, Domains, Users) {
 		var list = [];	// list of all aliases
 		var domain = null;	
 		var user = null;
 		
 		var refresh = function() { // refreshes the lists
 			list = [];	
-			if (Domains.isValid(domain) &amp;&amp; Users.isValid(user)) { 
-				Restangular.one(&#x27;domains&#x27;,domain.name).one(&#x27;users&#x27;,user.name).all(&#x27;aliases&#x27;).getList().then(function(data) {									 	
-				 	for (var i = 0; i &lt; data.length; i++) {				 					 		
+			if (Domains.isValid(domain) && Users.isValid(user)) { 
+				Restangular.one('domains',domain.name).one('users',user.name).all('aliases').getList().then(function(data) {									 	
+				 	for (var i = 0; i < data.length; i++) {				 					 		
 				 		list.push(data[i].virtual_user_alias);				 						 						 				 		
 				 	}					 																		
 				});				
@@ -769,14 +685,14 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 			* @param alias {Object} the alias object			
 			*/			
 			create: function(alias) {						
-				var dao = Restangular.one(&#x27;domains&#x27;,domain.name).one(&#x27;users&#x27;,user.name).all(&#x27;aliases&#x27;);
+				var dao = Restangular.one('domains',domain.name).one('users',user.name).all('aliases');
 				dao.post(alias).then(function(response) {	
-					var msg = &quot;New user alias created: &quot;+alias.name;
-					AlertService.addAlert(&quot;success&quot;,msg);
+					var msg = "New user alias created: "+alias.name;
+					AlertService.addAlert("success",msg);
 					refresh();
 				}, function(response) {	
-					var msg = &quot;There was an error saving the user alias &quot;+alias.name+&quot;: \n&quot;+errorMsg(response.data.error);
-					AlertService.addAlert(&quot;danger&quot;,msg); 						
+					var msg = "There was an error saving the user alias "+alias.name+": \n"+errorMsg(response.data.error);
+					AlertService.addAlert("danger",msg); 						
 				});							
 			},
 			/**
@@ -786,14 +702,14 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 			* @param alias {Object} the alias object			
 			*/
 			remove: function(alias) {																	
-				var dao = Restangular.one(&#x27;domains&#x27;,domain.name).one(&#x27;users&#x27;,user.name).one(&#x27;aliases&#x27;, alias.name);
+				var dao = Restangular.one('domains',domain.name).one('users',user.name).one('aliases', alias.name);
 				dao.remove().then(function(response) {							
-					var msg = &quot;User alias &quot;+alias.name+&quot; deleted!&quot;;
-					AlertService.addAlert(&quot;success&quot;,msg);					
+					var msg = "User alias "+alias.name+" deleted!";
+					AlertService.addAlert("success",msg);					
 					refresh();
 				}, function(response) {
-					var msg = &quot;There was an error deleting the user alias &quot;+alias.name+&quot;: \n&quot;+errorMsg(response.data.error);
-					AlertService.addAlert(&quot;danger&quot;,msg);					
+					var msg = "There was an error deleting the user alias "+alias.name+": \n"+errorMsg(response.data.error);
+					AlertService.addAlert("danger",msg);					
 				});		
 			},
 			/**
@@ -821,18 +737,18 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
 	*
 	* @class Summaries
 	*/
-	app.factory(&#x27;Summaries&#x27;, [&#x27;Restangular&#x27;, function(Restangular) {
+	app.factory('Summaries', ['Restangular', function(Restangular) {
 		var list = [];
 		
 		var refresh = function() { // refreshes the lists
 			list = [];		
-			Restangular.all(&#x27;summary&#x27;).getList().then(function(items) {	
+			Restangular.all('summary').getList().then(function(items) {	
 				angular.forEach(items, function(item){
 				 	var data = new Object;
 				 	data.value = item.count;
 					data.percent = item.count;
 				 	data.name = item.name;
-				 	data.caption = item.name+&quot;: &quot;+item.count.toFixed(0);
+				 	data.caption = item.name+": "+item.count.toFixed(0);
 					list.push(data);					
 				});	 			 						
 			});			
@@ -864,15 +780,15 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
      *
      * @class ApiKeys
      */
-    app.factory(&#x27;ApiKeys&#x27;, [&#x27;Restangular&#x27;, &#x27;AlertService&#x27;, function(Restangular, AlertService) {
+    app.factory('ApiKeys', ['Restangular', 'AlertService', function(Restangular, AlertService) {
         var list = [];	// list of all api-keys
         var realDataList = []; // list of all data before it is edited
 
         var refresh = function() { // refreshes the lists
             list = [];
             realDataList = [];
-            Restangular.all(&#x27;api_keys&#x27;).getList().then(function(data) {
-                for (var i = 0; i &lt; data.length; i++) {
+            Restangular.all('api_keys').getList().then(function(data) {
+                for (var i = 0; i < data.length; i++) {
                     realDataList.push(angular.copy(data[i]));
                     list.push(data[i].api_key);
                 }
@@ -880,7 +796,7 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
         };
 
         var oldItemByID = function(id) {
-            for (var i = 0; i &lt; realDataList.length; i++) {
+            for (var i = 0; i < realDataList.length; i++) {
                 if (realDataList[i].api_key.id == id) {
                     return realDataList[i].api_key;
                 }
@@ -895,14 +811,14 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
              * @param apiKey {Object} the api-key object
              */
             create: function(apiKey) {
-                var dao = Restangular.all(&#x27;api_keys&#x27;);
+                var dao = Restangular.all('api_keys');
                 dao.post(apiKey).then(function(response) {
-                    var msg = &quot;New api-key created: &quot;+response.apiKey.access_token;
-                    AlertService.addAlert(&quot;success&quot;,msg);
+                    var msg = "New api-key created: "+response.apiKey.access_token;
+                    AlertService.addAlert("success",msg);
                     refresh();
                 }, function(response) {
-                    var msg = &quot;There was an error saving the api-key &quot;+response.apiKey.access_token+&quot;: \n&quot;+errorMsg(response.data.error);
-                    AlertService.addAlert(&quot;danger&quot;,msg);
+                    var msg = "There was an error saving the api-key "+response.apiKey.access_token+": \n"+errorMsg(response.data.error);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -912,16 +828,16 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
              * @param apiKey {Object} the api-key object
              */
             edit: function(apiKey) {
-                var dao = Restangular.one(&#x27;api_keys&#x27;,apiKey.access_token);
+                var dao = Restangular.one('api_keys',apiKey.access_token);
 				dao.expires_at = apiKey.expires_at;		
 				dao.active =  Number(apiKey.active);
                 dao.put().then(function(response) {
-                    var msg = &quot;Api-key &quot;+apiKey.access_token+&quot; updated!&quot;;
-                    AlertService.addAlert(&quot;success&quot;,msg);
+                    var msg = "Api-key "+apiKey.access_token+" updated!";
+                    AlertService.addAlert("success",msg);
                     refresh();
                 }, function(response) {
-                    var msg = &quot;There was an error updating the api-key &quot;+apiKey.access_token+&quot;: \n&quot;+errorMsg(response.data.error);
-                    AlertService.addAlert(&quot;danger&quot;,msg);
+                    var msg = "There was an error updating the api-key "+apiKey.access_token+": \n"+errorMsg(response.data.error);
+                    AlertService.addAlert("danger",msg);
                     refresh();
                 });
             },
@@ -932,14 +848,14 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
              * @param apiKey {Object} the api-key object
              */
             remove: function(apiKey) {
-                var dao = Restangular.one(&#x27;api_keys&#x27;, apiKey.access_token);
+                var dao = Restangular.one('api_keys', apiKey.access_token);
                 dao.remove().then(function(response) {
-                    var msg = &quot;Api-key &quot;+apiKey.access_token+&quot; deleted!&quot;;
-                    AlertService.addAlert(&quot;success&quot;,msg);
+                    var msg = "Api-key "+apiKey.access_token+" deleted!";
+                    AlertService.addAlert("success",msg);
                     refresh();
                 }, function(response) {
-                    var msg = &quot;There was an error deleting the api-key &quot;+apiKey.access_token+&quot;: \n&quot;+errorMsg(response.data.error);
-                    AlertService.addAlert(&quot;danger&quot;,msg);
+                    var msg = "There was an error deleting the api-key "+apiKey.access_token+": \n"+errorMsg(response.data.error);
+                    AlertService.addAlert("danger",msg);
                 });
             },
             /**
@@ -968,27 +884,7 @@ define([&#x27;angular&#x27;, &#x27;restangular&#x27;], function (angular, Restan
             isExpired: function(apiKey) {
             	var today = new Date();
             	var date = new Date(apiKey.expires_at);	
-            	return date-today&lt;0;
+            	return date-today<0;
             }
         };
     }]);
-});
-    </pre>
-</div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script>prettyPrint();</script>
-<script src="../assets/js/yui-prettify.js"></script>
-<script src="../assets/../api.js"></script>
-<script src="../assets/js/api-filter.js"></script>
-<script src="../assets/js/api-list.js"></script>
-<script src="../assets/js/api-search.js"></script>
-<script src="../assets/js/apidocs.js"></script>
-</body>
-</html>

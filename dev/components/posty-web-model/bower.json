@@ -1,0 +1,7 @@
+{
+  "name": "posty-web-model",
+  "version": "1.0.0",
+  "main": "./model.js",
+  "dependencies": {
+  }
+}

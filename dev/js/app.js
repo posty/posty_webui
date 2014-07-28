@@ -10,8 +10,7 @@ define([
     'angular',
     'services',
     'directives',
-    'controllers',
-    'models',
+    'controllers',    
     'conf',
     'angularRoute'
 ], function (angular) {
@@ -20,8 +19,8 @@ define([
     return angular.module('postySoft', [
         'ngRoute',
         'restangular',
-        'postySoft.controllers',
-        'postySoft.models',
+        'postySoft.models',        
+        'postySoft.controllers',        
         'postySoft.services',
         'postySoft.directives',
         'postySoft.configurations'

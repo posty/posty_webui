@@ -15,7 +15,8 @@ require.config({
         text: '../components/requirejs-text/text',
         restangular: '../components/restangular/src/restangular',
         underscore: '../components/underscore/underscore',
-        d3: '../components/d3/d3'
+        d3: '../components/d3/d3',
+        postyWebModel: '../components/posty-web-model/posty-web-model'
     },
     shim: {
         'angular': {'exports': 'angular'},
@@ -26,7 +27,10 @@ require.config({
         },
         'angularBootstrap': ['angular'],
         'restangular': {
-            deps: ["underscore", "angular"]
+            deps: ['underscore', 'angular']
+        },
+        'postyWebModel': {
+            deps: ['angular','restangular'] 
         }
     },
     priority: [
@@ -42,7 +46,8 @@ require([
     'app',
     'routes',
     'angularBootstrap',
-    'restangular'
+    'restangular',
+    'postyWebModel'
 ], function (angular, app, routes) {
     'use strict';
     var $html = angular.element(document.getElementsByTagName('html')[0]);

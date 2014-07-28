@@ -6,7 +6,7 @@
         "node_modules",
         "components"
     ],
-    "devDependencies": {
+    "devDependencies": {        
         "angular": "~1.2.19",
         "angular-scenario": "~1.2.19",
         "angular-route": "~1.2.19",
@@ -16,6 +16,7 @@
         "restangular": "~1.4.0",
         "underscore": "~1.6.0",
         "angular-bootstrap": "~0.11.0",
-        "d3": "~3.4.8"
+        "d3": "~3.4.8",
+        "posty-web-model": "~1.0.0"
     }
 }
