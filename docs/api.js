@@ -18,7 +18,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "ResponseHandler",
         "SelectDomainService",
         "SelectServerService",
-        "Servers",
         "SummaryCtrl",
         "TransportCtrl",
         "UserAliasCtrl",

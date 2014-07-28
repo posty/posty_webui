@@ -4,7 +4,7 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-angular-gettext": "^0.2.14",
-    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-copy": "^0.5.0",
     "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-htmlmin": "^0.3.0",
@@ -12,15 +12,15 @@
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-nodeunit": "~0.3.3",
     "grunt-contrib-requirejs": "^0.4.4",
-    "grunt-contrib-uglify": "^0.5.0",
+    "grunt-contrib-uglify": "^0.5.1",
     "grunt-contrib-yuidoc": "^0.5.2",
     "grunt-copy": "^0.1.0",
     "grunt-copy-mate": "^0.1.3",
     "grunt-cp": "^0.1.0",
+    "grunt-remove": "^0.1.0",
     "grunt-sync": "0.0.7",
     "install": "^0.1.7",
-    "npm": "^1.4.15",
-    "grunt-remove": "^0.1.0"
+    "npm": "^1.4.15"
   },
   "dependencies": {
     "grunt-sync": "0.0.7"

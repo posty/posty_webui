@@ -88,6 +88,101 @@
         };
     }]);	
 
+    /**
+     * central Server-model.
+     * This Service contains the available Servers and operations on it
+     *
+     * @class Servers
+     */
+    app.factory('Servers', ['Restangular', function (Restangular) {
+        var list = [];
+
+        var DEFAULT_SERVER = {
+            url: "",
+            key: ""
+        }; // const for the default-server
+
+        var currentServer = DEFAULT_SERVER;
+
+        return {
+            /**
+             * adds a server
+             *
+             * @method add
+             * @param server {Object} server-Object
+             */
+            add: function (server) {
+                list.push(server);
+            },
+            /**
+             * removes a server
+             *
+             * @method remove
+             * @param server {Object} server-Object
+             */
+            remove: function (server) {
+                var index = list.indexOf(server);
+                if (index > -1) {
+                    list.splice(index, 1);
+                }
+            },
+            /**
+             * returns the current server
+             *
+             * @method currentServer
+             * @return {Object} Returns the current server
+             */
+            currentServer: function () {
+                return currentServer;
+            },
+            /**
+             * sets the current server
+             *
+             * @method setCurrentServer
+             * @param value {Object} the new current server
+             */
+            setCurrentServer: function (server) {
+                if (server != currentServer) {
+                    currentServer = server;
+                    Restangular.setBaseUrl(server.url);                          
+                    Restangular.setDefaultHeaders(
+                        {
+                            'Content-Type':'application/json',
+                            'auth_token': server.key                             
+                        }
+                    );                    
+                }
+            },
+            /**
+             * get the list of all servers
+             *
+             * @method getList
+             * @return {Array} Returns list-member
+             */
+            getList: function () {
+                return list;
+            },
+            /**
+             * more than one server is saved
+             *
+             * @method moreThanOneServer
+             * @return {Boolean} Returns true if the there are more than one server saved
+             */
+            moreThanOneServer: function () {
+                return list.length > 1;
+            },
+            /**
+             * valid Server is set
+             *
+             * @method isValid
+             * @return {Boolean} Returns true if the current Server is valid
+             */
+            isValid: function () {
+                return currentServer != null;
+            }
+        };
+    }]);
+
 	/**
 	* central domain-model. Here you do all the CRUD-operations with the REST-API
 	*

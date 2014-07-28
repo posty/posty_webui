@@ -1,7 +1,7 @@
 {
   "name": "posty-web-model",
-  "version": "1.0.0",
-  "main": "./model.js",
+  "version": "1.0.3",
+  "main": "./posty-web-model.js",
   "dependencies": {
   }
 }

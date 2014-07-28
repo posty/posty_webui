@@ -75,8 +75,6 @@
             
                 <li><a href="../classes/SelectServerService.html">SelectServerService</a></li>
             
-                <li><a href="../classes/Servers.html">Servers</a></li>
-            
                 <li><a href="../classes/SummaryCtrl.html">SummaryCtrl</a></li>
             
                 <li><a href="../classes/TransportCtrl.html">TransportCtrl</a></li>
@@ -273,101 +271,6 @@ define([&#x27;angular&#x27;], function (angular) {
         this.show = function () {
             if (!modalDefaults.openJustOnce || (modalDefaults.openJustOnce &amp;&amp; !opened)) {
                 return $modal.open(modalDefaults);
-            }
-        };
-    }]);
-
-    /**
-     * central Server-model.
-     * This Service contains the available Servers and operations on it
-     *
-     * @class Servers
-     */
-    app.factory(&#x27;Servers&#x27;, [&#x27;Restangular&#x27;, function (Restangular) {
-        var list = [];
-
-        var DEFAULT_SERVER = {
-            url: &quot;&quot;,
-            key: &quot;&quot;
-        }; // const for the default-server
-
-        var currentServer = DEFAULT_SERVER;
-
-        return {
-            /**
-             * adds a server
-             *
-             * @method add
-             * @param server {Object} server-Object
-             */
-            add: function (server) {
-                list.push(server);
-            },
-            /**
-             * removes a server
-             *
-             * @method remove
-             * @param server {Object} server-Object
-             */
-            remove: function (server) {
-                var index = list.indexOf(server);
-                if (index &gt; -1) {
-                    list.splice(index, 1);
-                }
-            },
-            /**
-             * returns the current server
-             *
-             * @method currentServer
-             * @return {Object} Returns the current server
-             */
-            currentServer: function () {
-                return currentServer;
-            },
-            /**
-             * sets the current server
-             *
-             * @method setCurrentServer
-             * @param value {Object} the new current server
-             */
-            setCurrentServer: function (server) {
-                if (server != currentServer) {
-                    currentServer = server;
-                    Restangular.setBaseUrl(server.url);                          
-                    Restangular.setDefaultHeaders(
-                        {
-                            &#x27;Content-Type&#x27;:&#x27;application/json&#x27;,
-                            &#x27;auth_token&#x27;: server.key                             
-                        }
-                    );                    
-                }
-            },
-            /**
-             * get the list of all servers
-             *
-             * @method getList
-             * @return {Array} Returns list-member
-             */
-            getList: function () {
-                return list;
-            },
-            /**
-             * more than one server is saved
-             *
-             * @method moreThanOneServer
-             * @return {Boolean} Returns true if the there are more than one server saved
-             */
-            moreThanOneServer: function () {
-                return list.length &gt; 1;
-            },
-            /**
-             * valid Server is set
-             *
-             * @method isValid
-             * @return {Boolean} Returns true if the current Server is valid
-             */
-            isValid: function () {
-                return currentServer != null;
             }
         };
     }]);

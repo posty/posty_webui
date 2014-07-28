@@ -49,7 +49,6 @@
                 "Page": 1,
                 "ModalService": 1,
                 "SelectDomainService": 1,
-                "Servers": 1,
                 "SelectServerService": 1,
                 "ProcessService": 1,
                 "ProcessServiceProvider": 1,
@@ -266,18 +265,6 @@
             "line": 98,
             "description": "central modal-domain-selection-service. responsible for opening the domain-selection-view"
         },
-        "Servers": {
-            "name": "Servers",
-            "shortname": "Servers",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "dev\\js\\services.js",
-            "line": 148,
-            "description": "central Server-model.\nThis Service contains the available Servers and operations on it"
-        },
         "SelectServerService": {
             "name": "SelectServerService",
             "shortname": "SelectServerService",
@@ -287,7 +274,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "dev\\js\\services.js",
-            "line": 243,
+            "line": 148,
             "description": "central modal-server-selection-service. responsible for opening the server-selection-view"
         },
         "ProcessService": {
@@ -299,7 +286,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "dev\\js\\services.js",
-            "line": 322,
+            "line": 227,
             "description": "central process-service. stores a stack for each \"thread\" which is performed"
         },
         "ProcessServiceProvider": {
@@ -311,7 +298,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "dev\\js\\services.js",
-            "line": 331,
+            "line": 236,
             "description": "central process-provider. delegates the functions to a ProcessServiceInstance"
         },
         "ErrorService": {
@@ -323,7 +310,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "dev\\js\\services.js",
-            "line": 352,
+            "line": 257,
             "description": "central error-service. stores the current Error"
         },
         "ResponseHandler": {
@@ -335,7 +322,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "dev\\js\\services.js",
-            "line": 410,
+            "line": 315,
             "description": "Central Response Handler. All Responses will be intercepted by the add method"
         }
     },
@@ -917,100 +904,7 @@
         },
         {
             "file": "dev\\js\\services.js",
-            "line": 165,
-            "description": "adds a server",
-            "itemtype": "method",
-            "name": "add",
-            "params": [
-                {
-                    "name": "server",
-                    "description": "server-Object",
-                    "type": "Object"
-                }
-            ],
-            "class": "Servers"
-        },
-        {
-            "file": "dev\\js\\services.js",
-            "line": 174,
-            "description": "removes a server",
-            "itemtype": "method",
-            "name": "remove",
-            "params": [
-                {
-                    "name": "server",
-                    "description": "server-Object",
-                    "type": "Object"
-                }
-            ],
-            "class": "Servers"
-        },
-        {
-            "file": "dev\\js\\services.js",
-            "line": 186,
-            "description": "returns the current server",
-            "itemtype": "method",
-            "name": "currentServer",
-            "return": {
-                "description": "Returns the current server",
-                "type": "Object"
-            },
-            "class": "Servers"
-        },
-        {
-            "file": "dev\\js\\services.js",
-            "line": 195,
-            "description": "sets the current server",
-            "itemtype": "method",
-            "name": "setCurrentServer",
-            "params": [
-                {
-                    "name": "value",
-                    "description": "the new current server",
-                    "type": "Object"
-                }
-            ],
-            "class": "Servers"
-        },
-        {
-            "file": "dev\\js\\services.js",
-            "line": 213,
-            "description": "get the list of all servers",
-            "itemtype": "method",
-            "name": "getList",
-            "return": {
-                "description": "Returns list-member",
-                "type": "Array"
-            },
-            "class": "Servers"
-        },
-        {
-            "file": "dev\\js\\services.js",
-            "line": 222,
-            "description": "more than one server is saved",
-            "itemtype": "method",
-            "name": "moreThanOneServer",
-            "return": {
-                "description": "Returns true if the there are more than one server saved",
-                "type": "Boolean"
-            },
-            "class": "Servers"
-        },
-        {
-            "file": "dev\\js\\services.js",
-            "line": 231,
-            "description": "valid Server is set",
-            "itemtype": "method",
-            "name": "isValid",
-            "return": {
-                "description": "Returns true if the current Server is valid",
-                "type": "Boolean"
-            },
-            "class": "Servers"
-        },
-        {
-            "file": "dev\\js\\services.js",
-            "line": 276,
+            "line": 181,
             "description": "opens the modal view",
             "itemtype": "method",
             "name": "show",
@@ -1018,7 +912,7 @@
         },
         {
             "file": "dev\\js\\services.js",
-            "line": 293,
+            "line": 198,
             "description": "pushes the process-stack",
             "itemtype": "method",
             "name": "register",
@@ -1026,7 +920,7 @@
         },
         {
             "file": "dev\\js\\services.js",
-            "line": 302,
+            "line": 207,
             "description": "pops an element fromt the process-stack",
             "itemtype": "method",
             "name": "unregister",
@@ -1034,7 +928,7 @@
         },
         {
             "file": "dev\\js\\services.js",
-            "line": 311,
+            "line": 216,
             "description": "refers if the stack is full or not",
             "itemtype": "method",
             "name": "isLoading",
@@ -1046,7 +940,7 @@
         },
         {
             "file": "dev\\js\\services.js",
-            "line": 362,
+            "line": 267,
             "description": "add an alert to the service\nand sets an timeout that removes the alert out of the alert-list",
             "itemtype": "method",
             "name": "throw",
@@ -1054,7 +948,7 @@
         },
         {
             "file": "dev\\js\\services.js",
-            "line": 373,
+            "line": 278,
             "description": "closes an alert by index of the alert-list",
             "itemtype": "method",
             "name": "reset",
@@ -1062,7 +956,7 @@
         },
         {
             "file": "dev\\js\\services.js",
-            "line": 381,
+            "line": 286,
             "description": "returns the statusCode",
             "itemtype": "method",
             "name": "getStatusCode",
@@ -1074,7 +968,7 @@
         },
         {
             "file": "dev\\js\\services.js",
-            "line": 390,
+            "line": 295,
             "description": "returns the message",
             "itemtype": "method",
             "name": "getMessage",
@@ -1086,7 +980,7 @@
         },
         {
             "file": "dev\\js\\services.js",
-            "line": 399,
+            "line": 304,
             "description": "returns if an error is occurred or not",
             "itemtype": "method",
             "name": "occurred",
@@ -1098,7 +992,7 @@
         },
         {
             "file": "dev\\js\\services.js",
-            "line": 418,
+            "line": 323,
             "description": "adding responses to the local list",
             "itemtype": "method",
             "name": "add",
