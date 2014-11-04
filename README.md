@@ -104,9 +104,6 @@ For more informations about posty please visit our website:
 
 ## Support
 
-* IRC
-	* Server: irc.freenode.net
-	* Channel: #posty
 * Email:
 	* support@posty-soft.org
 
