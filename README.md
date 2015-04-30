@@ -65,16 +65,16 @@ A complete documentation of posty_webUI, see:
 ## Usage
 
 Here is a short overview about the main screens of the posty-webUI.
-Also available at [(http://www.posty-soft.org/webuiv2/)](http://www.posty-soft.org/webuiv2/)
+Also available at [(http://demo.posty-soft.org)](http://demo.posty-soft.org/)
 
-[![Build Status](http://posty-soft.org/img/select_a_server_v2.png)](http://www.posty-soft.org/webuiv2/)
-[![Build Status](http://posty-soft.org/img/dashboard_v2.png)](http://www.posty-soft.org/webuiv2/)
-[![Build Status](http://posty-soft.org/img/domain_v2.png)](http://www.posty-soft.org/webuiv2/#/view_domain)
-[![Build Status](http://posty-soft.org/img/domainAliase_v2.png)](http://www.posty-soft.org/webuiv2/#/view_domain)
-[![Build Status](http://posty-soft.org/img/user_v2.png)](http://www.posty-soft.org/webuiv2/#/view_account)
-[![Build Status](http://posty-soft.org/img/userAliase_v2.png)](http://www.posty-soft.org/webuiv2/#/view_account)
-[![Build Status](http://posty-soft.org/img/transport_v2.png)](http://www.posty-soft.org/webuiv2/#/view_transport)
-[![Build Status](http://posty-soft.org/img/summary_v2.png)](http://www.posty-soft.org/webuiv2/#/view_summary)
+[![Build Status](http://demo.posty-soft.org/img_screen/select_a_server_v2.png)](http://demo.posty-soft.org)
+[![Build Status](http://demo.posty-soft.org/img_screen/dashboard_v2.png)](http://demo.posty-soft.org/)
+[![Build Status](http://demo.posty-soft.org/img_screen/domain_v2.png)](http://demo.posty-soft.org/#/view_domain)
+[![Build Status](http://demo.posty-soft.org/img_screen/domainAliase_v2.png)](http://demo.posty-soft.org/#/view_domain)
+[![Build Status](http://demo.posty-soft.org/img_screen/user_v2.png)](http://demo.posty-soft.org/#/view_account)
+[![Build Status](http://demo.posty-soft.org/img_screen/userAliase_v2.png)](http://demo.posty-soft.org/#/view_account)
+[![Build Status](http://demo.posty-soft.org/img_screen/transport_v2.png)](http://demo.posty-soft.org/#/view_transport)
+[![Build Status](http://demo.posty-soft.org/img_screen/summary_v2.png)](http://demo.posty-soft.org/#/view_summary)
 
 
 
@@ -91,11 +91,11 @@ Also available at [(http://www.posty-soft.org/webuiv2/)](http://www.posty-soft.o
 
 ## Compatible browser
 
-![Build Status](http://posty-soft.org/img/chrome_small.png)
-![Build Status](http://posty-soft.org/img/firefox_small.png)
-![Build Status](http://posty-soft.org/img/opera_small.png)
-![Build Status](http://posty-soft.org/img/safari_small.png)
-![Build Status](http://posty-soft.org/img/ie_small.png)  
+![Build Status](http://demo.posty-soft.org/img_screen/chrome_small.png)
+![Build Status](http://demo.posty-soft.org/img_screen/firefox_small.png)
+![Build Status](http://demo.posty-soft.org/img_screen/opera_small.png)
+![Build Status](http://demo.posty-soft.org/img_screen/safari_small.png)
+![Build Status](http://demo.posty-soft.org/img_screen/ie_small.png)  
 
 ## Information
 
